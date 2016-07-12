@@ -1,0 +1,18 @@
+dtmax 100
+seed 0
+dxtarget 0.1
+dttarget 0.1
+maxstretch 1.2
+maxsteps 3652500
+dt0 1.01
+toutfreq 100
+INITIAL
+ RANDOM
+ 10000
+   548143.000       4127481.00       765.770020
+   548343.000       4127681.00       785.770020   
+DTENSOR
+1 0 0
+BF
+ 1.0 0.0 0.0 0.0
+END

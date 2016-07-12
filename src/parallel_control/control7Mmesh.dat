@@ -1,0 +1,21 @@
+tmax 1000
+seed 7127
+dxtarget 0.1
+dttarget 0.1
+maxstretch 1.3
+maxsteps 100
+dt0 0.01
+toutfreq 1
+INITIAL
+UNIFOR
+100 10 10
+544000 4.118e+06 1100
+546000 4.120e+06 1200
+
+DTENSOR
+1 0 0
+BF
+  1. 0.1 0.01 0.0
+END
+
+

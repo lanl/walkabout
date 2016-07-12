@@ -1,0 +1,64 @@
+Create 8 control.data files, each of which has one location.
+Use the following format:
+ 
+UNIFORM  or (RANDOM)
+100 100 100
+X1  y1 z1
+X2  y2 z2
+ 
+where (x1, y1, z1) and (x2, y2, z2) define a box containing the point
+ 
+1 Name: Handley
+UNIFORM
+100  100 100
+541189.625       4128004.50       1195.0
+541389.625       4128204.50       1225.0
+ 
+2. Name; Purse
+UNIFORM
+100  100 100
+544166.875       4126068.75       1246.80005
+544366.875       4126268.75       1266.80005
+ 
+3. Name: Tybo
+UNIFORM
+100  100 100
+546551.313       4119191.00       1132.05005
+546751.313       4119391.00       1152.05005
+ 
+4. Name: Bullion
+UNIFORM
+100  100 100
+551320.313       4123747.50       1335.0
+551520.313       4123947.50       1355.0
+ 
+5. Name: Cheshire
+UNIFORM
+100  100 100
+551324.375       4121643.00       1265.0
+551524.375       4121843.00       1285.0
+ 
+6. Name: Benham
+UNIFORM
+100  100 100
+546598.500       4120377.50       1090.
+546798.500       4120577.50       1110.
+ 
+7. Name: Boxcar
+UNIFORM
+100  100 100
+548143.000       4127481.00       765.770020
+548343.000       4127681.00       785.770020
+ 
+8. Name Greenley
+UNIFORM
+100  100 100
+552340.188       4128243.50       1190.0
+552540.188       4128443.50       1210.0
+ 
+For all cases, uses the same dispersivity values:
+ 
+10.0    1.0  1.0  0.0
+ 
+ 
+
