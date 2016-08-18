@@ -1,0 +1,12 @@
+cmo / create / mo_hex / / / hex
+infile geometry.mlgi
+createpts / brick / xyz / NP NP NP / &
+     BOX_MIN BOX_MIN BOX_MIN / BOX_MAX BOX_MAX BOX_MAX / 1 1 1
+setpts
+settets / geometry
+resetpts / parents
+rmpoint / compress
+resetpts/cell_color
+
+finish
+

@@ -1,0 +1,77 @@
+*** Validation1 Test Problem: 3-D Homogeneous Flow and Transport ***
+restart
+ascii
+lflux
+
+sol
+    1   -1
+zone
+1
+0. 10. 10. 0. 0. 10. 10. 0.
+-50. -50  50. 50. -50. -50  50. 50.
+-50. -50. -50. -50. 50. 50. 50. 50.
+2
+19990. 20000. 20000. 19990. 19990. 20000. 20000. 19990.
+-50. -50  50. 50. -50. -50  50. 50.
+-50. -50. -50. -50. 50. 50. 50. 50.
+
+node
+block
+-1  0  0
+-2  0  0
+
+cont
+tec   10000    1.e30
+geom
+liquid
+pressure
+flux net
+permeability
+velocity
+formatted
+endavs
+pres
+  1   0   0   2.200    44.00   1
+
+rock
+  1   0   0   2530.0  780.0e20   1.0101185e-3
+
+perm
+  1   0   0   7.079458e-13  7.079458e-13  7.079458e-13
+
+cond
+  1   0   0  1.4e-00   1.4e-00   1.4e-00
+
+time
+ 1. 1461000.   2000   19   1997  4 0.
+
+ctrl
+   10   1.e-5 8   100 gmres
+    1    0    0    1
+    0
+   1.0   0    1.0
+ 10   2.0   0.001   1.e10
+    0    +1
+iter
+1.e-7 1.e-7 1.e-3 -1.e-8 1.1
+1 0 0 0 5000.
+flow
+  -1	0	0      2.3940657     -44.00     100.00
+  -2    0       0      2.0000        -44.00     100.00
+
+cont 
+avs 100000 1.e20
+liquid
+pressure
+saturation
+density
+porosity
+formatted
+endavs
+steady
+pressure 1.e-19 
+sflu  1.e-19 
+smult  2
+smst 20
+end
+stop

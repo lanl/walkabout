@@ -1,0 +1,139 @@
+define/NP/26                                                                    
+define/FILEg/hex_np26.gmv                                                       
+infile fd_mesh.mlgi                                                             
+cmo/create/mo_hex///hex                                                         
+infile geometry.mlgi                                                            
+define/BOX_MIN/0.0                                                              
+define/BOX_MAX/100.0                                                            
+define/BAR_1_X0/40.0                                                            
+define/BAR_1_Y0/0.0                                                             
+define/BAR_1_Z0/0.0                                                             
+define/BAR_1_X1/50.0                                                            
+define/BAR_1_Y1/60.0                                                            
+define/BAR_1_Z1/100.0                                                           
+define/BAR_2_X0/70.0                                                            
+define/BAR_2_Y0/60.0                                                            
+define/BAR_2_Z0/0.0                                                             
+define/BAR_2_X1/80.0                                                            
+define/BAR_2_Y1/100.0                                                           
+define/BAR_2_Z1/100.0                                                           
+surface/s_bbox/reflect/box/BOX_MIN BOX_MIN BOX_MIN/BOX_MAX BOX_MAX BOX_MAX      
+surface/s_bar_1/intrface/box/BAR_1_X0 BAR_1_Y0 BAR_1_Z0 BAR_1_X1 BAR_1_Y1 BAR_1_
+Z1                                                                              
+surface/s_bar_2/intrface/box/BAR_2_X0 BAR_2_Y0 BAR_2_Z0 BAR_2_X1 BAR_2_Y1 BAR_2_
+Z1                                                                              
+surface/s_cyl/interface/cylinder/60.0 60.0 -1.0 60.0 60.0 101.0/12.0            
+region/r_background/le s_bbox and gt s_bar_1 and gt s_bar_2                     
+region/r_bar_1/le s_bbox and le s_bar_1                                         
+region/r_bar_2/le s_bbox and le s_bar_2                                         
+region/r_between/le s_cyl                                                       
+mregion/mr_background/le s_bbox and gt s_bar_1 and gt s_bar_2                   
+mregion/mr_bar_1/le s_bbox and le s_bar_1                                       
+mregion/mr_bar_2/le s_bbox and le s_bar_2                                       
+finish                                                                          
+createpts/brick/xyz/NP NP NP/BOX_MIN BOX_MIN BOX_MIN/BOX_MAX BOX_MAX BOX_MAX/1 1
+ 1                                                                              
+setpts                                                                          
+settets/geometry                                                                
+resetpts/parents                                                                
+rmpoint/compress                                                                
+resetpts/cell_color                                                             
+finish                                                                          
+dump/gmv/FILEg/mo_hex                                                           
+infile refine_interface.mlgi                                                    
+eltset/em1/itetclr/eq/1                                                         
+eltset/em2/itetclr/eq/2                                                         
+eltset/em3/itetclr/eq/3                                                         
+pset/pem1/eltset em1                                                            
+pset/pem2/eltset em2                                                            
+pset/pem3/eltset em3                                                            
+eltset/em1/delete                                                               
+eltset/em2/delete                                                               
+eltset/em3/delete                                                               
+pset/p13/inter/pem1 pem3                                                        
+pset/p12/inter/pem1 pem2                                                        
+pset/p_interface/union/p12 p13                                                  
+pset/pbetween/region/r_between                                                  
+pset/pref_cyl/inter/pem1 pbetween                                               
+pset/prefine/union/p_interface pref_cyl                                         
+refine/constant/imt1/linear/element/pset,get,prefine/-1.,0.,0./inclusive/amr    
+setpts                                                                          
+finish                                                                          
+dump/gmv/tmp_refine_l1.gmv/mo_hex                                               
+infile mo_hex_2_mo_tet.mlgi                                                     
+cmo/create/mo_tet                                                               
+copypts/mo_tet/mo_hex                                                           
+filter/1 0 0                                                                    
+rmpoint/compress                                                                
+connect/noadd                                                                   
+resetpts/itp                                                                    
+finish                                                                          
+dump/gmv/tet_refine_l1.gmv/mo_tet                                               
+dump/fehm/tet_l1/mo_tet                                                         
+dump/elem_adj_elem/tet_l1.ealist/mo_tet                                         
+cmo/delete/mo_tet                                                               
+infile refine_interface.mlgi                                                    
+eltset/em1/itetclr/eq/1                                                         
+eltset/em2/itetclr/eq/2                                                         
+eltset/em3/itetclr/eq/3                                                         
+pset/pem1/eltset em1                                                            
+pset/pem2/eltset em2                                                            
+pset/pem3/eltset em3                                                            
+eltset/em1/delete                                                               
+eltset/em2/delete                                                               
+eltset/em3/delete                                                               
+pset/p13/inter/pem1 pem3                                                        
+pset/p12/inter/pem1 pem2                                                        
+pset/p_interface/union/p12 p13                                                  
+pset/pbetween/region/r_between                                                  
+pset/pref_cyl/inter/pem1 pbetween                                               
+pset/prefine/union/p_interface pref_cyl                                         
+refine/constant/imt1/linear/element/pset,get,prefine/-1.,0.,0./inclusive/amr    
+setpts                                                                          
+finish                                                                          
+dump/gmv/tmp_refine_l2.gmv/mo_hex                                               
+infile mo_hex_2_mo_tet.mlgi                                                     
+cmo/create/mo_tet                                                               
+copypts/mo_tet/mo_hex                                                           
+filter/1 0 0                                                                    
+rmpoint/compress                                                                
+connect/noadd                                                                   
+resetpts/itp                                                                    
+finish                                                                          
+dump/gmv/tet_refine_l2.gmv/mo_tet                                               
+dump/fehm/tet_l2/mo_tet                                                         
+dump/elem_adj_elem/tet_l2.ealist/mo_tet                                         
+cmo/delete/mo_tet                                                               
+infile refine_interface.mlgi                                                    
+eltset/em1/itetclr/eq/1                                                         
+eltset/em2/itetclr/eq/2                                                         
+eltset/em3/itetclr/eq/3                                                         
+pset/pem1/eltset em1                                                            
+pset/pem2/eltset em2                                                            
+pset/pem3/eltset em3                                                            
+eltset/em1/delete                                                               
+eltset/em2/delete                                                               
+eltset/em3/delete                                                               
+pset/p13/inter/pem1 pem3                                                        
+pset/p12/inter/pem1 pem2                                                        
+pset/p_interface/union/p12 p13                                                  
+pset/pbetween/region/r_between                                                  
+pset/pref_cyl/inter/pem1 pbetween                                               
+pset/prefine/union/p_interface pref_cyl                                         
+refine/constant/imt1/linear/element/pset,get,prefine/-1.,0.,0./inclusive/amr    
+setpts                                                                          
+finish                                                                          
+dump/gmv/tmp_refine_l3.gmv/mo_hex                                               
+infile mo_hex_2_mo_tet.mlgi                                                     
+cmo/create/mo_tet                                                               
+copypts/mo_tet/mo_hex                                                           
+filter/1 0 0                                                                    
+rmpoint/compress                                                                
+connect/noadd                                                                   
+resetpts/itp                                                                    
+finish                                                                          
+dump/gmv/tet_refine_l3.gmv/mo_tet                                               
+dump/fehm/tet_l3/mo_tet                                                         
+dump/elem_adj_elem/tet_l3.ealist/mo_tet                                         
+cmo/delete/mo_tet                                                               
+finish                                                                          

@@ -1,0 +1,134 @@
+FEHM V3.00mac 10-05-24 QA:NA     03/08/2011    13:41:35
+
+ *** Validation1 Test Problem: 3-D Homogeneous Flow and Transport ***            
+
+
+
+        4 nodes contained in zone =          1
+
+       1      96     191     286
+
+        4 nodes contained in zone =          2
+
+      95     190     285     380
+
+      416 nodes not assigned to a zone in call #          1
+ 
+ Macro: pres  Group:  1
+ Values were explicitly set for each node
+ 
+ 
+ Macro: rock  Group:  1
+ Values were explicitly set for each node
+ 
+ 
+ Macro: perm  Group:  1
+ Values were explicitly set for each node
+ 
+ 
+ Macro: cond  Group:  1
+ Values were explicitly set for each node
+ 
+ 
+ Macro: ctrl  Group:  2
+ Values were explicitly set for each node
+ 
+ 
+ Macro: flow  Group:  1
+ Data explicitly set only for the following nodes:
+        1      95      96     190     191     285     286     380
+ The remainder are set to the default value
+ or were set in a previous invokation of this macro
+ 
+
+ number of nodes in problem =        424
+
+ heat and mass transfer solution
+ lobatto (node point) quadrature used
+ value of upwind weight =   1.0000    
+ reduced degree of freedom enabled
+ finite volume calculations used
+ n4 may be reduced to 1
+ n6 may be reduced to 1
+ n8 may be reduced to 1
+
+ 
+ EOS data obtained from internal equations
+ 
+
+ max total pressure, node number, x coordinate, y coordinate, z coordinate
+      2.2000000              1    0.000        -50.0        -50.0    
+
+ min total pressure, node number, x coordinate, y coordinate, z coordinate
+      2.2000000              1    0.000        -50.0        -50.0    
+
+ max temperature, node number, x coordinate, y coordinate, z coordinate
+      44.000000              1    0.000        -50.0        -50.0    
+
+ min temperature, node number, x coordinate, y coordinate, z coordinate
+      44.000000              1    0.000        -50.0        -50.0    
+
+ max saturation, node number, x coordinate, y coordinate, z coordinate
+      1.0000000              1    0.000        -50.0        -50.0    
+
+ min saturation, node number, x coordinate, y coordinate, z coordinate
+      1.0000000              1    0.000        -50.0        -50.0    
+
+ max porosity, node number, x coordinate, y coordinate, z coordinate
+     0.10101185E-02          1    0.000        -50.0        -50.0    
+
+ min porosity, node number, x coordinate, y coordinate, z coordinate
+     0.10101185E-02          1    0.000        -50.0        -50.0    
+
+ max permeability, node number, x coordinate, y coordinate, z coordinate
+     0.70794580E-12          1    0.000        -50.0        -50.0    
+
+ min permeability, node number, x coordinate, y coordinate, z coordinate
+     0.70794580E-12          1    0.000        -50.0        -50.0    
+
+ max rock density, node number, x coordinate, y coordinate, z coordinate
+      2530.0000              1    0.000        -50.0        -50.0    
+
+ min rock density, node number, x coordinate, y coordinate, z coordinate
+      2530.0000              1    0.000        -50.0        -50.0    
+
+ max heat capacity, node number, x coordinate, y coordinate, z coordinate
+     0.78000000E+17          1    0.000        -50.0        -50.0    
+
+ min heat capacity, node number, x coordinate, y coordinate, z coordinate
+     0.78000000E+17          1    0.000        -50.0        -50.0    
+
+ max t conductivity, node number, x coordinate, y coordinate, z coordinate
+     0.14000000E-05          1    0.000        -50.0        -50.0    
+
+ min t conductivity, node number, x coordinate, y coordinate, z coordinate
+     0.14000000E-05          1    0.000        -50.0        -50.0    
+
+ max x coordinate, node number, x coordinate, y coordinate, z coordinate
+      20000.000             95    0.200E+05    -50.0        -50.0    
+
+ min x coordinate, node number, x coordinate, y coordinate, z coordinate
+     0.00000000              1    0.000        -50.0        -50.0    
+
+ max y coordinate, node number, x coordinate, y coordinate, z coordinate
+      50.000000             96    0.000         50.0        -50.0    
+
+ min y coordinate, node number, x coordinate, y coordinate, z coordinate
+     -50.000000              1    0.000        -50.0        -50.0    
+
+ max z coordinate, node number, x coordinate, y coordinate, z coordinate
+      50.000000            191    0.000        -50.0         50.0    
+
+ min z coordinate, node number, x coordinate, y coordinate, z coordinate
+     -50.000000              1    0.000        -50.0        -50.0    
+
+ max cell volume, node number, x coordinate, y coordinate, z coordinate
+      500000.00              2     200.        -50.0        -50.0    
+
+ min cell volume, node number, x coordinate, y coordinate, z coordinate
+      250000.00              1    0.000        -50.0        -50.0    
+
+ initial mass =  0.200E+09
+        steam =  0.000    
+       energy =  0.173E+31
+ total volume =  0.200E+09

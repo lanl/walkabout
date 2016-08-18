@@ -1,0 +1,8 @@
+stor:../walkabout-data/Grids/Structured/tet5.stor
+fehmn:../walkabout-data/Grids/Structured/tet5.fehmn
+fin:../walkabout-data/TwoBarrierStructured/SZ_3D.fin 
+ealist:../walkabout-data/Grids/Structured/tet5.ealist 
+cbound:../walkabout-data/Grids/Structured/tet5_outside.zone 
+avs:../walkabout-data/TwoBarrierStructured/SZ_3D.00002_sca_node.avs
+control:control.dat 
+trajout:traj.out

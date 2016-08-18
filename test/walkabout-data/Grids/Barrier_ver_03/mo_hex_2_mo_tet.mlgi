@@ -1,0 +1,7 @@
+cmo / create / mo_tet
+copypts / mo_tet / mo_hex
+filter / 1 0 0 
+rmpoint / compress
+connect / noadd
+resetpts / itp
+finish

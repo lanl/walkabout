@@ -1,0 +1,41 @@
+*
+* Refine the material interfaces
+*
+eltset / em1 / itetclr / eq / 1
+eltset / em2 / itetclr / eq / 2
+eltset / em3 / itetclr / eq / 3
+
+pset / pem1 / eltset em1
+pset / pem2 / eltset em2
+pset / pem3 / eltset em3
+
+eltset / em1 / delete
+eltset / em2 / delete
+eltset / em3 / delete
+
+pset / p13 / inter / pem1 pem3
+pset / p12 / inter / pem1 pem2
+pset / p_interface / union / p12 p13
+
+* pset / p_inter / union / p12 p13
+* eltset / e1213 / inclusive / pset get p_inter
+* pset / p_interface / eltset e1213
+* eltset / e1213 / delete
+*
+* cmo / create / mo_tmp2
+* cmo / create / mo_tmp3
+* copypts / mo_tmp2 / mo_hex / 0,0 / pset get p12
+* copypts / mo_tmp3 / mo_hex / 0,0 / pset get p13
+* compute / distance_field / mo_hex / mo_tmp2 / dfield2 
+* compute / distance_field / mo_hex / mo_tmp3 / dfield3 
+*
+* Find point in cylinder between barriers
+*
+pset / pbetween / region / r_between
+pset / pref_cyl / inter / pem1  pbetween
+pset / prefine / union / p_interface pref_cyl
+
+refine/constant/imt1/linear/element/pset,get,prefine/-1.,0.,0./inclusive/ amr
+setpts
+
+finish

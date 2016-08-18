@@ -1,0 +1,38 @@
+define / NP / 26 
+define / FILEg / hex_np26.gmv 
+infile fd_mesh.mlgi
+dump / gmv / FILEg / mo_hex
+*
+* Refine the material interfaces
+*
+infile refine_interface.mlgi
+dump / gmv / tmp_refine_l1.gmv / mo_hex
+infile mo_hex_2_mo_tet.mlgi
+dump / gmv / tet_refine_l1.gmv / mo_tet
+dump / fehm / tet_l1 / mo_tet
+dump / elem_adj_elem / tet_l1.ealist / mo_tet
+cmo / delete / mo_tet
+
+*
+* Refine the material interfaces
+*
+infile refine_interface.mlgi
+dump / gmv / tmp_refine_l2.gmv / mo_hex
+infile mo_hex_2_mo_tet.mlgi
+dump / gmv / tet_refine_l2.gmv / mo_tet
+dump / fehm / tet_l2 / mo_tet
+dump / elem_adj_elem / tet_l2.ealist / mo_tet
+cmo / delete / mo_tet
+*
+* Refine the material interfaces
+*
+infile refine_interface.mlgi
+dump / gmv / tmp_refine_l3.gmv / mo_hex
+infile mo_hex_2_mo_tet.mlgi
+dump / gmv / tet_refine_l3.gmv / mo_tet
+dump / fehm / tet_l3 / mo_tet
+dump / elem_adj_elem / tet_l3.ealist / mo_tet
+cmo / delete / mo_tet
+finish
+
+

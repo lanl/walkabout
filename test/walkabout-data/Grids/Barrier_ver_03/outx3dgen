@@ -1,0 +1,1233 @@
+ 
+ 
+*               * * * * * * * * * * * * * * * * * * * * * * * *                 
+*               *                                             *                 
+*               *    Program:  LaGriT V2.106   Linux m32      *                 
+*               *    date_compile: 2010/06/29                 *                 
+*               *    Run Time: 2010/07/29  15:38:18           *                 
+*               *    Manual:   http://lagrit.lanl.gov         *                 
+*               *                                             *                 
+*               * * * * * * * * * * * * * * * * * * * * * * * *                 
+ 
+                               -----oOo-----                                    
+LaGriT Copyright: This program was prepared by Los Alamos National Security, LLC
+at Los Alamos National Laboratory (LANL) under contract No. DE-AC52-06NA25396   
+with the U.S. Department of Energy (DOE). All rights in the program are reserved
+by the DOE and Los Alamos National Security, LLC. Permission is granted to the  
+public to copy and use this software without charge, provided that this Notice  
+and any statement of authorship are reproduced on all copies. Neither the       
+U.S. Government nor LANS makes any warranty, express or implied, or assumes     
+any liability or responsibility for the use of this software.                   
+                               -----oOo-----                                    
+ 
+ 
+Output log file: outx3dgen                                                      
+Command log file: logx3dgen                                                     
+ 
+define/NP/26                                                                    
+define/FILEg/hex_np26.gmv                                                       
+infile fd_mesh.mlgi                                                             
+cmo/create/mo_hex///hex                                                         
+infile geometry.mlgi                                                            
+define/BOX_MIN/0.0                                                              
+define/BOX_MAX/100.0                                                            
+define/BAR_1_X0/40.0                                                            
+define/BAR_1_Y0/0.0                                                             
+define/BAR_1_Z0/0.0                                                             
+define/BAR_1_X1/50.0                                                            
+define/BAR_1_Y1/60.0                                                            
+define/BAR_1_Z1/100.0                                                           
+define/BAR_2_X0/70.0                                                            
+define/BAR_2_Y0/60.0                                                            
+define/BAR_2_Z0/0.0                                                             
+define/BAR_2_X1/80.0                                                            
+define/BAR_2_Y1/100.0                                                           
+define/BAR_2_Z1/100.0                                                           
+surface/s_bbox/reflect/box/BOX_MIN BOX_MIN BOX_MIN/BOX_MAX BOX_MAX BOX_MAX      
+cmo/addatt//ncon50/INT/scalar/scalar/constant/permanent/l/0                     
+finish                                                                          
+cmo/addatt//nconbnd/INT/scalar/scalar/constant/permanent/l/0                    
+finish                                                                          
+cmo/addatt//icontab/VINT/scalar/ncon50/constant/permanent/l/0.0                 
+finish                                                                          
+surface/s_bar_1/intrface/box/BAR_1_X0 BAR_1_Y0 BAR_1_Z0 BAR_1_X1 BAR_1_Y1 BAR_1_
+Z1                                                                              
+surface/s_bar_2/intrface/box/BAR_2_X0 BAR_2_Y0 BAR_2_Z0 BAR_2_X1 BAR_2_Y1 BAR_2_
+Z1                                                                              
+surface/s_cyl/interface/cylinder/60.0 60.0 -1.0 60.0 60.0 101.0/12.0            
+region/r_background/le s_bbox and gt s_bar_1 and gt s_bar_2                     
+region/r_bar_1/le s_bbox and le s_bar_1                                         
+region/r_bar_2/le s_bbox and le s_bar_2                                         
+region/r_between/le s_cyl                                                       
+mregion/mr_background/le s_bbox and gt s_bar_1 and gt s_bar_2                   
+mregion/mr_bar_1/le s_bbox and le s_bar_1                                       
+mregion/mr_bar_2/le s_bbox and le s_bar_2                                       
+finish                                                                          
+createpts/brick/xyz/NP NP NP/BOX_MIN BOX_MIN BOX_MIN/BOX_MAX BOX_MAX BOX_MAX/1 1
+ 1                                                                              
+          Number of nodes:       17576                                          
+          Number of elements:       15625                                       
+          Number of negative volume elements:           0                       
+          Total volume:     0.100000000000E+07                                  
+setpts                                                                          
+ FOR icr   1 TYPE surface    1   0   0 THERE ARE     3752 POINTS                
+ FOR imt=   1 NAME= mr_backg THERE ARE           15470 POINTS                   
+ FOR imt=   2 NAME= mr_bar_1 THERE ARE            1248 POINTS                   
+ FOR imt=   3 NAME= mr_bar_2 THERE ARE             858 POINTS                   
+settets/geometry                                                                
+ SETTETS required ITMAT step 2 for      15625 tets                              
+Interface node converted to interior         12                                 
+Interface node converted to interior         13                                 
+Interface node converted to interior         38                                 
+Interface node converted to interior         39                                 
+Interface node converted to interior         64                                 
+Interface node converted to interior         65                                 
+Interface node converted to interior         90                                 
+Interface node converted to interior         91                                 
+Interface node converted to interior        116                                 
+Interface node converted to interior        117                                 
+Interface node converted to interior        142                                 
+Interface node converted to interior        143                                 
+Interface node converted to interior        168                                 
+Interface node converted to interior        169                                 
+Interface node converted to interior        194                                 
+Interface node converted to interior        195                                 
+Interface node converted to interior        220                                 
+Interface node converted to interior        221                                 
+Interface node converted to interior        246                                 
+Interface node converted to interior        247                                 
+Interface node converted to interior        272                                 
+Interface node converted to interior        273                                 
+Interface node converted to interior        298                                 
+Interface node converted to interior        299                                 
+Interface node converted to interior        324                                 
+Interface node converted to interior        325                                 
+Interface node converted to interior        328                                 
+Interface node converted to interior        350                                 
+Interface node converted to interior        351                                 
+Interface node converted to interior        376                                 
+Interface node converted to interior        377                                 
+Interface node converted to interior        435                                 
+Interface node converted to interior        436                                 
+Interface node converted to interior        461                                 
+Interface node converted to interior        462                                 
+Interface node converted to interior        484                                 
+Interface node converted to interior        487                                 
+Interface node converted to interior        488                                 
+Interface node converted to interior        513                                 
+Interface node converted to interior        514                                 
+Interface node converted to interior        539                                 
+Interface node converted to interior        540                                 
+Interface node converted to interior        565                                 
+Interface node converted to interior        566                                 
+Interface node converted to interior        591                                 
+Interface node converted to interior        592                                 
+Interface node converted to interior        617                                 
+Interface node converted to interior        618                                 
+Interface node converted to interior        643                                 
+Interface node converted to interior        644                                 
+Interface node converted to interior        669                                 
+Interface node converted to interior        670                                 
+Interface node converted to interior        688                                 
+Interface node converted to interior        689                                 
+Interface node converted to interior       1345                                 
+Interface node converted to interior       1346                                 
+Interface node converted to interior       1364                                 
+Interface node converted to interior       1365                                 
+Interface node converted to interior       2021                                 
+Interface node converted to interior       2022                                 
+Interface node converted to interior       2040                                 
+Interface node converted to interior       2041                                 
+Interface node converted to interior       2697                                 
+Interface node converted to interior       2698                                 
+Interface node converted to interior       2716                                 
+Interface node converted to interior       2717                                 
+Interface node converted to interior       3373                                 
+Interface node converted to interior       3374                                 
+Interface node converted to interior       3392                                 
+Interface node converted to interior       3393                                 
+Interface node converted to interior       4049                                 
+Interface node converted to interior       4050                                 
+Interface node converted to interior       4068                                 
+Interface node converted to interior       4069                                 
+Interface node converted to interior       4725                                 
+Interface node converted to interior       4726                                 
+Interface node converted to interior       4744                                 
+Interface node converted to interior       4745                                 
+Interface node converted to interior       5401                                 
+Interface node converted to interior       5402                                 
+Interface node converted to interior       5420                                 
+Interface node converted to interior       5421                                 
+Interface node converted to interior       6077                                 
+Interface node converted to interior       6078                                 
+Interface node converted to interior       6096                                 
+Interface node converted to interior       6097                                 
+Interface node converted to interior       6753                                 
+Interface node converted to interior       6754                                 
+Interface node converted to interior       6772                                 
+Interface node converted to interior       6773                                 
+Interface node converted to interior       7429                                 
+Interface node converted to interior       7430                                 
+Interface node converted to interior       7448                                 
+Interface node converted to interior       7449                                 
+Interface node converted to interior       8105                                 
+Interface node converted to interior       8106                                 
+Interface node converted to interior       8124                                 
+Interface node converted to interior       8125                                 
+Interface node converted to interior       8781                                 
+Interface node converted to interior       8782                                 
+Interface node converted to interior       8800                                 
+Interface node converted to interior       8801                                 
+Interface node converted to interior       9457                                 
+Interface node converted to interior       9458                                 
+Interface node converted to interior       9476                                 
+Interface node converted to interior       9477                                 
+Interface node converted to interior      10133                                 
+Interface node converted to interior      10134                                 
+Interface node converted to interior      10152                                 
+Interface node converted to interior      10153                                 
+Interface node converted to interior      10809                                 
+Interface node converted to interior      10810                                 
+Interface node converted to interior      10828                                 
+Interface node converted to interior      10829                                 
+Interface node converted to interior      11485                                 
+Interface node converted to interior      11486                                 
+Interface node converted to interior      11504                                 
+Interface node converted to interior      11505                                 
+Interface node converted to interior      12161                                 
+Interface node converted to interior      12162                                 
+Interface node converted to interior      12180                                 
+Interface node converted to interior      12181                                 
+Interface node converted to interior      12837                                 
+Interface node converted to interior      12838                                 
+Interface node converted to interior      12856                                 
+Interface node converted to interior      12857                                 
+Interface node converted to interior      13513                                 
+Interface node converted to interior      13514                                 
+Interface node converted to interior      13532                                 
+Interface node converted to interior      13533                                 
+Interface node converted to interior      14189                                 
+Interface node converted to interior      14190                                 
+Interface node converted to interior      14208                                 
+Interface node converted to interior      14209                                 
+Interface node converted to interior      14865                                 
+Interface node converted to interior      14866                                 
+Interface node converted to interior      14884                                 
+Interface node converted to interior      14885                                 
+Interface node converted to interior      15541                                 
+Interface node converted to interior      15542                                 
+Interface node converted to interior      15560                                 
+Interface node converted to interior      15561                                 
+Interface node converted to interior      16217                                 
+Interface node converted to interior      16218                                 
+Interface node converted to interior      16236                                 
+Interface node converted to interior      16237                                 
+Interface node converted to interior      16893                                 
+Interface node converted to interior      16894                                 
+Interface node converted to interior      16912                                 
+Interface node converted to interior      16913                                 
+Interface node converted to interior      16938                                 
+Interface node converted to interior      16939                                 
+Interface node converted to interior      16964                                 
+Interface node converted to interior      16965                                 
+Interface node converted to interior      16990                                 
+Interface node converted to interior      16991                                 
+Interface node converted to interior      17016                                 
+Interface node converted to interior      17017                                 
+Interface node converted to interior      17042                                 
+Interface node converted to interior      17043                                 
+Interface node converted to interior      17068                                 
+Interface node converted to interior      17069                                 
+Interface node converted to interior      17094                                 
+Interface node converted to interior      17095                                 
+Interface node converted to interior      17120                                 
+Interface node converted to interior      17121                                 
+Interface node converted to interior      17146                                 
+Interface node converted to interior      17147                                 
+Interface node converted to interior      17172                                 
+Interface node converted to interior      17173                                 
+Interface node converted to interior      17198                                 
+Interface node converted to interior      17199                                 
+Interface node converted to interior      17224                                 
+Interface node converted to interior      17225                                 
+Interface node converted to interior      17228                                 
+Interface node converted to interior      17250                                 
+Interface node converted to interior      17251                                 
+Interface node converted to interior      17276                                 
+Interface node converted to interior      17277                                 
+Interface node converted to interior      17335                                 
+Interface node converted to interior      17336                                 
+Interface node converted to interior      17361                                 
+Interface node converted to interior      17362                                 
+Interface node converted to interior      17384                                 
+Interface node converted to interior      17387                                 
+Interface node converted to interior      17388                                 
+Interface node converted to interior      17413                                 
+Interface node converted to interior      17414                                 
+Interface node converted to interior      17439                                 
+Interface node converted to interior      17440                                 
+Interface node converted to interior      17465                                 
+Interface node converted to interior      17466                                 
+Interface node converted to interior      17491                                 
+Interface node converted to interior      17492                                 
+Interface node converted to interior      17517                                 
+Interface node converted to interior      17518                                 
+Interface node converted to interior      17543                                 
+Interface node converted to interior      17544                                 
+Interface node converted to interior      17569                                 
+Interface node converted to interior      17570                                 
+ Adding       220 interface-coupled points.                                     
+ Multimaterial tet:         10 itet=        10     17578     17580        36    
+                                               686     17640       713       712
+ Multimaterial tet:         13 itet=        13        14        40        39    
+                                               689       690       716       715
+ Multimaterial tet:         35 itet=        36     17580     17582        62    
+                                               712       713       739       738
+ Multimaterial tet:         38 itet=        39        40        66        65    
+                                               715       716       742       741
+ Multimaterial tet:         60 itet=        62     17582     17584        88    
+                                               738       739       765       764
+ Multimaterial tet:         63 itet=        65        66        92        91    
+                                               741       742       768       767
+ Multimaterial tet:         85 itet=        88     17584     17586       114    
+                                               764       765       791       790
+ Multimaterial tet:         88 itet=        91        92       118       117    
+                                               767       768       794       793
+ Multimaterial tet:        110 itet=       114     17586     17588       140    
+                                               790       791       817       816
+ Multimaterial tet:        113 itet=       117       118       144       143    
+                                               793       794       820       819
+ Multimaterial tet:        135 itet=       140     17588     17590       166    
+                                               816       817       843       842
+ Multimaterial tet:        138 itet=       143       144       170       169    
+                                               819       820       846       845
+ Multimaterial tet:        160 itet=       166     17590     17592       192    
+                                               842       843       869       868
+ Multimaterial tet:        163 itet=       169       170       196       195    
+                                               845       846       872       871
+ Multimaterial tet:        185 itet=       192     17592     17594       218    
+                                               868       869       895       894
+ Multimaterial tet:        188 itet=       195       196       222       221    
+                                               871       872       898       897
+ Multimaterial tet:        210 itet=       218     17594     17596       244    
+                                               894       895       921       920
+ Multimaterial tet:        213 itet=       221       222       248       247    
+                                               897       898       924       923
+ Multimaterial tet:        235 itet=       244     17596     17598       270    
+                                               920       921       947       946
+ Multimaterial tet:        238 itet=       247       248       274       273    
+                                               923       924       950       949
+ Multimaterial tet:        260 itet=       270     17598     17600       296    
+                                               946       947       973       972
+ Multimaterial tet:        263 itet=       273       274       300       299    
+                                               949       950       976       975
+ Multimaterial tet:        285 itet=       296     17600     17602       322    
+                                               972       973       999       998
+ Multimaterial tet:        288 itet=       299       300       326       325    
+                                               975       976      1002      1001
+ Multimaterial tet:        310 itet=       322     17602     17604       348    
+                                               998       999      1025      1024
+ Multimaterial tet:        313 itet=       325       326       352       351    
+                                              1001      1002      1028      1027
+ Multimaterial tet:        335 itet=       348     17604     17606       374    
+                                              1024      1025      1051      1050
+ Multimaterial tet:        338 itet=       351       352       378       377    
+                                              1027      1028      1054      1053
+ Multimaterial tet:        360 itet=       374     17606     17607       400    
+                                              1050      1051      1077      1076
+ Multimaterial tet:        363 itet=       377       378       404     17612    
+                                              1053      1054      1080      1079
+ 
+There are   1450  multimaterial tets.                                           
+resetpts/parents                                                                
+rmpoint/compress                                                                
+       220 points removed and          0 elements removed.                      
+   The new point count is     17576.                                            
+   The new element count is     15625.                                          
+resetpts/cell_color                                                             
+material # start=            1 end=            3 stride=            1           
+           3 material numbers reset imt1 out of a maximum of            3       
+finish                                                                          
+dump/gmv/FILEg/mo_hex                                                           
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+*                                                                               
+* Refine the material interfaces                                                
+*                                                                               
+infile refine_interface.mlgi                                                    
+*                                                                               
+* Refine the material interfaces                                                
+*                                                                               
+eltset/em1/itetclr/eq/1                                                         
+ 
+ THE ELTSET em1                              HAS      13750 ELEMENTS            
+eltset/em2/itetclr/eq/2                                                         
+ 
+ THE ELTSET em2                              HAS       1125 ELEMENTS            
+eltset/em3/itetclr/eq/3                                                         
+ 
+ THE ELTSET em3                              HAS        750 ELEMENTS            
+pset/pem1/eltset em1                                                            
+ 
+ THE PSET  pem1  HAS      16276 POINTS                                          
+pset/pem2/eltset em2                                                            
+ 
+ THE PSET  pem2  HAS       1664 POINTS                                          
+pset/pem3/eltset em3                                                            
+ 
+ THE PSET  pem3  HAS       1144 POINTS                                          
+eltset/em1/delete                                                               
+ 
+ ELTSET em1                              DELETED                                
+ 
+eltset/em2/delete                                                               
+ 
+ ELTSET em2                              DELETED                                
+ 
+eltset/em3/delete                                                               
+ 
+ ELTSET em3                              DELETED                                
+ 
+pset/p13/inter/pem1 pem3                                                        
+ 
+ THE PSET  p13  HAS        624 POINTS                                           
+pset/p12/inter/pem1 pem2                                                        
+ 
+ THE PSET  p12  HAS        884 POINTS                                           
+pset/p_interface/union/p12 p13                                                  
+ 
+ THE PSET  p_interface  HAS       1508 POINTS                                   
+* pset / p_inter / union / p12 p13                                              
+* eltset / e1213 / inclusive / pset get p_inter                                 
+* pset / p_interface / eltset e1213                                             
+* eltset / e1213 / delete                                                       
+*                                                                               
+* cmo / create / mo_tmp2                                                        
+* cmo / create / mo_tmp3                                                        
+* copypts / mo_tmp2 / mo_hex / 0,0 / pset get p12                               
+* copypts / mo_tmp3 / mo_hex / 0,0 / pset get p13                               
+* compute / distance_field / mo_hex / mo_tmp2 / dfield2                         
+* compute / distance_field / mo_hex / mo_tmp3 / dfield3                         
+*                                                                               
+* Find point in cylinder between barriers                                       
+*                                                                               
+pset/pbetween/region/r_between                                                  
+ 
+ THE PSET  pbetween  HAS        754 POINTS                                      
+pset/pref_cyl/inter/pem1 pbetween                                               
+ 
+ THE PSET  pref_cyl  HAS        754 POINTS                                      
+pset/prefine/union/p_interface pref_cyl                                         
+ 
+ THE PSET  prefine  HAS       2054 POINTS                                       
+refine/constant/imt1/linear/element/pset,get,prefine/-1.,0.,0./inclusive/amr    
+refine elements:                                                                
+refine hex     :       3400                                                     
+cmo/addatt/mo_hex/itetpar/VINT/scalar/nelements/linear/permanent//0.0           
+finish                                                                          
+cmo/addatt/mo_hex/itetkid/VINT/scalar/nelements/linear/permanent//0.0           
+finish                                                                          
+cmo/addatt/mo_hex/itetlev/VINT/scalar/nelements/linear/permanent//0.0           
+finish                                                                          
+Element iteration:          1      3400                                         
+Octree refined elems: old=     15625 new=     42825                             
+ 
+ Dudding  35807 duplicate points.                                               
+filter/1,0,0                                                                    
+ 
+FILTER:Use internal epsilonl value =   0.384592537277E-10                       
+ 
+FILTER:Dudding      0 duplicate points.                                         
+geniee                                                                          
+finish                                                                          
+setpts                                                                          
+ FOR icr   2 TYPE line       1   1   0 THERE ARE     5380 POINTS                
+ FOR imt=   1 NAME= mr_backg THERE ARE           32803 POINTS                   
+ FOR imt=   2 NAME= mr_bar_1 THERE ARE            8058 POINTS                   
+ FOR imt=   3 NAME= mr_bar_2 THERE ARE            5508 POINTS                   
+finish                                                                          
+dump/gmv/tmp_refine_l1.gmv/mo_hex                                               
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+infile mo_hex_2_mo_tet.mlgi                                                     
+cmo/create/mo_tet                                                               
+copypts/mo_tet/mo_hex                                                           
+copypts added nodes          1 to      46369                                    
+filter/1 0 0                                                                    
+ 
+FILTER:Use internal epsilonl value =   0.384592537277E-10                       
+ 
+FILTER:Dudding      0 duplicate points.                                         
+rmpoint/compress                                                                
+         0 points removed and          0 elements removed.                      
+   The new point count is     46369.                                            
+   The new element count is         0.                                          
+connect/noadd                                                                   
+ Coordinates of enclosing tetrahedron are:                                      
+          -0.20000D+03   -0.75000D+02   -0.75000D+02                            
+           0.50000D+02   -0.75000D+02    0.42500D+03                            
+           0.30000D+03   -0.75000D+02   -0.75000D+02                            
+           0.50000D+02    0.42500D+03    0.50000D+02                            
+ ntets=     31273     node index=     5000     nlstfail=       0 %done=  11.24  
+ ntets=     63213     node index=    10000     nlstfail=       0 %done=  22.72  
+ ntets=     95192     node index=    15000     nlstfail=       0 %done=  34.21  
+ ntets=    124173     node index=    20000     nlstfail=       0 %done=  44.63  
+ ntets=    154540     node index=    25000     nlstfail=       0 %done=  55.54  
+ ntets=    184461     node index=    30000     nlstfail=       0 %done=  66.30  
+ ntets=    213491     node index=    35000     nlstfail=       0 %done=  76.73  
+ ntets=    240591     node index=    40000     nlstfail=       0 %done=  86.47  
+ ntets=    263310     node index=    45000     nlstfail=       0 %done=  94.63  
+ 
+ The mesh is now complete!                                                      
+ 
+resetpts/itp                                                                    
+geniee                                                                          
+finish                                                                          
+finish                                                                          
+dump/gmv/tet_refine_l1.gmv/mo_tet                                               
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+dump/fehm/tet_l1/mo_tet                                                         
+*** Write FEHMN GEOM AND ZONE FILES ***                                         
+*********dump_material_lists********                                            
+Minimum material ID value =      1                                              
+Maximum material ID value =      3                                              
+Total possible materials  =      3                                              
+Material           1 has     32803 nodes. #nodes/nnodes is   0.707433810000     
+Material           2 has      8058 nodes. #nodes/nnodes is   0.173779900000     
+Material           3 has      5508 nodes. #nodes/nnodes is   0.118786300000     
+*********dump_interface_list********                                            
+Interface material         1 has      5143 nodes.                               
+Interface material         2 has      3090 nodes.                               
+Interface material         3 has      2313 nodes.                               
+*********dump_multi_material_list********                                       
+Material         1 has     22615 multi-material connections.                    
+Material         2 has     13248 multi-material connections.                    
+Material         3 has      9367 multi-material connections.                    
+log/tty/off                                                                     
+finish                                                                          
+*********dump_outside_list********                                              
+ 
+assign_quadrant_id epsilon for zero:   1.0000000E-15                            
+cmo/addatt/mo_tet/top/vint/scalar/nnodes/linear/permanent/afgx/-5.0/            
+finish                                                                          
+Face top           1 has      1144 nodes.                                       
+top       Area            Area_x          Area_y          Area_z                
+          0.1032144E+05   0.4000000E+03   0.3493333E+03   0.1000000E+05         
+cmo/addatt/mo_tet/bottom/vint/scalar/nnodes/linear/permanent/afgx/-5.0/         
+finish                                                                          
+Face bottom        2 has      1144 nodes.                                       
+bottom    Area            Area_x          Area_y          Area_z                
+          0.1031490E+05   0.4000000E+03   0.3493333E+03   0.1000000E+05         
+cmo/addatt/mo_tet/left_w/vint/scalar/nnodes/linear/permanent/afgx/-5.0/         
+finish                                                                          
+Face left_w        3 has       676 nodes.                                       
+left_w    Area            Area_x          Area_y          Area_z                
+          0.1033776E+05   0.1000000E+05   0.4000000E+03   0.4000000E+03         
+cmo/addatt/mo_tet/right_e/vint/scalar/nnodes/linear/permanent/afgx/-5.0/        
+finish                                                                          
+Face right_e       5 has       676 nodes.                                       
+right_e   Area            Area_x          Area_y          Area_z                
+          0.1033710E+05   0.1000000E+05   0.4000000E+03   0.4000000E+03         
+cmo/addatt/mo_tet/back_n/vint/scalar/nnodes/linear/permanent/afgx/-5.0/         
+finish                                                                          
+Face back_n        6 has      1030 nodes.                                       
+back_n    Area            Area_x          Area_y          Area_z                
+          0.1031520E+05   0.4000000E+03   0.1000000E+05   0.3493333E+03         
+cmo/addatt/mo_tet/front_s/vint/scalar/nnodes/linear/permanent/afgx/-5.0/        
+finish                                                                          
+Face front_s       4 has      1030 nodes.                                       
+front_s   Area            Area_x          Area_y          Area_z                
+          0.1031471E+05   0.4000000E+03   0.1000000E+05   0.3493333E+03         
+cmo/DELATT//top                                                                 
+finish                                                                          
+cmo/DELATT//bottom                                                              
+finish                                                                          
+cmo/DELATT//left_w                                                              
+finish                                                                          
+cmo/DELATT//right_e                                                             
+finish                                                                          
+cmo/DELATT//back_n                                                              
+finish                                                                          
+cmo/DELATT//front_s                                                             
+finish                                                                          
+log/tty/on                                                                      
+finish                                                                          
+*********dump_parent_list********                                               
+ 
+*** Construct and Compress Sparse Matrix:3D ***                                 
+   *** Compress Area Coefficient Values ***                                     
+AMatbld3d_stor: *****Zero Negative Coefficients ******                          
+AMatbld3d_stor: Number of 'zero' (< 10e-8*max) coefs       0                    
+AMatbld3d_stor: npoints =    46369  n connections =     339719                  
+AMatbld3d_stor: Number of written coefs =        28                             
+AMatbld3d_stor: Maximum num. connections to a node =         23                 
+AMatbld3d_stor: Volume min =   2.0000000E+00                                    
+AMatbld3d_stor: Volume max =   6.4000000E+01                                    
+AMatbld3d_stor: Total Volume:   1.0000000E+06                                   
+AMatbld3d_stor: abs(Aij/xij) min =   0.0000000E+00                              
+AMatbld3d_stor: abs(Aij/xij) max =   4.5000000E+00                              
+AMatbld3d_stor: (Aij/xij) max =   0.0000000E+00                                 
+AMatbld3d_stor: (Aij/xij) min =  -4.5000000E+00                                 
+Compression used for graph and coefficient values                               
+The area coefficient values were written as scalar area/distance                
+ascii STOR file written with name tet_l1.stor                                   
+ 
+*** SPARSE COEFFICIENT MATRIX _astor SUCCESSFUL ***                             
+ 
+dump/elem_adj_elem/tet_l1.ealist/mo_tet                                         
+cmo/delete/mo_tet                                                               
+     Released Mesh Object: mo_tet                                               
+*                                                                               
+* Refine the material interfaces                                                
+*                                                                               
+infile refine_interface.mlgi                                                    
+*                                                                               
+* Refine the material interfaces                                                
+*                                                                               
+eltset/em1/itetclr/eq/1                                                         
+ 
+ THE ELTSET em1                              HAS      30550 ELEMENTS            
+eltset/em2/itetclr/eq/2                                                         
+ 
+ THE ELTSET em2                              HAS       7325 ELEMENTS            
+eltset/em3/itetclr/eq/3                                                         
+ 
+ THE ELTSET em3                              HAS       4950 ELEMENTS            
+pset/pem1/eltset em1                                                            
+ 
+ THE PSET  pem1  HAS      35965 POINTS                                          
+pset/pem2/eltset em2                                                            
+ 
+ THE PSET  pem2  HAS       9639 POINTS                                          
+pset/pem3/eltset em3                                                            
+ 
+ THE PSET  pem3  HAS       6579 POINTS                                          
+eltset/em1/delete                                                               
+ 
+ ELTSET em1                              DELETED                                
+ 
+eltset/em2/delete                                                               
+ 
+ ELTSET em2                              DELETED                                
+ 
+eltset/em3/delete                                                               
+ 
+ ELTSET em3                              DELETED                                
+ 
+pset/p13/inter/pem1 pem3                                                        
+ 
+ THE PSET  p13  HAS       2397 POINTS                                           
+pset/p12/inter/pem1 pem2                                                        
+ 
+ THE PSET  p12  HAS       3417 POINTS                                           
+pset/p_interface/union/p12 p13                                                  
+ 
+ THE PSET  p_interface  HAS       5814 POINTS                                   
+* pset / p_inter / union / p12 p13                                              
+* eltset / e1213 / inclusive / pset get p_inter                                 
+* pset / p_interface / eltset e1213                                             
+* eltset / e1213 / delete                                                       
+*                                                                               
+* cmo / create / mo_tmp2                                                        
+* cmo / create / mo_tmp3                                                        
+* copypts / mo_tmp2 / mo_hex / 0,0 / pset get p12                               
+* copypts / mo_tmp3 / mo_hex / 0,0 / pset get p13                               
+* compute / distance_field / mo_hex / mo_tmp2 / dfield2                         
+* compute / distance_field / mo_hex / mo_tmp3 / dfield3                         
+*                                                                               
+* Find point in cylinder between barriers                                       
+*                                                                               
+pset/pbetween/region/r_between                                                  
+ 
+ THE PSET  pbetween  HAS       5763 POINTS                                      
+pset/pref_cyl/inter/pem1 pbetween                                               
+ 
+ THE PSET  pref_cyl  HAS       5457 POINTS                                      
+pset/prefine/union/p_interface pref_cyl                                         
+ 
+ THE PSET  prefine  HAS      10557 POINTS                                       
+refine/constant/imt1/linear/element/pset,get,prefine/-1.,0.,0./inclusive/amr    
+refine elements:                                                                
+refine hex     :      19600                                                     
+Element iteration:          1     16200                                         
+Octree refined elems: old=     42825 new=    172425                             
+ 
+ Dudding 174956 duplicate points.                                               
+filter/1,0,0                                                                    
+ 
+FILTER:Use internal epsilonl value =   0.384592537277E-10                       
+ 
+FILTER:Dudding      0 duplicate points.                                         
+geniee                                                                          
+finish                                                                          
+Element iteration:          1       100                                         
+Octree refined elems: old=    172425 new=    173225                             
+ 
+ Dudding   1138 duplicate points.                                               
+filter/1,0,0                                                                    
+ 
+FILTER:Use internal epsilonl value =   0.384592537277E-10                       
+ 
+FILTER:Dudding     50 duplicate points.                                         
+geniee                                                                          
+finish                                                                          
+setpts                                                                          
+ FOR icr   3 TYPE point      1   1   1 THERE ARE     8984 POINTS                
+ FOR imt=   1 NAME= mr_backg THERE ARE          129477 POINTS                   
+ FOR imt=   2 NAME= mr_bar_1 THERE ARE           29774 POINTS                   
+ FOR imt=   3 NAME= mr_bar_2 THERE ARE           20674 POINTS                   
+finish                                                                          
+dump/gmv/tmp_refine_l2.gmv/mo_hex                                               
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+infile mo_hex_2_mo_tet.mlgi                                                     
+cmo/create/mo_tet                                                               
+copypts/mo_tet/mo_hex                                                           
+copypts added nodes          1 to     179925                                    
+filter/1 0 0                                                                    
+ 
+FILTER:Use internal epsilonl value =   0.384592537277E-10                       
+ 
+FILTER:Dudding      0 duplicate points.                                         
+rmpoint/compress                                                                
+         0 points removed and          0 elements removed.                      
+   The new point count is    179925.                                            
+   The new element count is         0.                                          
+connect/noadd                                                                   
+ Coordinates of enclosing tetrahedron are:                                      
+          -0.20000D+03   -0.75000D+02   -0.75000D+02                            
+           0.50000D+02   -0.75000D+02    0.42500D+03                            
+           0.30000D+03   -0.75000D+02   -0.75000D+02                            
+           0.50000D+02    0.42500D+03    0.50000D+02                            
+ ntets=     32452     node index=     5000     nlstfail=       0 %done=   3.01  
+ ntets=     65281     node index=    10000     nlstfail=       0 %done=   6.05  
+ ntets=     98572     node index=    15000     nlstfail=       0 %done=   9.13  
+ ntets=    131399     node index=    20000     nlstfail=       0 %done=  12.17  
+ ntets=    165097     node index=    25000     nlstfail=       0 %done=  15.29  
+ ntets=    197862     node index=    30000     nlstfail=       0 %done=  18.33  
+ ntets=    230141     node index=    35000     nlstfail=       0 %done=  21.32  
+ ntets=    262037     node index=    40000     nlstfail=       0 %done=  24.27  
+ ntets=    291641     node index=    45000     nlstfail=       0 %done=  27.01  
+ ntets=    321720     node index=    50000     nlstfail=       0 %done=  29.80  
+ ntets=    351040     node index=    55000     nlstfail=       0 %done=  32.52  
+ ntets=    382126     node index=    60000     nlstfail=       0 %done=  35.40  
+ ntets=    412278     node index=    65000     nlstfail=       0 %done=  38.19  
+ ntets=    443152     node index=    70000     nlstfail=       0 %done=  41.05  
+ ntets=    473142     node index=    75000     nlstfail=       0 %done=  43.83  
+ ntets=    504242     node index=    80000     nlstfail=       0 %done=  46.71  
+ ntets=    533930     node index=    85000     nlstfail=       0 %done=  49.46  
+ ntets=    564470     node index=    90000     nlstfail=       0 %done=  52.29  
+ ntets=    594353     node index=    95000     nlstfail=       0 %done=  55.05  
+ ntets=    624501     node index=   100000     nlstfail=       0 %done=  57.85  
+ ntets=    654505     node index=   105000     nlstfail=       0 %done=  60.63  
+ ntets=    683704     node index=   110000     nlstfail=       0 %done=  63.33  
+ ntets=    713281     node index=   115000     nlstfail=       0 %done=  66.07  
+ ntets=    741923     node index=   120000     nlstfail=       0 %done=  68.72  
+ ntets=    770711     node index=   125000     nlstfail=       0 %done=  71.39  
+ ntets=    798652     node index=   130000     nlstfail=       0 %done=  73.98  
+ ntets=    827092     node index=   135000     nlstfail=       0 %done=  76.61  
+ ntets=    854362     node index=   140000     nlstfail=       0 %done=  79.14  
+ ntets=    880945     node index=   145000     nlstfail=       0 %done=  81.60  
+ ntets=    907518     node index=   150000     nlstfail=       0 %done=  84.06  
+ ntets=    932690     node index=   155000     nlstfail=       0 %done=  86.39  
+ ntets=    957004     node index=   160000     nlstfail=       0 %done=  88.65  
+ ntets=    980862     node index=   165000     nlstfail=       0 %done=  90.86  
+ ntets=   1004171     node index=   170000     nlstfail=       0 %done=  93.02  
+ ntets=   1026043     node index=   175000     nlstfail=       0 %done=  95.04  
+ 
+ The mesh is now complete!                                                      
+ 
+resetpts/itp                                                                    
+geniee                                                                          
+finish                                                                          
+finish                                                                          
+dump/gmv/tet_refine_l2.gmv/mo_tet                                               
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+dump/fehm/tet_l2/mo_tet                                                         
+*** Write FEHMN GEOM AND ZONE FILES ***                                         
+*********dump_material_lists********                                            
+Minimum material ID value =      1                                              
+Maximum material ID value =      3                                              
+Total possible materials  =      3                                              
+Material           1 has    129477 nodes. #nodes/nnodes is   0.719616530000     
+Material           2 has     29774 nodes. #nodes/nnodes is   0.165480100000     
+Material           3 has     20674 nodes. #nodes/nnodes is   0.114903430000     
+*********dump_interface_list********                                            
+Interface material         1 has     18814 nodes.                               
+Interface material         2 has     11464 nodes.                               
+Interface material         3 has      8254 nodes.                               
+*********dump_multi_material_list********                                       
+Material         1 has     88127 multi-material connections.                    
+Material         2 has     52059 multi-material connections.                    
+Material         3 has     36068 multi-material connections.                    
+log/tty/off                                                                     
+finish                                                                          
+*********dump_outside_list********                                              
+ 
+assign_quadrant_id epsilon for zero:   1.0000000E-15                            
+cmo/addatt/mo_tet/top/vint/scalar/nnodes/linear/permanent/afgx/-5.0/            
+finish                                                                          
+Face top           1 has      2250 nodes.                                       
+top       Area            Area_x          Area_y          Area_z                
+          0.1031218E+05   0.4000000E+03   0.3360000E+03   0.1000000E+05         
+cmo/addatt/mo_tet/bottom/vint/scalar/nnodes/linear/permanent/afgx/-5.0/         
+finish                                                                          
+Face bottom        2 has      2250 nodes.                                       
+bottom    Area            Area_x          Area_y          Area_z                
+          0.1031275E+05   0.4000000E+03   0.3360000E+03   0.1000000E+05         
+cmo/addatt/mo_tet/left_w/vint/scalar/nnodes/linear/permanent/afgx/-5.0/         
+finish                                                                          
+Face left_w        3 has       676 nodes.                                       
+left_w    Area            Area_x          Area_y          Area_z                
+          0.1034518E+05   0.1000000E+05   0.4000000E+03   0.4000000E+03         
+cmo/addatt/mo_tet/right_e/vint/scalar/nnodes/linear/permanent/afgx/-5.0/        
+finish                                                                          
+Face right_e       5 has       676 nodes.                                       
+right_e   Area            Area_x          Area_y          Area_z                
+          0.1033615E+05   0.1000000E+05   0.4000000E+03   0.4000000E+03         
+cmo/addatt/mo_tet/back_n/vint/scalar/nnodes/linear/permanent/afgx/-5.0/         
+finish                                                                          
+Face back_n        6 has      1734 nodes.                                       
+back_n    Area            Area_x          Area_y          Area_z                
+          0.1031041E+05   0.4000000E+03   0.1000000E+05   0.3360000E+03         
+cmo/addatt/mo_tet/front_s/vint/scalar/nnodes/linear/permanent/afgx/-5.0/        
+finish                                                                          
+Face front_s       4 has      1734 nodes.                                       
+front_s   Area            Area_x          Area_y          Area_z                
+          0.1030998E+05   0.4000000E+03   0.1000000E+05   0.3360000E+03         
+cmo/DELATT//top                                                                 
+finish                                                                          
+cmo/DELATT//bottom                                                              
+finish                                                                          
+cmo/DELATT//left_w                                                              
+finish                                                                          
+cmo/DELATT//right_e                                                             
+finish                                                                          
+cmo/DELATT//back_n                                                              
+finish                                                                          
+cmo/DELATT//front_s                                                             
+finish                                                                          
+log/tty/on                                                                      
+finish                                                                          
+*********dump_parent_list********                                               
+ 
+*** Construct and Compress Sparse Matrix:3D ***                                 
+   *** Compress Area Coefficient Values ***                                     
+AMatbld3d_stor: *****Zero Negative Coefficients ******                          
+AMatbld3d_stor: Number of 'zero' (< 10e-8*max) coefs       0                    
+AMatbld3d_stor: npoints =   179925  n connections =    1420063                  
+AMatbld3d_stor: Number of written coefs =        58                             
+AMatbld3d_stor: Maximum num. connections to a node =         28                 
+AMatbld3d_stor: Volume min =   2.5000000E-01                                    
+AMatbld3d_stor: Volume max =   6.4000000E+01                                    
+AMatbld3d_stor: Total Volume:   1.0000000E+06                                   
+AMatbld3d_stor: abs(Aij/xij) min =   0.0000000E+00                              
+AMatbld3d_stor: abs(Aij/xij) max =   4.5000000E+00                              
+AMatbld3d_stor: (Aij/xij) max =   0.0000000E+00                                 
+AMatbld3d_stor: (Aij/xij) min =  -4.5000000E+00                                 
+Compression used for graph and coefficient values                               
+The area coefficient values were written as scalar area/distance                
+ascii STOR file written with name tet_l2.stor                                   
+ 
+*** SPARSE COEFFICIENT MATRIX _astor SUCCESSFUL ***                             
+ 
+dump/elem_adj_elem/tet_l2.ealist/mo_tet                                         
+cmo/delete/mo_tet                                                               
+     Released Mesh Object: mo_tet                                               
+*                                                                               
+* Refine the material interfaces                                                
+*                                                                               
+infile refine_interface.mlgi                                                    
+*                                                                               
+* Refine the material interfaces                                                
+*                                                                               
+eltset/em1/itetclr/eq/1                                                         
+ 
+ THE ELTSET em1                              HAS     117750 ELEMENTS            
+eltset/em2/itetclr/eq/2                                                         
+ 
+ THE ELTSET em2                              HAS      32925 ELEMENTS            
+eltset/em3/itetclr/eq/3                                                         
+ 
+ THE ELTSET em3                              HAS      22550 ELEMENTS            
+pset/pem1/eltset em1                                                            
+ 
+ THE PSET  pem1  HAS     131699 POINTS                                          
+pset/pem2/eltset em2                                                            
+ 
+ THE PSET  pem2  HAS      42096 POINTS                                          
+pset/pem3/eltset em3                                                            
+ 
+ THE PSET  pem3  HAS      28956 POINTS                                          
+eltset/em1/delete                                                               
+ 
+ ELTSET em1                              DELETED                                
+ 
+eltset/em2/delete                                                               
+ 
+ ELTSET em2                              DELETED                                
+ 
+eltset/em3/delete                                                               
+ 
+ ELTSET em3                              DELETED                                
+ 
+pset/p13/inter/pem1 pem3                                                        
+ 
+ THE PSET  p13  HAS       9393 POINTS                                           
+pset/p12/inter/pem1 pem2                                                        
+ 
+ THE PSET  p12  HAS      13433 POINTS                                           
+pset/p_interface/union/p12 p13                                                  
+ 
+ THE PSET  p_interface  HAS      22826 POINTS                                   
+* pset / p_inter / union / p12 p13                                              
+* eltset / e1213 / inclusive / pset get p_inter                                 
+* pset / p_interface / eltset e1213                                             
+* eltset / e1213 / delete                                                       
+*                                                                               
+* cmo / create / mo_tmp2                                                        
+* cmo / create / mo_tmp3                                                        
+* copypts / mo_tmp2 / mo_hex / 0,0 / pset get p12                               
+* copypts / mo_tmp3 / mo_hex / 0,0 / pset get p13                               
+* compute / distance_field / mo_hex / mo_tmp2 / dfield2                         
+* compute / distance_field / mo_hex / mo_tmp3 / dfield3                         
+*                                                                               
+* Find point in cylinder between barriers                                       
+*                                                                               
+pset/pbetween/region/r_between                                                  
+ 
+ THE PSET  pbetween  HAS      44137 POINTS                                      
+pset/pref_cyl/inter/pem1 pbetween                                               
+ 
+ THE PSET  pref_cyl  HAS      41107 POINTS                                      
+pset/prefine/union/p_interface pref_cyl                                         
+ 
+ THE PSET  prefine  HAS      61307 POINTS                                       
+refine/constant/imt1/linear/element/pset,get,prefine/-1.,0.,0./inclusive/amr    
+refine elements:                                                                
+refine hex     :     104400                                                     
+Element iteration:          1     84800                                         
+Octree refined elems: old=    173225 new=    851625                             
+ 
+ Dudding 941512 duplicate points.                                               
+filter/1,0,0                                                                    
+ 
+FILTER:Use internal epsilonl value =   0.384592537277E-10                       
+ 
+FILTER:Dudding      0 duplicate points.                                         
+geniee                                                                          
+finish                                                                          
+Element iteration:          1       600                                         
+Octree refined elems: old=    851625 new=    856425                             
+ 
+ Dudding   7266 duplicate points.                                               
+filter/1,0,0                                                                    
+ 
+FILTER:Use internal epsilonl value =   0.384592537277E-10                       
+ 
+FILTER:Dudding    200 duplicate points.                                         
+geniee                                                                          
+finish                                                                          
+setpts                                                                          
+ FOR icr   4 TYPE point      1   1   1 THERE ARE    17420 POINTS                
+ FOR imt=   1 NAME= mr_backg THERE ARE          683825 POINTS                   
+ FOR imt=   2 NAME= mr_bar_1 THERE ARE           99451 POINTS                   
+ FOR imt=   3 NAME= mr_bar_2 THERE ARE           70271 POINTS                   
+finish                                                                          
+dump/gmv/tmp_refine_l3.gmv/mo_hex                                               
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+infile mo_hex_2_mo_tet.mlgi                                                     
+cmo/create/mo_tet                                                               
+copypts/mo_tet/mo_hex                                                           
+copypts added nodes          1 to     853547                                    
+filter/1 0 0                                                                    
+ 
+FILTER:Use internal epsilonl value =   0.384592537277E-10                       
+ 
+FILTER:Dudding      0 duplicate points.                                         
+rmpoint/compress                                                                
+         0 points removed and          0 elements removed.                      
+   The new point count is    853547.                                            
+   The new element count is         0.                                          
+connect/noadd                                                                   
+ Coordinates of enclosing tetrahedron are:                                      
+          -0.20000D+03   -0.75000D+02   -0.75000D+02                            
+           0.50000D+02   -0.75000D+02    0.42500D+03                            
+           0.30000D+03   -0.75000D+02   -0.75000D+02                            
+           0.50000D+02    0.42500D+03    0.50000D+02                            
+ ntets=     32320     node index=     5000     nlstfail=       0 %done=   0.63  
+ ntets=     65064     node index=    10000     nlstfail=       0 %done=   1.27  
+ ntets=     97922     node index=    15000     nlstfail=       0 %done=   1.91  
+ ntets=    130891     node index=    20000     nlstfail=       0 %done=   2.56  
+ ntets=    163768     node index=    25000     nlstfail=       0 %done=   3.20  
+ ntets=    196635     node index=    30000     nlstfail=       0 %done=   3.84  
+ ntets=    229502     node index=    35000     nlstfail=       0 %done=   4.48  
+ ntets=    262892     node index=    40000     nlstfail=       0 %done=   5.13  
+ ntets=    296439     node index=    45000     nlstfail=       0 %done=   5.79  
+ ntets=    329673     node index=    50000     nlstfail=       0 %done=   6.44  
+ ntets=    363027     node index=    55000     nlstfail=       0 %done=   7.09  
+ ntets=    396379     node index=    60000     nlstfail=       0 %done=   7.74  
+ ntets=    429747     node index=    65000     nlstfail=       0 %done=   8.39  
+ ntets=    463179     node index=    70000     nlstfail=       0 %done=   9.04  
+ ntets=    497037     node index=    75000     nlstfail=       0 %done=   9.71  
+ ntets=    531304     node index=    80000     nlstfail=       0 %done=  10.37  
+ ntets=    564878     node index=    85000     nlstfail=       0 %done=  11.03  
+ ntets=    598561     node index=    90000     nlstfail=       0 %done=  11.69  
+ ntets=    632037     node index=    95000     nlstfail=       0 %done=  12.34  
+ ntets=    665746     node index=   100000     nlstfail=       0 %done=  13.00  
+ ntets=    699570     node index=   105000     nlstfail=       0 %done=  13.66  
+ ntets=    733269     node index=   110000     nlstfail=       0 %done=  14.32  
+ ntets=    768236     node index=   115000     nlstfail=       0 %done=  15.00  
+ ntets=    802345     node index=   120000     nlstfail=       0 %done=  15.67  
+ ntets=    835784     node index=   125000     nlstfail=       0 %done=  16.32  
+ ntets=    869240     node index=   130000     nlstfail=       0 %done=  16.97  
+ ntets=    902697     node index=   135000     nlstfail=       0 %done=  17.63  
+ ntets=    935999     node index=   140000     nlstfail=       0 %done=  18.28  
+ ntets=    969205     node index=   145000     nlstfail=       0 %done=  18.92  
+ ntets=   1001600     node index=   150000     nlstfail=       0 %done=  19.56  
+ ntets=   1035188     node index=   155000     nlstfail=       0 %done=  20.21  
+ ntets=   1066917     node index=   160000     nlstfail=       0 %done=  20.83  
+ ntets=   1098417     node index=   165000     nlstfail=       0 %done=  21.45  
+ ntets=   1129813     node index=   170000     nlstfail=       0 %done=  22.06  
+ ntets=   1161285     node index=   175000     nlstfail=       0 %done=  22.68  
+ ntets=   1192765     node index=   180000     nlstfail=       0 %done=  23.29  
+ ntets=   1224029     node index=   185000     nlstfail=       0 %done=  23.90  
+ ntets=   1254842     node index=   190000     nlstfail=       0 %done=  24.50  
+ ntets=   1286547     node index=   195000     nlstfail=       0 %done=  25.12  
+ ntets=   1317166     node index=   200000     nlstfail=       0 %done=  25.72  
+ ntets=   1347715     node index=   205000     nlstfail=       0 %done=  26.32  
+ ntets=   1378140     node index=   210000     nlstfail=       0 %done=  26.91  
+ ntets=   1408804     node index=   215000     nlstfail=       0 %done=  27.51  
+ ntets=   1439446     node index=   220000     nlstfail=       0 %done=  28.11  
+ ntets=   1471648     node index=   225000     nlstfail=       0 %done=  28.74  
+ ntets=   1502773     node index=   230000     nlstfail=       0 %done=  29.34  
+ ntets=   1532925     node index=   235000     nlstfail=       0 %done=  29.93  
+ ntets=   1563340     node index=   240000     nlstfail=       0 %done=  30.53  
+ ntets=   1593712     node index=   245000     nlstfail=       0 %done=  31.12  
+ ntets=   1624168     node index=   250000     nlstfail=       0 %done=  31.71  
+ ntets=   1654634     node index=   255000     nlstfail=       0 %done=  32.31  
+ ntets=   1684826     node index=   260000     nlstfail=       0 %done=  32.90  
+ ntets=   1715844     node index=   265000     nlstfail=       0 %done=  33.50  
+ ntets=   1745671     node index=   270000     nlstfail=       0 %done=  34.09  
+ ntets=   1775159     node index=   275000     nlstfail=       0 %done=  34.66  
+ ntets=   1804681     node index=   280000     nlstfail=       0 %done=  35.24  
+ ntets=   1834222     node index=   285000     nlstfail=       0 %done=  35.82  
+ ntets=   1863674     node index=   290000     nlstfail=       0 %done=  36.39  
+ ntets=   1893219     node index=   295000     nlstfail=       0 %done=  36.97  
+ ntets=   1923551     node index=   300000     nlstfail=       0 %done=  37.56  
+ ntets=   1953868     node index=   305000     nlstfail=       0 %done=  38.15  
+ ntets=   1983422     node index=   310000     nlstfail=       0 %done=  38.73  
+ ntets=   2012818     node index=   315000     nlstfail=       0 %done=  39.30  
+ ntets=   2042081     node index=   320000     nlstfail=       0 %done=  39.87  
+ ntets=   2071574     node index=   325000     nlstfail=       0 %done=  40.45  
+ ntets=   2101171     node index=   330000     nlstfail=       0 %done=  41.03  
+ ntets=   2130727     node index=   335000     nlstfail=       0 %done=  41.61  
+ ntets=   2161570     node index=   340000     nlstfail=       0 %done=  42.21  
+ ntets=   2191728     node index=   345000     nlstfail=       0 %done=  42.80  
+ ntets=   2221422     node index=   350000     nlstfail=       0 %done=  43.38  
+ ntets=   2251197     node index=   355000     nlstfail=       0 %done=  43.96  
+ ntets=   2281187     node index=   360000     nlstfail=       0 %done=  44.54  
+ ntets=   2310746     node index=   365000     nlstfail=       0 %done=  45.12  
+ ntets=   2340561     node index=   370000     nlstfail=       0 %done=  45.70  
+ ntets=   2371341     node index=   375000     nlstfail=       0 %done=  46.30  
+ ntets=   2401730     node index=   380000     nlstfail=       0 %done=  46.90  
+ ntets=   2432492     node index=   385000     nlstfail=       0 %done=  47.50  
+ ntets=   2463243     node index=   390000     nlstfail=       0 %done=  48.10  
+ ntets=   2494168     node index=   395000     nlstfail=       0 %done=  48.70  
+ ntets=   2525023     node index=   400000     nlstfail=       0 %done=  49.30  
+ ntets=   2555915     node index=   405000     nlstfail=       0 %done=  49.91  
+ ntets=   2587043     node index=   410000     nlstfail=       0 %done=  50.52  
+ ntets=   2617505     node index=   415000     nlstfail=       0 %done=  51.11  
+ ntets=   2647920     node index=   420000     nlstfail=       0 %done=  51.70  
+ ntets=   2678614     node index=   425000     nlstfail=       0 %done=  52.30  
+ ntets=   2709356     node index=   430000     nlstfail=       0 %done=  52.90  
+ ntets=   2739900     node index=   435000     nlstfail=       0 %done=  53.50  
+ ntets=   2770833     node index=   440000     nlstfail=       0 %done=  54.10  
+ ntets=   2801428     node index=   445000     nlstfail=       0 %done=  54.70  
+ ntets=   2831697     node index=   450000     nlstfail=       0 %done=  55.29  
+ ntets=   2861904     node index=   455000     nlstfail=       0 %done=  55.88  
+ ntets=   2892263     node index=   460000     nlstfail=       0 %done=  56.48  
+ ntets=   2922545     node index=   465000     nlstfail=       0 %done=  57.07  
+ ntets=   2952878     node index=   470000     nlstfail=       0 %done=  57.66  
+ ntets=   2983325     node index=   475000     nlstfail=       0 %done=  58.25  
+ ntets=   3013610     node index=   480000     nlstfail=       0 %done=  58.84  
+ ntets=   3043880     node index=   485000     nlstfail=       0 %done=  59.44  
+ ntets=   3074059     node index=   490000     nlstfail=       0 %done=  60.02  
+ ntets=   3103849     node index=   495000     nlstfail=       0 %done=  60.61  
+ ntets=   3133979     node index=   500000     nlstfail=       0 %done=  61.19  
+ ntets=   3164036     node index=   505000     nlstfail=       0 %done=  61.78  
+ ntets=   3193983     node index=   510000     nlstfail=       0 %done=  62.37  
+ ntets=   3224005     node index=   515000     nlstfail=       0 %done=  62.95  
+ ntets=   3253821     node index=   520000     nlstfail=       0 %done=  63.53  
+ ntets=   3284298     node index=   525000     nlstfail=       0 %done=  64.13  
+ ntets=   3313938     node index=   530000     nlstfail=       0 %done=  64.71  
+ ntets=   3343736     node index=   535000     nlstfail=       0 %done=  65.29  
+ ntets=   3373497     node index=   540000     nlstfail=       0 %done=  65.87  
+ ntets=   3403127     node index=   545000     nlstfail=       0 %done=  66.45  
+ ntets=   3432969     node index=   550000     nlstfail=       0 %done=  67.03  
+ ntets=   3462660     node index=   555000     nlstfail=       0 %done=  67.61  
+ ntets=   3492498     node index=   560000     nlstfail=       0 %done=  68.20  
+ ntets=   3522044     node index=   565000     nlstfail=       0 %done=  68.77  
+ ntets=   3551106     node index=   570000     nlstfail=       0 %done=  69.34  
+ ntets=   3579975     node index=   575000     nlstfail=       0 %done=  69.90  
+ ntets=   3609008     node index=   580000     nlstfail=       0 %done=  70.47  
+ ntets=   3638000     node index=   585000     nlstfail=       0 %done=  71.04  
+ ntets=   3666969     node index=   590000     nlstfail=       0 %done=  71.60  
+ ntets=   3695959     node index=   595000     nlstfail=       0 %done=  72.17  
+ ntets=   3725748     node index=   600000     nlstfail=       0 %done=  72.75  
+ ntets=   3753807     node index=   605000     nlstfail=       0 %done=  73.30  
+ ntets=   3781502     node index=   610000     nlstfail=       0 %done=  73.84  
+ ntets=   3809182     node index=   615000     nlstfail=       0 %done=  74.38  
+ ntets=   3836756     node index=   620000     nlstfail=       0 %done=  74.92  
+ ntets=   3864334     node index=   625000     nlstfail=       0 %done=  75.46  
+ ntets=   3891986     node index=   630000     nlstfail=       0 %done=  76.00  
+ ntets=   3921055     node index=   635000     nlstfail=       0 %done=  76.56  
+ ntets=   3949351     node index=   640000     nlstfail=       0 %done=  77.12  
+ ntets=   3976419     node index=   645000     nlstfail=       0 %done=  77.64  
+ ntets=   4003577     node index=   650000     nlstfail=       0 %done=  78.17  
+ ntets=   4030674     node index=   655000     nlstfail=       0 %done=  78.70  
+ ntets=   4057817     node index=   660000     nlstfail=       0 %done=  79.23  
+ ntets=   4084884     node index=   665000     nlstfail=       0 %done=  79.76  
+ ntets=   4112719     node index=   670000     nlstfail=       0 %done=  80.31  
+ ntets=   4140844     node index=   675000     nlstfail=       0 %done=  80.86  
+ ntets=   4166695     node index=   680000     nlstfail=       0 %done=  81.36  
+ ntets=   4192258     node index=   685000     nlstfail=       0 %done=  81.86  
+ ntets=   4217813     node index=   690000     nlstfail=       0 %done=  82.36  
+ ntets=   4243341     node index=   695000     nlstfail=       0 %done=  82.86  
+ ntets=   4268853     node index=   700000     nlstfail=       0 %done=  83.35  
+ ntets=   4294418     node index=   705000     nlstfail=       0 %done=  83.85  
+ ntets=   4321402     node index=   710000     nlstfail=       0 %done=  84.38  
+ ntets=   4347317     node index=   715000     nlstfail=       0 %done=  84.89  
+ ntets=   4371827     node index=   720000     nlstfail=       0 %done=  85.37  
+ ntets=   4396444     node index=   725000     nlstfail=       0 %done=  85.85  
+ ntets=   4420953     node index=   730000     nlstfail=       0 %done=  86.32  
+ ntets=   4445391     node index=   735000     nlstfail=       0 %done=  86.80  
+ ntets=   4469872     node index=   740000     nlstfail=       0 %done=  87.28  
+ ntets=   4495136     node index=   745000     nlstfail=       0 %done=  87.77  
+ ntets=   4520850     node index=   750000     nlstfail=       0 %done=  88.28  
+ ntets=   4544202     node index=   755000     nlstfail=       0 %done=  88.73  
+ ntets=   4567479     node index=   760000     nlstfail=       0 %done=  89.19  
+ ntets=   4590788     node index=   765000     nlstfail=       0 %done=  89.64  
+ ntets=   4614196     node index=   770000     nlstfail=       0 %done=  90.10  
+ ntets=   4637584     node index=   775000     nlstfail=       0 %done=  90.55  
+ ntets=   4660767     node index=   780000     nlstfail=       0 %done=  91.01  
+ ntets=   4685762     node index=   785000     nlstfail=       0 %done=  91.50  
+ ntets=   4708894     node index=   790000     nlstfail=       0 %done=  91.95  
+ ntets=   4731127     node index=   795000     nlstfail=       0 %done=  92.38  
+ ntets=   4753272     node index=   800000     nlstfail=       0 %done=  92.81  
+ ntets=   4775496     node index=   805000     nlstfail=       0 %done=  93.25  
+ ntets=   4797755     node index=   810000     nlstfail=       0 %done=  93.68  
+ ntets=   4820093     node index=   815000     nlstfail=       0 %done=  94.12  
+ ntets=   4842609     node index=   820000     nlstfail=       0 %done=  94.56  
+ ntets=   4864837     node index=   825000     nlstfail=       0 %done=  94.99  
+ ntets=   4885463     node index=   830000     nlstfail=       0 %done=  95.39  
+ ntets=   4906046     node index=   835000     nlstfail=       0 %done=  95.80  
+ ntets=   4926640     node index=   840000     nlstfail=       0 %done=  96.20  
+ ntets=   4947275     node index=   845000     nlstfail=       0 %done=  96.60  
+ ntets=   4967865     node index=   850000     nlstfail=       0 %done=  97.00  
+ 
+ The mesh is now complete!                                                      
+ 
+resetpts/itp                                                                    
+geniee                                                                          
+finish                                                                          
+finish                                                                          
+dump/gmv/tet_refine_l3.gmv/mo_tet                                               
+cmo/modatt/-def-/-def-/ioflag/x                                                 
+finish                                                                          
+dump/fehm/tet_l3/mo_tet                                                         
+*** Write FEHMN GEOM AND ZONE FILES ***                                         
+*********dump_material_lists********                                            
+Minimum material ID value =      1                                              
+Maximum material ID value =      3                                              
+Total possible materials  =      3                                              
+Material           1 has    683825 nodes. #nodes/nnodes is   0.801156810000     
+Material           2 has     99451 nodes. #nodes/nnodes is   0.116515000000     
+Material           3 has     70271 nodes. #nodes/nnodes is   0.823282200000E-01 
+*********dump_interface_list********                                            
+Interface material         1 has     70406 nodes.                               
+Interface material         2 has     31349 nodes.                               
+Interface material         3 has     22187 nodes.                               
+*********dump_multi_material_list********                                       
+Material         1 has    282536 multi-material connections.                    
+Material         2 has    165495 multi-material connections.                    
+Material         3 has    117041 multi-material connections.                    
+log/tty/off                                                                     
+finish                                                                          
+*********dump_outside_list********                                              
+ 
+assign_quadrant_id epsilon for zero:   1.0000000E-15                            
+cmo/addatt/mo_tet/top/vint/scalar/nnodes/linear/permanent/afgx/-5.0/            
+finish                                                                          
+Face top           1 has      5072 nodes.                                       
+top       Area            Area_x          Area_y          Area_z                
+          0.1031261E+05   0.4000000E+03   0.3326667E+03   0.1000000E+05         
+cmo/addatt/mo_tet/bottom/vint/scalar/nnodes/linear/permanent/afgx/-5.0/         
+finish                                                                          
+Face bottom        2 has      5072 nodes.                                       
+bottom    Area            Area_x          Area_y          Area_z                
+          0.1031150E+05   0.4000000E+03   0.3326667E+03   0.1000000E+05         
+cmo/addatt/mo_tet/left_w/vint/scalar/nnodes/linear/permanent/afgx/-5.0/         
+finish                                                                          
+Face left_w        3 has       676 nodes.                                       
+left_w    Area            Area_x          Area_y          Area_z                
+          0.1036477E+05   0.1000000E+05   0.4000000E+03   0.4000000E+03         
+cmo/addatt/mo_tet/right_e/vint/scalar/nnodes/linear/permanent/afgx/-5.0/        
+finish                                                                          
+Face right_e       5 has       676 nodes.                                       
+right_e   Area            Area_x          Area_y          Area_z                
+          0.1033352E+05   0.1000000E+05   0.4000000E+03   0.4000000E+03         
+cmo/addatt/mo_tet/back_n/vint/scalar/nnodes/linear/permanent/afgx/-5.0/         
+finish                                                                          
+Face back_n        6 has      3138 nodes.                                       
+back_n    Area            Area_x          Area_y          Area_z                
+          0.1031179E+05   0.4000000E+03   0.1000000E+05   0.3326667E+03         
+cmo/addatt/mo_tet/front_s/vint/scalar/nnodes/linear/permanent/afgx/-5.0/        
+finish                                                                          
+Face front_s       4 has      3138 nodes.                                       
+front_s   Area            Area_x          Area_y          Area_z                
+          0.1031131E+05   0.4000000E+03   0.1000000E+05   0.3326667E+03         
+cmo/DELATT//top                                                                 
+finish                                                                          
+cmo/DELATT//bottom                                                              
+finish                                                                          
+cmo/DELATT//left_w                                                              
+finish                                                                          
+cmo/DELATT//right_e                                                             
+finish                                                                          
+cmo/DELATT//back_n                                                              
+finish                                                                          
+cmo/DELATT//front_s                                                             
+finish                                                                          
+log/tty/on                                                                      
+finish                                                                          
+*********dump_parent_list********                                               
+ 
+*** Construct and Compress Sparse Matrix:3D ***                                 
+   *** Compress Area Coefficient Values ***                                     
+AMatbld3d_stor: *****Zero Negative Coefficients ******                          
+AMatbld3d_stor: Number of 'zero' (< 10e-8*max) coefs       0                    
+AMatbld3d_stor: npoints =   853547  n connections =    6736141                  
+AMatbld3d_stor: Number of written coefs =        74                             
+AMatbld3d_stor: Maximum num. connections to a node =         28                 
+AMatbld3d_stor: Volume min =   3.1250000E-02                                    
+AMatbld3d_stor: Volume max =   6.4000000E+01                                    
+AMatbld3d_stor: Total Volume:   1.0000000E+06                                   
+AMatbld3d_stor: abs(Aij/xij) min =   0.0000000E+00                              
+AMatbld3d_stor: abs(Aij/xij) max =   4.4843750E+00                              
+AMatbld3d_stor: (Aij/xij) max =   0.0000000E+00                                 
+AMatbld3d_stor: (Aij/xij) min =  -4.4843750E+00                                 
+Compression used for graph and coefficient values                               
+The area coefficient values were written as scalar area/distance                
+ascii STOR file written with name tet_l3.stor                                   
+ 
+*** SPARSE COEFFICIENT MATRIX _astor SUCCESSFUL ***                             
+ 
+dump/elem_adj_elem/tet_l3.ealist/mo_tet                                         
+cmo/delete/mo_tet                                                               
+     Released Mesh Object: mo_tet                                               
+finish                                                                          
+LaGriT successfully completed                                                   

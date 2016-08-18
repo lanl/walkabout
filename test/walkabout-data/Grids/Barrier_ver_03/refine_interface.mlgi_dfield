@@ -1,0 +1,41 @@
+*
+* Refine the material interfaces
+*
+eltset / em1 / itetclr / eq / 1
+eltset / em2 / itetclr / eq / 2
+eltset / em3 / itetclr / eq / 3
+
+pset / pem1 / eltset em1
+pset / pem2 / eltset em2
+pset / pem3 / eltset em3
+
+eltset / em1 / delete
+eltset / em2 / delete
+eltset / em3 / delete
+
+pset / p13 / inter / pem1 pem3
+pset / p12 / inter / pem1 pem2
+
+pset / p_interface / union / p12 p13
+*
+*
+cmo / create / mo_tmp2
+cmo / create / mo_tmp3
+copypts / mo_tmp2 / mo_hex / 0,0 / pset get p12
+copypts / mo_tmp3 / mo_hex / 0,0 / pset get p13
+compute / distance_field / mo_hex / mo_tmp2 / dfield2 
+compute / distance_field / mo_hex / mo_tmp3 / dfield3 
+*
+* Find where both dfields are 0-16
+*
+define / DIST / 16.0
+pset / pdf2 / attribute / dfield2 / 1 0 0 / DIST / lt
+pset / pdf3 / attribute / dfield3 / 1 0 0 / DIST / lt
+pset / pdf23 / inter / pdf2 pdf3
+
+pset / prefine / union / p_interface pdf23
+
+refine/constant/imt1/linear/element/pset,get,prefine/-1.,0.,0./inclusive/ amr
+setpts
+
+finish

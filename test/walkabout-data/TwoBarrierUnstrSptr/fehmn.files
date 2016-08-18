@@ -1,0 +1,10 @@
+input:sz_3D_iso.dat
+grid:../Grids/Barrier_ver_03/tet_l2.fehmn 
+outp:SZ_3D.out
+rsto:SZ_3D.fin
+hist:SZ_3D.his
+stor:../Grids/Barrier_ver_03/tet_l2.stor 
+check:test.check 
+
+all
+0

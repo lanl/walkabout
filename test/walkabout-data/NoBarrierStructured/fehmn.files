@@ -1,0 +1,10 @@
+input:sz_3D_iso.dat
+grid:../Grids/Structured/tet5.fehmn 
+outp:SZ_3D.out
+rsto:SZ_3D.fin
+hist:SZ_3D.his
+stor:../Grids/Structured/tet5.stor 
+check:SZ_3D.check 
+
+all
+0

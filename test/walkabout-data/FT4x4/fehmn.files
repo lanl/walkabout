@@ -1,0 +1,10 @@
+input:1-D_grid1_perm.dat
+grid:tet2.fehmn 
+outp:SZ.out
+rsto:SZ.fin
+hist:SZ.his
+stor:tet2.stor 
+check:tet2.check
+
+all
+0

@@ -1,0 +1,46 @@
+
+
+define / BOX_MIN / 0.0
+define / BOX_MAX / 100.0
+
+define / BAR_1_X0 / 40.0
+define / BAR_1_Y0 / 0.0
+define / BAR_1_Z0 / 0.0
+define / BAR_1_X1 / 50.0
+define / BAR_1_Y1 / 60.0
+define / BAR_1_Z1 / 100.0
+
+define / BAR_2_X0 / 70.0
+define / BAR_2_Y0 / 60.0
+define / BAR_2_Z0 /  0.0
+define / BAR_2_X1 / 80.0
+define / BAR_2_Y1 / 100.0
+define / BAR_2_Z1 / 100.0
+
+
+surface/s_bbox/reflect/box/ BOX_MIN BOX_MIN BOX_MIN / BOX_MAX BOX_MAX BOX_MAX
+
+surface/s_bar_1/intrface/box/BAR_1_X0 BAR_1_Y0 BAR_1_Z0 &
+                             BAR_1_X1 BAR_1_Y1 BAR_1_Z1
+
+surface/s_bar_2/intrface/box/BAR_2_X0 BAR_2_Y0 BAR_2_Z0 &
+                             BAR_2_X1 BAR_2_Y1 BAR_2_Z1
+
+surface/s_cyl/interface/cylinder/ 60.0 60.0  -1.0 &
+                                  60.0 60.0  101.0 / 12.0
+
+
+region / r_background / le s_bbox and gt s_bar_1 and gt s_bar_2
+region / r_bar_1 / le s_bbox and le s_bar_1
+region / r_bar_2 / le s_bbox and le s_bar_2
+
+region / r_between / le s_cyl
+
+mregion / mr_background / le s_bbox and gt s_bar_1 and gt s_bar_2
+mregion / mr_bar_1 / le s_bbox and le s_bar_1
+mregion / mr_bar_2 / le s_bbox and le s_bar_2
+
+
+
+finish
+

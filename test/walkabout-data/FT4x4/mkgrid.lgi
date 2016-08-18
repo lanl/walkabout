@@ -1,0 +1,137 @@
+*************************************************************
+* create brick shape mesh
+* x = 0 to 20000, dx = 200
+* y = -50 to 50, dy = 100
+* z = -50 to 50, dz = 100
+*************************************************************
+
+* ----------------------------
+* hex 1
+* single row of hex elements
+cmo/create/cmohex1///hex
+define X0 0.
+define Y0 -50.
+define Z0 -50.
+
+define X1 20000.
+define Y1 50.
+define Z1 50.
+
+define / NX / 101
+define / NY / 2
+define / NZ / 2 
+
+* evenly space points along x, y and z axis
+createpts/brick/xyz/NX NY NZ /X0 Y0 Z0 / X1 Y1 Z1 /1,1,1/
+
+* color grid points and elements all color 1
+cmo/setatt/cmohex1/imt1/1,0,0/1
+cmo/setatt/cmohex1/itetclr/1,0,0/1
+resetpts itp
+cmo/printatt/cmohex1/ -xyz- minmax
+
+* write the associated FEHM input files
+* keep the outside arrays for avs and gmv
+dump fehm hex1 cmohex1 keepatt  
+
+* write the hex grid
+dump gmv hex1.gmv cmohex1
+dump avs hex1.inp cmohex1
+
+* ----------------------------
+* hex 2
+* embedded row of hex elements
+cmo/create/cmohex2///hex
+
+createpts/brick/xyz/NX NY NZ /X0 Y0 Z0 / X1 Y1 Z1 /1,1,1/
+
+define X0 10000.
+define Y0 -50.
+define Z0 -50.
+
+define X1 11000.
+define Y1 50.
+define Z1 50.
+
+define / NX / 11   
+define / NY / 2
+define / NZ / 2 
+
+* evenly space points along x, y and z axis
+createpts/brick/xyz/NX NY NZ /X0 Y0 Z0 / X1 Y1 Z1 /1,1,1/
+
+* color grid points and elements all color 1
+cmo/setatt/cmohex2/imt1/1,0,0/1
+cmo/setatt/cmohex2/itetclr/1,0,0/1
+resetpts itp
+cmo/printatt/cmohex2/ -xyz- minmax
+
+* write the associated FEHM input files
+* keep the outside arrays for avs and gmv
+dump fehm hex2 cmohex2 keepatt  
+
+* write the hex grid
+dump gmv hex2.gmv cmohex1
+dump avs hex2.inp cmohex1
+
+
+*************************************************************
+* create tet version of hex mesh for FEHM
+*************************************************************
+
+* ----------------------------
+* tet 1
+
+* copy points into new mesh object without elements
+cmo / create / cmotet1 / / / tet
+copypts / cmotet1 / cmohex1
+cmo / setatt / cmotet1 / imt / 1 0 0 / 1
+cmo / setatt / cmotet1 / itp / 1 0 0 / 0
+
+* remove duplicate points
+cmo / select cmotet1
+filter / 1 0 0
+rmpoint / compress
+
+* connect with Delaunay criteria
+connect noadd
+resetpts / itp
+
+* write the associated FEHM input files
+* keep the outside arrays for avs and gmv
+dump fehm tet1 cmotet1 keepatt  
+
+dump / elem_adj_elem / tet1.ealist / cmotet1  
+
+dump / gmv / tet1.gmv / cmotet1
+dump / avs2 / tet1.inp / cmotet1
+
+* ----------------------------
+* tet 2
+
+* copy points into new mesh object without elements
+cmo / create / cmotet2 / / / tet
+copypts / cmotet2 / cmohex2
+cmo / setatt / cmotet2 / imt / 1 0 0 / 1
+cmo / setatt / cmotet2 / itp / 1 0 0 / 0
+
+* remove duplicate points
+cmo / select cmotet2
+filter / 1 0 0
+rmpoint / compress
+
+* connect with Delaunay criteria
+connect noadd
+resetpts / itp
+
+* write the associated FEHM input files
+* keep the outside arrays for avs and gmv
+dump fehm tet2 cmotet2 keepatt 
+dump / elem_adj_elem / tet2.ealist / cmotet2  
+
+* dump / gmv / tet2.gmv / cmotet2
+* dump / avs2 / tet2.inp / cmotet2
+
+* DONE
+finish
+
