@@ -1,0 +1,425 @@
+* commit fc0dbc0e7187a7c438df8c0b8a8837dc575eaa72
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 15:50:46 2015 -0600
+| 
+|     Parallelized Walkabout using OpenMP approach
+|  
+* commit 3c8f2ec99a169dbc722780e2dcc69715ddd6a34c
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 15:42:06 2015 -0600
+| 
+|     Input files are used to run Parallelized Walkabout on Large Grid
+|  
+* commit ddf6cd03c2329b9f7fcfba025beb4a1edd2455c5
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 15:27:57 2015 -0600
+| 
+|     Input Files are used to run parallel walkabout on small grid
+|  
+* commit 3283cba7be0722b53e1abd323ddb6a626f1f74aa
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 15:22:25 2015 -0600
+| 
+|     Control files are used to run Parallelized Walkabout
+|  
+* commit 8d2d3297643243ba39c7bd65d919b3c3cfb2f21f
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 15:19:36 2015 -0600
+| 
+|     Control files are used to run Parallelized Walkabout
+|  
+* commit 28fa4fd3f39a15db1f3bdd5fd397d0c626461b70
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 12:44:34 2015 -0600
+| 
+|     Documentation about Hybrid Parallelized Walkabout code using MPI and OpenMP
+|  
+* commit 76461c0297374739537a47f6bcd64409a9de8165
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 12:42:16 2015 -0600
+| 
+|     Documentation about Hybrid Parallelized Walkabout code using MPI and OpenMP
+|  
+* commit 9c0a1e1bbf747f779798f2643ab8d700e94b6d6a
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 11:22:05 2015 -0600
+| 
+|     Script for running Walkabout using 160 processors (32 Concurrent OpenMP runs each using 8 Threads)
+|  
+* commit f4835b6be03bc5e35d94bbc81ecdb28d5cdcd779
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 11:15:38 2015 -0600
+| 
+|     Instructions of how to use Profiling Tool(TAU) on Wolf for OpenMP Parallelized Codes
+|  
+* commit 57358816e74a5bb54b2e1cde0caca0c6193de13d
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 10:57:57 2015 -0600
+| 
+|     Parallelized Walkabout using OpenMP Parallel Programming Language
+|  
+* commit 349027c0297b238ee50e1f73f865731d9da86e79
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 10:54:57 2015 -0600
+| 
+|     Parallelized Walkabout using OpenMP approach
+|  
+* commit 0aba03bc7eaf2f66f0744eecedad2a4be528f8e4
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Oct 1 10:30:58 2015 -0600
+| 
+|     Parallelized Walkabout using Hybrid with MPI and OpenMP approach
+|  
+* commit 524d30dd8be0286ae29ddc49186c7ecab7bf24eb
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Wed Sep 30 17:30:13 2015 -0600
+| 
+|     Instructions of how to create a movie using walkabout trajectory file in Paraview
+|  
+* commit 8a0fbc57744d149d12388d3f6e3d722135c7d0b5
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Wed Sep 30 15:41:06 2015 -0600
+| 
+|     Instructions of how to use profiling tool(TAU) on wolf for openmp based parallel codes
+|  
+* commit 46f5e657cdb51bbfc688368511a8dc247eb35922
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Wed Sep 30 15:38:16 2015 -0600
+| 
+|     Instructions of how to use profiling tool(TAU) on brine for openmp based parallel codes
+|  
+* commit d8b1a748c40fe3fced3a8b8af213e6a1ae1c98b7
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Wed Sep 30 09:03:51 2015 -0600
+| 
+|     Walkabout is parallelized using OpenMP code
+|  
+* commit ac6bcdf066423fe8795a9c01ed769d2aea34a9ca
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Wed Sep 30 08:56:50 2015 -0600
+| 
+|     Hybrid Walkabout with MPI and OpenMP code
+|  
+* commit 03009871734bcc5cf0500a3548d6a0411f3fea13
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Sep 24 16:14:38 2015 -0600
+| 
+|     Current Walkabout code I am working on for MPI parallelization strategy
+|  
+* commit 7df8d4cdac778c7465ae292a7d80583a2737eae7
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Sep 17 17:54:36 2015 -0600
+| 
+|     Current MPI walkabout code I am working on
+|  
+* commit 68749dd776d516b171a957d75130f968fb431b8c
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Wed Sep 16 18:03:54 2015 -0600
+| 
+|     Current MPI walkabout code I am working on and today i successfully pass nbsr, indexconn, index2conn for cells of mesh class to all other ranks
+|  
+* commit d53e62a57d1ac3e8b81bffeda4014284aad7da9c
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Mon Sep 14 18:07:51 2015 -0600
+| 
+|     Current MPI and Openmp walkabout I am working on today- need to work on passing bmat to all ranks
+|  
+* commit ac5ebbb84387da362a745c33750b5118af609587
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Mon Sep 14 14:20:48 2015 -0600
+| 
+|     Current walkabout code I am working for mpi
+|  
+* commit 734543ac0384563cd2b196345d3f12d4d237650a
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Fri Sep 11 17:22:55 2015 -0600
+| 
+|     Current MPI and openmp walkabout code I am working on. Today I have added one subroutine for passing information of type(cell) for all ranks and need to work on bmat
+|  
+* commit 64527884654649940d2964a01ea7482949c4a1a6
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Sep 10 17:51:36 2015 -0600
+| 
+|     I am working on the MPI and openmp walkabout code
+|  
+* commit b29c751d2834facc6e22c35821d9770f6b979615
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Fri Sep 4 17:46:27 2015 -0600
+| 
+|     I am working on walkabout mpi code. Today I successfully broadcast position and nn integers to all ranks
+|  
+* commit f0f48b05d0a73a93cfb5f59cb15f1d08e5882a41
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Fri Sep 4 09:33:53 2015 -0600
+| 
+|      Parallel openmp walkabout is running correctly for any maxstes and matches with serial output for uniform and manual setting inside control file
+|  
+* commit 5f4d834a1b721c881c31fdd87deec5b975e02f2f
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Sep 3 18:22:25 2015 -0600
+| 
+|     Correct openmp walkabout code
+|  
+* commit d6cbe20e8157f757795ffe73ea2a195c3ac28231
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Sep 3 17:24:55 2015 -0600
+| 
+|     Walkabout code I am working on. It does not produce right output for thread more than one
+|  
+* commit 1c6b45ee65d90ad0d3cc7fe07baaefeb931d41a2
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Sep 3 16:10:05 2015 -0600
+| 
+|     parallel walkabout using openmp is running correctly for maxstep greater than 100
+|  
+* commit e4cb1b5b919111c791dac94070fb7503f720cf2d
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Sep 3 07:42:50 2015 -0600
+| 
+|     I am aworking on th Current walkabout openmp code to modify it for running maxtsteps 1000
+|  
+* commit 6fb04c4bd9e58ff051d385115e543809beed3d56
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Wed Sep 2 15:22:49 2015 -0600
+| 
+|      Area and volumes of mesh file are sent correctly to all mpi ranks and produces correct output
+|  
+* commit eae9bbcfa28c54378e52500e44570ebcdc1ea9f9
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Mon Aug 31 17:36:14 2015 -0600
+| 
+|     mesh is allocated for other ranks and do broadcast of all intgers from mesh_class file
+|  
+* commit 103a0c546fd98d756ef65d4e513cba9dfbfd7621
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Aug 27 08:28:51 2015 -0600
+| 
+|     Particles are evenly distributed between MPI processes despite the number of particles are not divisible by the number of MPI processes
+|  
+* commit ef6dfb7a2413deeace7ed788f3c791e29e669831
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Fri Aug 21 17:58:19 2015 -0600
+| 
+|     Today walkabout is modified with mpi
+|  
+* commit 04b0b14f0bb80d479755a576c6e527c0985a59b2
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Aug 20 16:46:21 2015 -0600
+| 
+|     My mpi walkabout code is running correctly without openmp code and openmp code runs correctly without mpi code
+|  
+* commit 801efbdadc68eb198e543ee3a73fb5adf36f0e73
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Tue Aug 18 09:45:53 2015 -0600
+| 
+|     Walkabout is modified with correct rank. Multiple walkabout runs for multiple processors. All processors produce same output file
+|  
+* commit e7b99b36e35ec76c23b95e7fe14f9fbdb970bb5d
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Mon Aug 17 16:20:59 2015 -0600
+| 
+|     Walkabout is modified with MPI. Multiple walkabout runs for multiple processors and produce all the output files for all the processors
+|  
+* commit 69dfb6491ec84b29cefe04e9d48b69fc820ffe97
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Fri Aug 7 13:39:51 2015 -0600
+| 
+|     walkabout is modified with chunk that works for when no remainder for particle by chunk
+|  
+* commit def0e207b67ac5e7dee32f443904509695d75e1e
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Aug 6 13:38:06 2015 -0600
+| 
+|     Added all files to run walkabout for 1 million particles
+|  
+* commit 2e1a6865e49b4d64e748cd31ad93bf1226fdefdd
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Tue Aug 4 14:08:53 2015 -0600
+| 
+|     walkabout file is cleaned up and parallel output matches with serial traj output
+|  
+* commit ba615a9fa77c5e20d8998b5b7855196b39fcad1f
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Tue Aug 4 13:29:27 2015 -0600
+| 
+|     Modified walkabout that matches with the serial traj output
+|  
+* commit 7b6483429d0078cdab40f011a84f5a09727ae33d
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Tue Aug 4 10:08:58 2015 -0600
+| 
+|     Working with numout
+|  
+* commit 96706397a28a2192f5ebdb5baad442519f9e946b
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Fri Jul 31 16:48:00 2015 -0600
+| 
+|     Today I modified walkabout for private and shared variables
+|  
+* commit e4092b65c8babda5b7d992669b30c5be2ccdb45d
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Jul 30 12:05:27 2015 -0600
+| 
+|     Original walkabout file
+|  
+* commit a3ed35f0c83eb1231cc541624e0b6578ad73d1b1
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Jul 30 12:03:50 2015 -0600
+| 
+|     original ll file
+|  
+* commit 6e4578b1144d240a3c9a6724ebc7d37256552158
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Jul 30 12:02:56 2015 -0600
+| 
+|     original tracktools file
+|  
+* commit f303fb59fcec22c0461690c02228138ac46112b2
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Jul 30 11:59:45 2015 -0600
+| 
+|     louis modified walkabout.f90 file
+|  
+* commit 1e8a8ed0088eca63050a463e1a28ba15dbf2ff8d
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Fri Jul 24 17:44:34 2015 -0600
+| 
+|     Today walkabout.f90 is modified
+|  
+* commit 076c7ea854974418d37b9ef1657d1cfabb46fac5
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Thu Jul 23 16:16:52 2015 -0600
+| 
+|     Modified ll.f90 file for checking whether any duplicate element in the Queue or not
+|  
+* commit b661dda401343fe1d84393a183be63f7da03774a
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Wed Jul 22 17:32:17 2015 -0600
+| 
+|      Modified makefile to use profiling tool, GPROF
+|  
+* commit 3da6495142a3e700a555c2d94109c84ed00dc4ca
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Tue Jul 21 16:47:37 2015 -0600
+| 
+|     Modified walkabout.f90 by adding openmp code
+|  
+* commit 0538d191f283b45ebb99795c12c0256502b65ad1
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Tue Jul 21 16:46:19 2015 -0600
+| 
+|     Modified tracktools.f90 file for global pointer 'visited' and also passing type object to function spiral search
+|  
+* commit 1fd4c05dccbb75b3193731217a5c39a7c2c25d69
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Tue Jul 21 16:44:30 2015 -0600
+| 
+|     Modified ll.f90 file for global pointers
+|  
+* commit 748a8fc259230c8f214c2dff988e3d4308688d7f
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Tue Jul 21 15:19:37 2015 -0600
+| 
+|     modified ll.f90
+|  
+* commit b9cebf499d0b0b49eb3c1e3dbe9b1ff6300d5380
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Mon Jul 20 18:51:48 2015 -0600
+| 
+|     Added exe to .gitignore
+|  
+* commit 22415ef2bd598336253d279303dbee8da6402a92
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Mon Jul 20 18:30:59 2015 -0600
+| 
+|     Added gitignore file
+|  
+* commit 34f0f1a192a15217483a9ea9bb3f3f452e811c38
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Mon Jul 20 18:11:16 2015 -0600
+| 
+|     Modified makefile
+|  
+* commit 372e6d1f4105f3d18cb06b55fe8e10c15a9518e7
+| Author: Soumi Manna <soumi@lanl.gov>
+| Date:   Mon Jul 20 18:03:26 2015 -0600
+| 
+|     Removed build files
+|  
+* commit 90ab0017041b84008f6da8fde5666454fd4ea045
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Mon Feb 9 15:27:05 2015 -0700
+| 
+|     New build on aquifer in build_aquifer
+|    
+*   commit eee1702e44bae01aecf0f455b73869b03e7a9263
+|\  Merge: 5a88c70 6349dff
+| | Author: Lucia S. Short <lucia@lanl.gov>
+| | Date:   Mon Feb 9 13:50:46 2015 -0700
+| | 
+| |     Adding Zhiming's changes
+| |     
+| *   commit 6349dffb30b203240c58a1bac44a383d21931d73
+| |\  Merge: aee5d8b c484de7
+| | | Author: Lucia S. Short <lucia@lanl.gov>
+| | | Date:   Thu Feb 5 16:51:07 2015 -0700
+| | | 
+| | |     Merge branch 'lucia_zhiming_debug' into 'master'
+| | |     
+| | |     Lucia zhiming debug
+| | |     
+| | |     See merge request !1
+| | |    
+| | * commit c484de77ce901b7432278e6e2d5913bee71ed02f
+| |/  Author: Lucia S. Short <lucia@lanl.gov>
+| |   Date:   Tue Dec 2 14:37:45 2014 -0700
+| |   
+| |       Make some changes to flowfield_class
+| |   
+* | commit 5a88c702bf4e5cff4437577665946c80f506fd3e
+|/  Author: Lucia S. Short <lucia@lanl.gov>
+|   Date:   Mon Feb 9 13:43:02 2015 -0700
+|   
+|       Entering Zhiming's changes
+|  
+* commit aee5d8baa30404afc990bb3da2da360eac2b15e6
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Tue Dec 2 14:24:16 2014 -0700
+| 
+|     Changing flowfield to deal with the amanzi output
+|  
+* commit 299df18ed0b3d3535c25a8b6c22c724f12749749
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Tue Dec 2 14:11:05 2014 -0700
+| 
+|     Moving build files from src to build directory
+|  
+* commit cb284d0fb2f503fac127c1a6788be58376aa460b
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Wed Aug 20 15:13:03 2014 -0600
+| 
+|     Changing directories in the running script to comply existing file structure
+|  
+* commit a547d6850ed3e867569c08f4c69acfe7fe146681
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Wed Aug 20 14:49:02 2014 -0600
+| 
+|     Adding vars into test script and changing directories to conform to existing directories
+|  
+* commit 287c6f42374a9b2f7b8a6b35afe0831478334e78
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Wed Aug 20 14:21:48 2014 -0600
+| 
+|     Renaming directories
+|  
+* commit 5a8c470d4affc7a9340c64f7777dfc0a06ec447e
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Wed Aug 20 20:05:37 2014 +0000
+| 
+|     Old Walkabout. V1.2
+|  
+* commit 2237b6d22222d8fccdc8fad293ece2ef62cf2578
+  Author: Lucia S. Short <lucia@lanl.gov>
+  Date:   Wed Aug 20 10:47:21 2014 -0600
+  
+      Adding documentation

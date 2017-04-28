@@ -1,0 +1,17 @@
+* commit 3690f8ae7a6bd46f4c615c07055c787d9b56da47
+| Author: Dylan Robert Harp <dharp@lanl.gov>
+| Date:   Tue Oct 18 09:10:08 2016 -0600
+| 
+|     Added copyright
+|  
+* commit 71a834370f482129728be6e5e36629e81a3ca271
+| Author: Shane Wesley Mckinney <smckinney@susfty-illposed.lanl.gov>
+| Date:   Wed Aug 17 20:40:47 2016 -0600
+| 
+|     Testsuite added for Walkabout (walkabout_test.py)
+|  
+* commit e1e2201cfda83d3c8ffdf026f8073e4332565148
+  Author: Shane Wesley Mckinney <smckinney@susfty-illposed.lanl.gov>
+  Date:   Tue Jul 12 14:49:07 2016 -0600
+  
+      Initial commit from a debugged version of Soumi Manna's code, ready for dev.

@@ -1,0 +1,77 @@
+* commit 90ab0017041b84008f6da8fde5666454fd4ea045
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Mon Feb 9 15:27:05 2015 -0700
+| 
+|     New build on aquifer in build_aquifer
+|    
+*   commit eee1702e44bae01aecf0f455b73869b03e7a9263
+|\  Merge: 5a88c70 6349dff
+| | Author: Lucia S. Short <lucia@lanl.gov>
+| | Date:   Mon Feb 9 13:50:46 2015 -0700
+| | 
+| |     Adding Zhiming's changes
+| |     
+| *   commit 6349dffb30b203240c58a1bac44a383d21931d73
+| |\  Merge: aee5d8b c484de7
+| | | Author: Lucia S. Short <lucia@lanl.gov>
+| | | Date:   Thu Feb 5 16:51:07 2015 -0700
+| | | 
+| | |     Merge branch 'lucia_zhiming_debug' into 'master'
+| | |     
+| | |     Lucia zhiming debug
+| | |     
+| | |     See merge request !1
+| | |    
+| | * commit c484de77ce901b7432278e6e2d5913bee71ed02f
+| |/  Author: Lucia S. Short <lucia@lanl.gov>
+| |   Date:   Tue Dec 2 14:37:45 2014 -0700
+| |   
+| |       Make some changes to flowfield_class
+| |   
+* | commit 5a88c702bf4e5cff4437577665946c80f506fd3e
+|/  Author: Lucia S. Short <lucia@lanl.gov>
+|   Date:   Mon Feb 9 13:43:02 2015 -0700
+|   
+|       Entering Zhiming's changes
+|  
+* commit aee5d8baa30404afc990bb3da2da360eac2b15e6
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Tue Dec 2 14:24:16 2014 -0700
+| 
+|     Changing flowfield to deal with the amanzi output
+|  
+* commit 299df18ed0b3d3535c25a8b6c22c724f12749749
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Tue Dec 2 14:11:05 2014 -0700
+| 
+|     Moving build files from src to build directory
+|  
+* commit cb284d0fb2f503fac127c1a6788be58376aa460b
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Wed Aug 20 15:13:03 2014 -0600
+| 
+|     Changing directories in the running script to comply existing file structure
+|  
+* commit a547d6850ed3e867569c08f4c69acfe7fe146681
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Wed Aug 20 14:49:02 2014 -0600
+| 
+|     Adding vars into test script and changing directories to conform to existing directories
+|  
+* commit 287c6f42374a9b2f7b8a6b35afe0831478334e78
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Wed Aug 20 14:21:48 2014 -0600
+| 
+|     Renaming directories
+|  
+* commit 5a8c470d4affc7a9340c64f7777dfc0a06ec447e
+| Author: Lucia S. Short <lucia@lanl.gov>
+| Date:   Wed Aug 20 20:05:37 2014 +0000
+| 
+|     Old Walkabout. V1.2
+|  
+* commit 2237b6d22222d8fccdc8fad293ece2ef62cf2578
+  Author: Lucia S. Short <lucia@lanl.gov>
+  Date:   Wed Aug 20 10:47:21 2014 -0600
+  
+      Adding documentation
