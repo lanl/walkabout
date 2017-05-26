@@ -1,6 +1,4 @@
-Walkabout performs random walk particle tracking simulations
-
-to build walkabout: cd src; make
+To build Walkabout: cd src; make
 
 This creates *.o, *.mod, *.walkabout files.
 
