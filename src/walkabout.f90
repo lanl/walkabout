@@ -31,7 +31,7 @@ use mesh_class
 use cell_class 
 use flowfield_class 
 use tracktools 
-use omp_lib
+!use omp_lib
 
 implicit none 
 
@@ -114,8 +114,8 @@ call getstarts()
 
 !obtain processor and thread number
 
-write ( *, '(a,i8)' ) '  The number of processors available = ', omp_get_num_procs ( )
-write ( *, '(a,i8)' ) '  The number of threads available    = ', omp_get_max_threads ( )
+!write ( *, '(a,i8)' ) '  The number of processors available = ', omp_get_num_procs ( )
+!write ( *, '(a,i8)' ) '  The number of threads available    = ', omp_get_max_threads ( )
 
 ! initialize random seeds 
 !  if seed is not already set as input then initialize from clock   
@@ -207,7 +207,7 @@ endif
 
 
     !Calculate time at the begining of the openmp directive
-    time_begin = omp_get_wtime()
+    !time_begin = omp_get_wtime()
      
     !$omp do schedule(dynamic)
     
@@ -414,7 +414,7 @@ end do ! end of all particles
 !End of OpenMP loop parallelization
 
 !Calculate end time after the OpenMP directive
-time_end = omp_get_wtime()
+!time_end = omp_get_wtime()
 
 !Calculate total time with start and end time of the OpenMP directive
 time_total=time_total+ time_end-time_begin

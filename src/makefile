@@ -1,9 +1,9 @@
 !FC=     mpixlf90
-F95 = mpif90 
-!F95 = gfortran 
+!F95 = mpif90 
+F95 = gfortran 
 !FFLAGS= -qsuffix=f=f90 -O -qarch=440 -qtune=440
-FFLAGS =  -g  -fbounds-check -fopenmp  -ffree-line-length-none  
-!FFLAGS =  -g -fbounds-check   -ffree-line-length-none
+!FFLAGS =  -g  -fbounds-check -fopenmp  -ffree-line-length-none  
+FFLAGS =  -g -fbounds-check   -ffree-line-length-none
 #FFLAGS = -O3  -static 
 
 OBJS = precision.o io.o ll.o cell_class.o mesh_class.o tracktools.o bftensor.o isotropictensor.o lichtnertensor.o disptensor.o flowfield_class.o walkabout.o  
