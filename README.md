@@ -5,7 +5,7 @@ Performs random walk particle tracking simulations of solute transport based on 
 
 A typical workflow for Walkabout within the FEHM system would use LaGrit to generate unstructured grids. FEHM then provides a discretized representation of the steady-state flow field to Walkabout. Given this discrete solution, Walkabout then reconstructs a groundwater flow field, and performs the random walk particle tracking calculation. Output is provided in a form compatible with the PLUMECALC software. PLUMECALC may be used to efficiently post-process the particle tracking results from Walkabout to add effects of retention/retardation and arbitrary source histories. An option exists to also record particle positions versus time, thus allowing other post-processing codes or visualization systems to be used.
 
-[External Contributer Agreement (NON LANL Employees)](https://www.clahub.com/agreements/lanl/walkabout)
+[External Contributor Agreement (Non-LANL Employees)](https://www.clahub.com/agreements/lanl/walkabout)
    
 [Copyright text for Walkabout](./COPYRIGHT.md)
     
