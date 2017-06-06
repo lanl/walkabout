@@ -1,6 +1,6 @@
 # Amanzi to Walkabout Workflow
 
-The workflow from Amanzi to Walkabout meshing is covered in walkabout_amanzi.docx. Until this file is converted into github format, please download the User Manual provided by:
+The workflow from Amanzi to Walkabout meshing is covered in walkabout_amanzi.docx. Until this file is converted into github format, please download the [User Manual](walkabout_amanzi.docx) provided by:
 
 Terry A. Miller </br>
 Mesh Generation and Software </br>
