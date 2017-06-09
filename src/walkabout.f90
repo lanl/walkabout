@@ -57,7 +57,7 @@ real ( kind = 8 ) :: time_begin
 real(kind = 8) :: time_end
 real ( kind = 8 ) :: time_total
 logical :: plottraj ! flag to plot trajectories  
-integer :: ptfreq ! frequency of trajectory output  
+integer :: ptfreq, nonzero_freq ! frequency of trajectory output  
 integer ::  numout ! number trajectory outputs each particle 
 
 type(cell), pointer :: ptr2cell ,ptr2nbr 
