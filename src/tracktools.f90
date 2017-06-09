@@ -448,10 +448,13 @@ end function findcell
 
    logical :: bflag  , inelem , zgb 
 
-   integer :: iflag,  m , i, j, k, l , iface ,imin, nextelem 
+   integer :: iflag,  m , i, j, k, l , iface ,imin, nextelem ,oldface
 
       bflag=.false. ! boundary flag  
       zgb = .false. ! zero gradient boundary 
+
+      oldface = 0 
+      iface = oldface
 
 1001  continue 
          
@@ -468,43 +471,57 @@ end function findcell
       node3 => crntmesh%cells(l) !note reversal of l and k. do not change! 
       node4 => crntmesh%cells(k) 
 
-      iface = 0 
-
+ 
+      if( iface .ne. 1) then 
       call lineseg_tri(node2%posi, node3%posi, node4%posi, pt1, pt2,pt, iflag)
-      if( iflag .eq. 0) then 
+      if( iflag .eq. 0 ) then 
          iface=1 
          goto 998 
       end if  
+      end if 
 
+      if( iface .ne. 2) then 
       call lineseg_tri(node1%posi, node3%posi, node4%posi, pt1, pt2,pt, iflag)
-      if( iflag .eq. 0) then 
+      if( iflag .eq. 0 ) then 
          iface=2 
          goto 998 
       end if  
+      end if 
 
+      if( iface .ne. 3) then 
       call lineseg_tri(node1%posi, node2%posi, node4%posi, pt1, pt2,pt, iflag)
-      if( iflag .eq. 0) then 
+      if( iflag .eq. 0 ) then 
          iface=3 
          goto 998 
       end if  
+      end if 
 
+      if( iface .ne. 4 ) then 
       call lineseg_tri(node1%posi, node2%posi, node3%posi, pt1, pt2,pt, iflag)
-      if( iflag .eq. 0) then 
+      if( iflag .eq. 0 ) then 
          iface=4 
          goto 998 
       end if  
+      end if 
 
 
 998 continue 
 
       nextelem=m  
-      if( iface .ne. 0 ) then  
+      !if( iface .ne. 0 ) then  
+      if( iface .ne. oldface ) then  
        nextelem=crntmesh%elems(m)%nbrs(iface) 
       end if 
 
 
       if( nextelem .ne. m .and. nextelem .gt. 0) then 
           pt1 = pt 
+          ! reset oldface 
+          do oldface=1,4 
+          if( crntmesh%elems(nextelem)%nbrs(oldface) .eq. m) exit 
+          end do 
+          iface = oldface 
+          if( oldface .gt. 4) stop 
           m=nextelem       
           goto 1001 
       end if 
@@ -521,11 +538,14 @@ end function findcell
       m=nextelem 
       inelem=in_elem(crntmesh, nextelem, pt2)
       if( .not. inelem) then 
+        print *, 'searching for cell ...' 
+        !print *, pt1
+        !print *, pt2 
+        !print *, iface , oldface , iflag 
         nextelem=spiralsearch(crntmesh, m, pt2) 
         if( nextelem .le. 0) then 
          bflag=.true. 
          zgb=.true. 
-         print *, 'searching for cell ...' 
         else 
          m=nextelem 
         end if 
@@ -952,7 +972,7 @@ end subroutine initsearch
            abs(area123-xsum).le.local_eps*area123) then
             iflag=0
          else
-            iflag=-1
+            iflag=-2
          endif
       endif
       goto 9999
@@ -963,7 +983,7 @@ end subroutine initsearch
       d1=sqrt(dot_product(pt-pta,pt-pta) ) 
       d2=sqrt(dot_product(ptb-pta,ptb-pta) ) 
 
-      pt = pta + (ptb-pta) * ( d1/d2 +1.0d-6) 
+      pt = pta + (ptb-pta) * ( d1/d2 ) 
 
       return
       end subroutine lineseg_tri
