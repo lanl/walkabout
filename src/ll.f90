@@ -110,11 +110,12 @@ end if
 !q%first => q%list 
 !q%count = 0 
 
-ptr => q%first  
-do j=1,q%count 
-   if( ptr%i == i) return 
-   ptr => ptr%next
-end do 
+!Inceases runtime drastically
+!ptr => q%first  
+!do j=1,q%count 
+!   if( ptr%i == i) return 
+!   ptr => ptr%next
+!end do 
 
 ! if here then element was not already in list 
 

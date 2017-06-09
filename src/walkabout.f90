@@ -175,8 +175,18 @@ print *, ' time= ', t1-t0
   nextprog=prog(iprog) 
   ptr2mesh => crntmesh 
   pt=starts(1,:) 
-  firstelem=findelement( ptr2mesh, pt)  
-  !write(*,*) 1+maxsteps/ptfreq
+  !firstelem=spiralsearch(ptr2mesh, 1, pt)
+  firstelem=findelement(ptr2mesh, pt)
+  !For border particle release debugging
+  print *, "we found the first element at: ", firstelem
+  
+  if (ptfreq .eq. 0) then
+  	  nonzero_freq = 1
+  else
+  	  nonzero_freq = ptfreq
+  endif 
+  
+  !write(*,*) 1+maxsteps/nonzero_freq
 
 tunit=findunitnum()
  if(plottraj) then
@@ -196,7 +206,7 @@ endif
   nchunk = npart / chunk
   
   !Temporary array for reading and writing particles tracks
-  ALLOCATE(posrecord(2+(maxsteps/ptfreq),chunk*4))
+  ALLOCATE(posrecord(2+(maxsteps/nonzero_freq),chunk*4))
   allocate(numout_part(chunk))
   
    do ichunk=1, nchunk
@@ -599,7 +609,7 @@ subroutine getcontrols()
 
  rewind(funit) 
  key='toutfreq' 
- ptfreq=1  ! default , no traj.out output
+ ptfreq=0  ! default , no traj.out output
  do
   read(unit=funit,fmt='(a)', end=93) buffer
   buffer=adjustl(buffer)
@@ -609,7 +619,7 @@ subroutine getcontrols()
   end if
  end do
  93 continue
- plottraj=.false. 
+ plottraj=.false.
  if( ptfreq .gt. 0) plottraj=.true.  ! not trajectory output 
 
  rewind(funit) 
