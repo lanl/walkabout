@@ -1,6 +1,6 @@
 # Walkabout Verification and Acceptance Test Suite
 
-General test directory for all versions of walkabout. Compares output to the output of Scott Painter's original walkabout results. See Verification and Acceptance Tests in the user manual. Test suite does not test amanzi capabilities, runtime changes, nor other critical failure conditions. OpenMP is currently set to 1 thread in test mode.
+General test directory for all versions of walkabout. Compares output to Scott Painter's original walkabout results (See Verification and Acceptance Tests in the user manual.) Test suite does not test amanzi capabilities, runtime changes, nor other critical failure conditions. OpenMP is currently set to 1 thread in test mode.
 
 Instructions:
 
