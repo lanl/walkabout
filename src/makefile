@@ -1,19 +1,10 @@
-!FC=     mpixlf90
-F95 = mpif90 
-!F95 = gfortran 
-!FFLAGS= -qsuffix=f=f90 -O -qarch=440 -qtune=440
-FFLAGS =  -g  -fbounds-check -fopenmp  -ffree-line-length-none  
-!FFLAGS =  -g -fbounds-check   -ffree-line-length-none
-#FFLAGS = -O3  -static 
+F95=gfortran 
+FFLAGS = -O3  -static 
 
 OBJS = precision.o io.o ll.o cell_class.o mesh_class.o tracktools.o bftensor.o isotropictensor.o lichtnertensor.o disptensor.o flowfield_class.o walkabout.o  
 
-BINDIR=../bin
-SRCDIR=./src
-
 walkabout: $(OBJS) 
 	$(F95) $(FFLAGS) $(OBJS) -o walkabout  
-	#mv walkabout $(BINDIR)/walkabout.maveriks
 
 precision.o: precision.f90  
 	$(F95) $(FFLAGS) -c precision.f90   

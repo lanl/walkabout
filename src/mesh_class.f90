@@ -404,7 +404,6 @@ do icell=1,themesh%ncells
   thecell%NumNoflow= counts(icell) 
   thecell%inflow=inflow 
   allocate( thecell%bmat( counts(icell), 3 ) ) 
-  !print *, 'bmat is', thecell%bmat( counts(icell), 3 )
 end do 
 
 

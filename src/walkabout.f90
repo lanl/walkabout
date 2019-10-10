@@ -21,17 +21,12 @@ program walkabout
 ! PRIVATELY OWNED RIGHTS.
 !******************************************************************  
 
-!Parallelized Walkabout using OpenMP
-!Implemented by Soumi Manna
-!September, 2015
-
 use precision 
 use iotools 
 use mesh_class 
 use cell_class 
 use flowfield_class 
 use tracktools 
-use omp_lib
 
 implicit none 
 
@@ -42,23 +37,24 @@ integer :: nn,m,n , ncells,melem , istep ,  nstep ,icol , maxsteps
 integer :: firstelem 
 integer :: isolution  , itime , nsolutions, numargs 
 integer :: i,j,k,l 
-integer :: AllocateStatus
-integer :: ireject, nreject=50  ! keep track of rejected dispersive steps 
 
-logical :: rejected = .false., noflow = .false. 
+
+integer :: ireject, nreject=50  ! keep track of rejected dispersive steps 
+logical :: rejected , noflow 
+
 integer :: iprog 
 real(kind=dp) :: nextprog  
 real(kind=dp), dimension(7), parameter :: prog = (/ 0.05, 0.10, 0.20, 0.50, 0.7, 0.9, 1.01 /)  
 
 integer :: oldcell, newcell 
+
 integer :: ipart, npart 
 real(kind=dp), dimension(:,:), allocatable :: starts 
-real ( kind = 8 ) :: time_begin
-real(kind = 8) :: time_end
-real ( kind = 8 ) :: time_total
+
+
 logical :: plottraj ! flag to plot trajectories  
-integer :: ptfreq, nonzero_freq ! frequency of trajectory output  
-integer ::  numout ! number trajectory outputs each particle 
+integer :: ptfreq ! frequency of trajectory output  
+integer :: numout ! number trajectory outputs each particle 
 
 type(cell), pointer :: ptr2cell ,ptr2nbr 
 type(element), pointer :: ptr2elem 
@@ -66,9 +62,8 @@ type(mesh), target  :: crntmesh
 type(mesh), pointer :: ptr2mesh 
 
 real(kind=dp) ::  time , dxtar, dttar,  maxstretch 
-real(kind=8), dimension(:,:), allocatable :: posrecord
-integer, dimension(:), allocatable :: numout_part
 real(kind=dp) ::  dt, dt0, dt1, dt2, dtmax
+
 type(flowfield), dimension(:), allocatable,target :: fehmresults 
 type(flowfield), pointer :: crntfehm  
 
@@ -82,13 +77,18 @@ real(kind=dp) :: z1, z2, z3 , absvel
 real(kind=dp) :: partdisp, totdisp , ptime_next
 real :: t0, t1, t2, t3, t4
 
+
 real(kind=dp), parameter :: ascale=sqrt(3.0d0) 
+
 integer :: nextelem  , trialelem 
+
 integer,dimension(12) :: seed
 integer :: seedsize 
-integer :: sunit,tunit,tmpunit, fpunit,chunk,ichunk,nchunk 
+
+integer :: sunit,tunit,tmpunit, fpunit 
+
 logical :: enableNID , bflag 
-bflag = .false.
+
 
 ! print the version number 
 call printversion() 
@@ -112,11 +112,6 @@ call getcontrols()
 ! new get starting locations for all particles (npart, and start array)  
 call getstarts() 
 
-!obtain processor and thread number
-
-write ( *, '(a,i8)' ) '  The number of processors available = ', omp_get_num_procs ( )
-write ( *, '(a,i8)' ) '  The number of threads available    = ', omp_get_max_threads ( )
-
 ! initialize random seeds 
 !  if seed is not already set as input then initialize from clock   
 ! initialize random seeds
@@ -129,7 +124,7 @@ else
 end if
 
 ! load the mesh 
-crntmesh = mesh_( filesfile )
+crntmesh = mesh_( filesfile )  
 ptr2mesh => crntmesh 
 
 call cpu_time(t1) 
@@ -159,6 +154,7 @@ print *, ' time= ', t1-t0
 ! ************************
 ! tracking starts here 
 
+
   sunit=findunitnum() 
   open(unit=sunit, file=sptr2file) 
   call printheader( sunit, ptitle ) 
@@ -170,294 +166,224 @@ print *, ' time= ', t1-t0
   call printheader( fpunit, ptitle ) 
   write(fpunit,*) npart 
   
-    
+  tunit=findunitnum() 
+  if(plottraj) then 
+     open(unit=tunit, file=outfile) 
+     call printheader(tunit, ptitle) 
+     write(tunit,*) npart 
+  end if 
+     
+
   iprog=1 
   nextprog=prog(iprog) 
+  
   ptr2mesh => crntmesh 
+
   pt=starts(1,:) 
-  !firstelem=spiralsearch(ptr2mesh, 1, pt)
-  firstelem=findelement(ptr2mesh, pt)
-  !For border particle release debugging
-  print *, "we found the first element at: ", firstelem
+  firstelem=findelement( ptr2mesh, pt)  
   
-  if (ptfreq .eq. 0) then
-  	  nonzero_freq = 1
-  else
-  	  nonzero_freq = ptfreq
-  endif 
+  do ipart=1,npart 
   
-  !write(*,*) 1+maxsteps/nonzero_freq
-
-tunit=findunitnum()
- if(plottraj) then
-    open(unit=tunit, file=outfile)
-   call printheader(tunit, ptitle)
-    write(tunit,*) npart 
-endif
-
-  !Measure total time before the OpenMP loop parallelization starts
-  time_total=0
-  chunk = 10000
-  if(npart .lt. chunk) then
-    chunk = npart
-  endif
-     
-  ! Number of particles are divided by chunks and provide better parallel performance
-  nchunk = npart / chunk
   
-  !Temporary array for reading and writing particles tracks
-  ALLOCATE(posrecord(2+(maxsteps/nonzero_freq),chunk*4))
-  allocate(numout_part(chunk))
+  time=0.0 
+  pt=starts(ipart,:) 
+
+  tmpunit=findunitnum() 
+  if( plottraj) open(unit=tmpunit, file="tmpfile", form='unformatted') 
+  if( plottraj)  write(tmpunit) time,pt 
+
+  dt = dt0  
+
+  melem=spiralsearch(ptr2mesh, firstelem, pt) 
+
+  ptr2elem => crntmesh%elems(melem) 
+  oldcell = findcell( ptr2mesh, ptr2elem, pt)  
+
+  numout=1 
+  particleloop: do istep=1,maxsteps 
+
+    ! find the flow field active at current time 
+    do itime=size(fehmresults) , 1, -1 
+       if( time .ge. fehmresults(itime)%time ) exit  
+    end do  
+    crntfehm => fehmresults(itime)   !  flow field applicable at given time  
+
+
+    ! effective velocity including NID 
+    ptr2elem => crntmesh%elems(melem) 
+    enableNID=.true. 
+    vel=veffective(ptr2elem, ptr2mesh, crntfehm, pt, enableNID) 
+
+    ! time step control 
+    dt1= dtlimit( ptr2elem, ptr2mesh, crntfehm, pt, vel, dxtar, dttar)
+    dt = min( dt1, dtmax, dt*maxstretch) 
+
+    ! predictor 
+1001 drift=dt*vel 
+     trial=pt+drift 
+
+
+    ! corrector step 
+    !  disable noise-induced drift if corrector step crosses a boundary 
+    !  advective component will extrapolate in that situation 
+    !  scheme prevents drift across a no-flow boundary 
+    nextelem = melem 
+    workpt=pt 
+    call intersect_face(ptr2mesh, nextelem, workpt, trial, bflag, noflow) 
+    if( bflag ) then  
+      trial=workpt 
+      enableNID=.false. 
+    endif 
+
+    ptr2elem => crntmesh%elems(nextelem)  
+    vel1=veffective(ptr2elem, ptr2mesh, crntfehm, trial,enableNID) 
+
+    ! time step control v1.2 
+    !  reject time step and try again if needed 
+    dt1= dtlimit( ptr2elem, ptr2mesh, crntfehm, trial, vel1, dxtar, dttar)
+    if( dt1 .lt. dt/2.0d0) then 
+      dt=dt/2.0d0 
+      goto 1001 
+    end if 
+
+    dx=vel1*dt 
+    trial=pt + dx  ! could weight between predictor and corrector? 
+
+    nextelem=melem 
+    workpt=pt 
+    call intersect_face(ptr2mesh, nextelem, workpt, trial, bflag,noflow) 
+
+
+    ! cut time step near no-flow boundary  
+    if( noflow .and. .not.bflag) then 
+      print *, ' cannot happen. error' 
+      stop 
+    end if  
+    if( noflow ) then 
+      dt=dt/2.0d0 
+      goto 1001 
+    end if 
+    if(bflag) exit 
+
+    trialelem=nextelem  !element for dispersive step 
+
+    ! advection/drift step finished now disperse 
+    ! only complication here is that particle is not allowed to disperse across
+    !   a zero concentration boundary 
+
+    rejected = .true. 
+    ireject=0  
+    do while( rejected .and. ireject .lt. nreject) 
+
+    ! random numbers 
+    ! ascale makes random variable have unit variance  
+    call random_number(z1) 
+    call random_number(z2) 
+    call random_number(z3) 
+    z1=(2.0d0*z1-1.0d0)*ascale 
+    z2=(2.0d0*z2-1.0d0)*ascale 
+    z3=(2.0d0*z3-1.0d0)*ascale 
+
+    ! interpolate dispersive displacement tensor, one column at a time 
+    ! melem and pt are prior to advective step, consistent with Itoh's SDE formulation 
+    ptr2elem => crntmesh%elems(melem) 
+    i=ptr2elem%i
+    j=ptr2elem%j
+    k=ptr2elem%k
+    l=ptr2elem%l
+    vert1 = crntmesh%cells( i )%posi
+    vert2 = crntmesh%cells( j )%posi
+    vert3 = crntmesh%cells( k )%posi
+    vert4 = crntmesh%cells( l )%posi
+    do icol=1,3 
+     vertvels(1,:) = crntfehm%disp(i,:,icol)
+     vertvels(2,:) = crntfehm%disp(j,:,icol)
+     vertvels(3,:) = crntfehm%disp(k,:,icol)
+     vertvels(4,:) = crntfehm%disp(l,:,icol)
+     dlocal(:,icol) =  interpolate_tet3d( vert1, vert2, vert3, vert4, vertvels, pt,0)
+    end do 
+ 
+    ! dispersive displacement 
+    disp(1) = (z1*dlocal(1,1) + z2*dlocal(1,2) + z3*dlocal(1,3) ) * sqrt(dt)  
+    disp(2) = (z1*dlocal(2,1) + z2*dlocal(2,2) + z3*dlocal(2,3) ) * sqrt(dt)  
+    disp(3) = (z1*dlocal(3,1) + z2*dlocal(3,2) + z3*dlocal(3,3) ) * sqrt(dt)  
+
+    workpt=trial 
+    nextelem = trialelem 
+    call intersect_face(ptr2mesh, nextelem, workpt, trial+disp, bflag, rejected) 
+    
+    if( rejected ) ireject=ireject+1 
+ 
+    end do  
+
+    pt = trial + disp 
+
+    time=time+dt 
+
+    if(plottraj .and.  mod(istep,ptfreq) .eq. 0 ) then 
+      numout= numout + 1
+      write(tmpunit) time,pt 
+    end if 
+
+    if( bflag) exit  
+
+    melem=nextelem 
+
+    ptr2elem => crntmesh%elems(melem) 
+    newcell = findcell( ptr2mesh, ptr2elem, pt)  
+    if( oldcell .ne. newcell) then 
+       write(sunit,'(i9,2x,g15.8,i11)'), ipart, time, oldcell
+    end if 
+    oldcell=newcell 
+ 
+  end do particleloop 
+
+  if( npart .gt. 20) then 
+  if(  ipart .gt. nextprog*npart) then 
+     write(*,'(i2,a10)') , int( nextprog*100) , '% complete'  
+     iprog=iprog+1 
+     nextprog = prog(iprog) 
+  end if 
+  end if 
+
+  ! write final position if plottraj selected 
+  if(plottraj) then 
+    write(tmpunit) time, pt
+    numout=numout+1 
+  end if 
+
+  write(sunit,'(i9,2x,g15.8,i11)'), ipart, time, oldcell
+
+  !write final position to finalposition file 
+  write(fpunit,'(4g15.8)' ) time,pt 
+
+  ! now read unformatted tmp file and write formatted out 
+  ! size of array is known 
+  if(plottraj) then 
+  rewind(tmpunit) 
+  nstep=istep
+  write(tunit,*) numout  
+  do istep=1,numout 
+    read(tmpunit) time,pt
+    write(tunit,'(4g15.8)' ) time,pt 
+  end do 
+  close(tmpunit) 
+  end if 
+
+  end do ! end of all particles 
+
+  if(plottraj) close(tunit) 
+  close(sunit) 
+  close(fpunit) 
+
+  call cpu_time(t3) 
+  print *, 'cpu time for particle tracking: ', t3-t2 
+  print *, 'cpu time for velocity reconstruction ', t2-t1
+  print *, 'cpu time for reading ', t1-t0 
+  print *, 'total cpu time ', t3-t0 
+  print *, ' normal end walkabout' 
+ 
   
-   do ichunk=1, nchunk
-
-   !Add OpenMP loop parallelization with private and shared data
-
-   !$omp parallel default(shared) private(time,dt,pt,numout, bflag,melem,crntfehm,istep,ptr2elem, oldcell, itime,  enableNID, vel,dt1,trial,drift,nextelem,workpt, vel1,dx,rejected,ireject,trialelem,i,j,k,l, vert1,vert2,vert3,vert4,icol,dlocal, disp, newcell, vertvels)
-
-
-    !Calculate time at the begining of the openmp directive
-    time_begin = omp_get_wtime()
-     
-    !$omp do schedule(dynamic)
-    
-    do ipart=1,chunk 
-    
-    time=0.0 
-
-    pt=starts(chunk*(ichunk-1)+ipart,:) 
-     
-    
-    if( plottraj) then
-       numout_part(ipart)=1
-       posrecord(numout_part(ipart),(ipart-1)*4+1) = time
-       posrecord(numout_part(ipart),(ipart-1)*4+2) = pt(1)
-       posrecord(numout_part(ipart),(ipart-1)*4+3) = pt(2)
-       posrecord(numout_part(ipart),(ipart-1)*4+4) = pt(3)
-       
-       numout_part(ipart)=numout_part(ipart)+1
-    endif
-    
-    dt = dt0  
-    melem=spiralsearch(ptr2mesh, firstelem, pt) 
-    ptr2elem => crntmesh%elems(melem)
-    
-    oldcell = findcell( ptr2mesh, ptr2elem, pt)  
-
-      !particleloop: 
-              
-            do istep=1,maxsteps 
-            ! find the flow field active at current time 
-            do itime=size(fehmresults) , 1, -1 
-               if( time .ge. fehmresults(itime)%time ) exit  
-            end do  
-            crntfehm => fehmresults(itime)   !  flow field applicable at given time  
-
-            ! effective velocity including NID 
-            ptr2elem => crntmesh%elems(melem) 
-            enableNID=.true. 
-            vel=veffective(ptr2elem, ptr2mesh, crntfehm, pt, enableNID) 
-
-            ! time step control 
-            dt1= dtlimit( ptr2elem, ptr2mesh, crntfehm, pt, vel, dxtar, dttar)
-            dt = min( dt1, dtmax, dt*maxstretch) 
-            
-            ! predictor 
-            1001 drift=dt*vel 
-             trial=pt+drift 
-
-            ! corrector step 
-            !  disable noise-induced drift if corrector step crosses a boundary 
-            !  advective component will extrapolate in that situation 
-            !  scheme prevents drift across a no-flow boundary 
-            nextelem = melem 
-            workpt=pt 
-            call intersect_face(ptr2mesh, nextelem, workpt, trial, bflag, noflow) 
-            if( bflag ) then  
-              trial=workpt 
-              enableNID=.false. 
-            endif 
-
-            ptr2elem => crntmesh%elems(nextelem)  
-            vel1=veffective(ptr2elem, ptr2mesh, crntfehm, trial,enableNID) 
-
-            ! time step control v1.2 
-            !  reject time step and try again if needed 
-            dt1= dtlimit( ptr2elem, ptr2mesh, crntfehm, trial, vel1, dxtar, dttar)
-            if( dt1 .lt. dt/2.0d0) then 
-              dt=dt/2.0d0 
-              goto 1001 
-            end if 
-
-            dx=vel1*dt 
-            trial=pt + dx  ! could weight between predictor and corrector? 
-
-            nextelem=melem 
-            workpt=pt 
-            call intersect_face(ptr2mesh, nextelem, workpt, trial, bflag, noflow) 
-            ! cut time step near no-flow boundary
-            if( noflow .and. .not.bflag) then 
-              print *, ' cannot happen. error: '
-              stop 
-            end if 
-            if( noflow ) then 
-              dt=dt/2.0d0 
-              goto 1001 
-            end if 
-            if(bflag) exit 
-
-            trialelem=nextelem  !element for dispersive step 
-
-            ! advection/drift step finished now disperse 
-            ! only complication here is that particle is not allowed to disperse across
-            !   a zero concentration boundary 
-
-            rejected = .true. 
-            ireject=0  
-            do while( rejected .and. ireject .lt. nreject) 
-
-                ! random numbers 
-                ! ascale makes random variable have unit variance  
-                call random_number(z1) 
-                call random_number(z2) 
-                call random_number(z3) 
-                z1=(2.0d0*z1-1.0d0)*ascale 
-                z2=(2.0d0*z2-1.0d0)*ascale 
-                z3=(2.0d0*z3-1.0d0)*ascale 
-
-                ! interpolate dispersive displacement tensor, one column at a time 
-                ! melem and pt are prior to advective step, consistent with Itoh's SDE formulation 
-                ptr2elem => crntmesh%elems(melem) 
-                i=ptr2elem%i
-                j=ptr2elem%j
-                k=ptr2elem%k
-                l=ptr2elem%l
-                vert1 = crntmesh%cells( i )%posi
-                vert2 = crntmesh%cells( j )%posi
-                vert3 = crntmesh%cells( k )%posi
-                vert4 = crntmesh%cells( l )%posi
-               
-                do icol=1,3 
-                    vertvels(1,:) = crntfehm%disp(i,:,icol)
-                    vertvels(2,:) = crntfehm%disp(j,:,icol)
-                    vertvels(3,:) = crntfehm%disp(k,:,icol)
-                    vertvels(4,:) = crntfehm%disp(l,:,icol)
-                    dlocal(:,icol) =  interpolate_tet3d( vert1, vert2, vert3, vert4, vertvels, pt,0)
-                end do
-                
- 
-                ! dispersive displacement 
-                disp(1) = (z1*dlocal(1,1) + z2*dlocal(1,2) + z3*dlocal(1,3) ) * sqrt(dt)  
-                disp(2) = (z1*dlocal(2,1) + z2*dlocal(2,2) + z3*dlocal(2,3) ) * sqrt(dt)  
-                disp(3) = (z1*dlocal(3,1) + z2*dlocal(3,2) + z3*dlocal(3,3) ) * sqrt(dt)  
-
-                workpt=trial 
-                nextelem = trialelem 
-                call intersect_face(ptr2mesh, nextelem, workpt, trial+disp, bflag, rejected) 
-    
-                if( rejected ) ireject=ireject+1 
- 
-            end do  
-
-            pt = trial + disp
-            
-            time=time+dt
-             
-            
-             if(plottraj .and.  mod(istep,ptfreq) .eq. 0 ) then
-
-              
-              posrecord(numout_part(ipart),(ipart-1)*4+1) = time
-              posrecord(numout_part(ipart),(ipart-1)*4+2) = pt(1)
-              posrecord(numout_part(ipart),(ipart-1)*4+3) = pt(2)
-              posrecord(numout_part(ipart),(ipart-1)*4+4) = pt(3)
-              numout_part(ipart)=numout_part(ipart)+1
-               
-            end if 
-            
-
-            if( bflag) exit  
-
-            melem=nextelem 
-    
-            ptr2elem => crntmesh%elems(melem) 
-            newcell = findcell( ptr2mesh, ptr2elem, pt)  
-            if( oldcell .ne. newcell) then 
-               write(sunit,'(i9,2x,g15.8,i11)'), ipart, time, oldcell
-            end if 
-            oldcell=newcell 
- 
-        end do !particleloop
-        
-        if( npart .gt. 20) then 
-            if(  ipart .gt. nextprog*npart) then 
-                write(*,'(i2,a10)') , int( nextprog*100) , '% complete'
-                if (iprog < 7) then
-                	iprog=iprog+1      
-                endif
-                nextprog = prog(iprog) 
-            end if 
-        end if 
-        ! write final position if plottraj selected 
-        if(plottraj) then
-              
-              
-              posrecord(numout_part(ipart),(ipart-1)*4+1) = time
-              posrecord(numout_part(ipart),(ipart-1)*4+2) = pt(1)
-              posrecord(numout_part(ipart),(ipart-1)*4+3) = pt(2)
-              posrecord(numout_part(ipart),(ipart-1)*4+4) = pt(3)
-              
-        end if 
-
-        write(sunit,'(i9,2x,g15.8,i11)'), ipart, time, oldcell
-
-        !write final position to finalposition file 
-        write(fpunit,'(4g15.8)' ) time,pt 
-        
-    
-
-end do ! end of all particles
-
-!!$omp end do nowait 
-!$omp end parallel
-
-!End of OpenMP loop parallelization
-
-!Calculate end time after the OpenMP directive
-time_end = omp_get_wtime()
-
-!Calculate total time with start and end time of the OpenMP directive
-time_total=time_total+ time_end-time_begin
-
-! Write out posrecord (store the particle tracks)
- do ipart=1, chunk
-    nstep=istep
-    write(tunit,*) numout_part(ipart)
-    do istep=1,numout_part(ipart) 
-       write(tunit,'(4g15.8)' ) posrecord(istep,(ipart-1)*4+1),posrecord(istep,(ipart-1)*4+2:(ipart-1)*4+4)
-    end do
-   
-       !write(*,*) chunk*(ichunk-1)+ipart, 'finished'
-       
- enddo
-
-end do !chunk loop
-close(tunit)
-
-!Print the total time
-print *, 'Time of operation was ', time_total, ' seconds'
- 
-    close(sunit) 
-    close(fpunit) 
-
-
-    call cpu_time(t3) 
-    print *, 'cpu time for particle tracking: ', t3-t2 
-    print *, 'cpu time for velocity reconstruction ', t2-t1
-    print *, 'cpu time for reading ', t1-t0 
-    print *, 'total cpu time ', t3-t0 
-    print *, ' normal end walkabout' 
-!endif 
 stop 
 
 contains 
@@ -609,7 +535,7 @@ subroutine getcontrols()
 
  rewind(funit) 
  key='toutfreq' 
- ptfreq=0  ! default , no traj.out output
+ ptfreq=0  ! default , no plot
  do
   read(unit=funit,fmt='(a)', end=93) buffer
   buffer=adjustl(buffer)
@@ -619,7 +545,7 @@ subroutine getcontrols()
   end if
  end do
  93 continue
- plottraj=.false.
+ plottraj=.false. 
  if( ptfreq .gt. 0) plottraj=.true.  ! not trajectory output 
 
  rewind(funit) 
@@ -663,13 +589,10 @@ subroutine getstarts
  character(len=70) :: controlfile  
  character(len=30) :: key 
  real(kind=dp) :: r1,r2,r3 
- integer :: i, j, k , nx, ny, nz, values(1:8) 
+ integer :: i, j, k , nx, ny, nz 
  real(kind=dp) :: x1, x2, y1, y2, z1, z2, dx, dy, dz 
  real(kind=dp) :: xpos, ypos, zpos 
- integer, allocatable, dimension(:) :: seed
- integer :: funit, iseed 
-
-    open(52,file='initial_pos.dat')
+ integer :: funit 
 
  funit=findunitnum() 
  open(unit=funit,file=filesfile,action='read') 
@@ -705,15 +628,6 @@ subroutine getstarts
     allocate( starts(npart,3) ) 
     read(unit=funit, fmt=*) x1, y1, z1 
     read(unit=funit, fmt=*) x2, y2, z2 
-
-!   This following 5 lines are added to create different random numbers 
-!   in different runs.  Zhiming Lu (2/3/2015)
-    call date_and_time(values=values) 
-    CALL RANDOM_SEED(size=iseed)
-    allocate(seed(1:iseed))
-    seed(:) = values(8)
-    call random_seed(put=seed)
-
     do ipart=1,npart 
       call random_number(r1) 
       call random_number(r2) 
@@ -749,13 +663,6 @@ subroutine getstarts
     print *, ' must specify starting positions' 
     stop 
  end select 
-
-! Z. Lu
-!  write initial positions for checking results
-   do ipart=1,npart
-      write(52,'(i10,3f15.4)') ipart, starts(ipart,1), starts(ipart,2), starts(ipart,3)
-   enddo
-   close(52)
 
  close(funit)   
  return 
@@ -805,8 +712,6 @@ integer :: i,j,k,l
     dt2 = lbar/sqrt(dot_product(vel,vel))  *dxtar 
 
     dt=min(dt1,dt2) 
-!   add by ZL for checking dt
-    if( vertvels(1) < 0.0d0 .or. vertvels(2) < 0.0d0 .or. vertvels(3) < 0.0d0 .or. vertvels(4) < 0.0d0) dt =dt0
 
     return 
 
@@ -870,24 +775,22 @@ porosity => crntfehm%porosity
     vel=vel + interpolate_tet3d( vert1, vert2, vert3, vert4, vertvels, pt, 3)
     dlocal(:,3) = interpolate_tet3d( vert1, vert2, vert3, vert4, vertvels, pt, 0)
 
-    if(.not. crntfehm%amaread)then
-        ! porosity drift term 
-        vals(1) = porosity(i)
-        vals(2) = porosity(j)
-        vals(3) = porosity(k)
-        vals(4) = porosity(l)
-        por= interpolate_tet1d( vert1, vert2, vert3, vert4, vals, pt, 0)
-        gradpor(1)= interpolate_tet1d( vert1, vert2, vert3, vert4, vals, pt, 1)
-        gradpor(2)= interpolate_tet1d( vert1, vert2, vert3, vert4, vals, pt, 2)
-        gradpor(3)= interpolate_tet1d( vert1, vert2, vert3, vert4, vals, pt, 3)
+    ! porosity drift term 
+    vals(1) = porosity(i)
+    vals(2) = porosity(j)
+    vals(3) = porosity(k)
+    vals(4) = porosity(l)
+    por= interpolate_tet1d( vert1, vert2, vert3, vert4, vals, pt, 0)
+    gradpor(1)= interpolate_tet1d( vert1, vert2, vert3, vert4, vals, pt, 1)
+    gradpor(2)= interpolate_tet1d( vert1, vert2, vert3, vert4, vals, pt, 2)
+    gradpor(3)= interpolate_tet1d( vert1, vert2, vert3, vert4, vals, pt, 3)
 
-        do i=1,3 
-         vel1(i) = dot_product( dlocal(i,:) , gradpor ) 
-        end do 
-        vel1 = vel1/por 
+    do i=1,3 
+     vel1(i) = dot_product( dlocal(i,:) , gradpor ) 
+    end do 
+    vel1 = vel1/por 
 
-        vel=vel + vel1  
-    endif
+    vel=vel + vel1  
 
     return 
 

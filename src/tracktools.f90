@@ -19,6 +19,8 @@ public intersect_face
 public initsearch 
 public spiralsearch 
 
+integer, dimension(:), allocatable :: visited  ! fix time permits.  Will not work if using multiple meshes 
+
 contains 
 
 !**********************************************************************
@@ -104,9 +106,7 @@ end function findcell
 
    end do 
 
-   ! if here the element was not found 
-   print *, 'ielem set to -1, element not found usuing findelement()'
-
+   ! if here the was not found 
    ielem=-1 
    return 
 
@@ -158,6 +158,7 @@ end function findcell
 
       crntcell => crntmesh%cells(k) 
       pnt4 => crntcell%posi 
+
 
       iflag=inside_tet(pnt1, pnt2, pnt3, pnt4, pnt) 
 
@@ -449,13 +450,10 @@ end function findcell
 
    logical :: bflag  , inelem , zgb 
 
-   integer :: iflag,  m , i, j, k, l , iface ,imin, nextelem ,oldface
+   integer :: iflag,  m , i, j, k, l , iface ,imin, nextelem 
 
       bflag=.false. ! boundary flag  
       zgb = .false. ! zero gradient boundary 
-
-      oldface = 0 
-      iface = oldface
 
 1001  continue 
          
@@ -472,57 +470,43 @@ end function findcell
       node3 => crntmesh%cells(l) !note reversal of l and k. do not change! 
       node4 => crntmesh%cells(k) 
 
- 
-      if( iface .ne. 1) then 
+      iface = 0 
+
       call lineseg_tri(node2%posi, node3%posi, node4%posi, pt1, pt2,pt, iflag)
-      if( iflag .eq. 0 ) then 
+      if( iflag .eq. 0) then 
          iface=1 
          goto 998 
       end if  
-      end if 
 
-      if( iface .ne. 2) then 
       call lineseg_tri(node1%posi, node3%posi, node4%posi, pt1, pt2,pt, iflag)
-      if( iflag .eq. 0 ) then 
+      if( iflag .eq. 0) then 
          iface=2 
          goto 998 
       end if  
-      end if 
 
-      if( iface .ne. 3) then 
       call lineseg_tri(node1%posi, node2%posi, node4%posi, pt1, pt2,pt, iflag)
-      if( iflag .eq. 0 ) then 
+      if( iflag .eq. 0) then 
          iface=3 
          goto 998 
       end if  
-      end if 
 
-      if( iface .ne. 4 ) then 
       call lineseg_tri(node1%posi, node2%posi, node3%posi, pt1, pt2,pt, iflag)
-      if( iflag .eq. 0 ) then 
+      if( iflag .eq. 0) then 
          iface=4 
          goto 998 
       end if  
-      end if 
 
 
 998 continue 
 
       nextelem=m  
-      !if( iface .ne. 0 ) then  
-      if( iface .ne. oldface ) then  
+      if( iface .ne. 0 ) then  
        nextelem=crntmesh%elems(m)%nbrs(iface) 
       end if 
 
 
       if( nextelem .ne. m .and. nextelem .gt. 0) then 
           pt1 = pt 
-          ! reset oldface 
-          do oldface=1,4 
-          if( crntmesh%elems(nextelem)%nbrs(oldface) .eq. m) exit 
-          end do 
-          iface = oldface 
-          if( oldface .gt. 4) stop 
           m=nextelem       
           goto 1001 
       end if 
@@ -539,14 +523,11 @@ end function findcell
       m=nextelem 
       inelem=in_elem(crntmesh, nextelem, pt2)
       if( .not. inelem) then 
-        print *, 'searching for cell ...' 
-        !print *, pt1
-        !print *, pt2 
-        !print *, iface , oldface , iflag 
         nextelem=spiralsearch(crntmesh, m, pt2) 
         if( nextelem .le. 0) then 
          bflag=.true. 
          zgb=.true. 
+         print *, 'searching for cell ...' 
         else 
          m=nextelem 
         end if 
@@ -667,19 +648,14 @@ end function det3
 function spiralsearch(crntmesh,oldelem,pt) result(melem)  
 ! breadth-first search, starting at oldelem 
 ! returns index of element containing pt 
-use linked_list 
+
 integer :: oldelem,melem ,ii ,m , isearched 
 logical :: inelem 
 real(kind=dp), dimension(3) :: pt 
 type(mesh), pointer :: crntmesh 
-type(queue) :: q
 
-integer, dimension(:), allocatable :: visited  ! fix time permits.  Will not work if using multiple meshes 
-
-!print *, 'elements are', crntmesh%nelems
     if(.not.allocated(visited)) then 
      allocate(visited(crntmesh%nelems))
-    
      visited=0
     end if 
 
@@ -687,44 +663,42 @@ integer, dimension(:), allocatable :: visited  ! fix time permits.  Will not wor
 
     ! start spiral search
     inelem = .false.
-    call add2queuend(q,melem)
+    call add2queuend(melem)
     visited(melem) = 1
     do
-       melem=fromqueue(q )
-       !print *, 'melem value', melem
+       melem=fromqueue( )
        if( melem .eq. -1) exit
 
        inelem=in_elem(crntmesh, melem, pt)
-       !print *, 'inelem value', inelem
        if( inelem ) exit  ! success
        do ii=1,4
          m=crntmesh%elems(melem)%nbrs(ii)
-         !print *, 'm value', m
          if( m .le. 0) cycle
-         if( visited(m) .eq. 0) call add2queuend(q,m)
+         if( visited(m) .eq. 0) call add2queuend(m)
          visited(m) = 1
        end do
+
     end do
 
     ! now clear the queue
     if( melem .ne. -1) visited(melem) = 0
     isearched=0 
     do
-       ii=destroyqueue(q)
-       !print *, 'ii value', ii
+       ii=destroyqueue()
        if( ii .eq. -1) exit
        isearched=isearched+1
-       !print *, 'isearched value', isearched
        visited(ii) = 0
     end do
-    !print *, 'searched ', isearched 
-    !print *, 'melem ', melem
+!    print *, 'searched ', isearched 
 
 end function spiralsearch
 
 !******************************************************
 subroutine initsearch(crntmesh) 
 type(mesh), pointer :: crntmesh 
+
+if(.not.allocated(visited)) allocate(visited(crntmesh%nelems)) 
+visited=0 
 
 end subroutine initsearch 
 
@@ -973,7 +947,7 @@ end subroutine initsearch
            abs(area123-xsum).le.local_eps*area123) then
             iflag=0
          else
-            iflag=-2
+            iflag=-1
          endif
       endif
       goto 9999
@@ -984,7 +958,7 @@ end subroutine initsearch
       d1=sqrt(dot_product(pt-pta,pt-pta) ) 
       d2=sqrt(dot_product(ptb-pta,ptb-pta) ) 
 
-      pt = pta + (ptb-pta) * ( d1/d2 ) 
+      pt = pta + (ptb-pta) * ( d1/d2 +1.0d-6) 
 
       return
       end subroutine lineseg_tri
