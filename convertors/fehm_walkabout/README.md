@@ -5,7 +5,7 @@ Walkabout Version 1.0 (LA-CC-11-033) performs random walk particle tracking simu
 
 A typical workflow for Walkabout within the FEHM system would use LaGrit to generate unstructured grids. FEHM then provides a discretized representation of the steady-state flow field to Walkabout. Given this discrete solution, Walkabout then reconstructs a groundwater flow field, and performs the random walk particle tracking calculation. 
 
-The following FEHM files are used by Walkabout. The script **particleDriver** can be used with LaGriT to write these files from a tetrahedral mesh.  [See LaGriT Documentation](http://lanl.github.io/LaGriT)
+The following FEHM files are used by Walkabout. LaGriT can be used to write these files from a tetrahedral mesh.  [See LaGriT Documentation](http://lanl.github.io/LaGriT)
 
 * *filename*.**fehmn** - mesh geometry file with node locations and element connectivity list.
 
