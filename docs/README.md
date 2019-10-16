@@ -56,7 +56,7 @@ update and push documentation:
 git checkout gh-pages && git merge master \
   && rm -Rf about assets user-guide images search supplementary-docs \
   && mkdocs build && mv html/* . \
-  && git rm -r test/test4 \
+  && git rm -r test/ \
   && git add . && git commit -m "Update html" \
   && git push origin gh-pages \
   && git checkout master
