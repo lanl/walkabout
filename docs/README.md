@@ -44,3 +44,21 @@ mkdocs serve
 
 to run a local server (useful for development, as changes are updated
 automatically).
+
+## Pushing to GitHub
+
+To appear on GitHub pages, HTML must be built on the `gh-pages` branch.
+
+Run the following command exactly from the `walkabout/` root directory to
+update and push documentation:
+
+```
+git checkout gh-pages && git merge master \
+  && mkdocs build && mv html/* . \
+  && git rm -Rf test/test4 \
+  && git add . && git commit -m "Update html" \
+  && git push origin gh-pages \
+  && git checkout master
+```
+
+*Note: remember to commit your changes on `master` before running that command!*
