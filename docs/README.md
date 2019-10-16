@@ -10,5 +10,37 @@ Locations: https://github.com/lanl/walkabout.git; /scratch/ymp/smckinney/walkabo
 __Update in Progress__
 [Scott Painter's User's Manual](./WalkaboutUM.pdf)
 
+### Developer's Guide to Compiling Documentation
 
+Install MkDocs with:
 
+```
+pip install mkdocs
+```
+
+Install `mdx_math` extension with:
+
+```
+pip install python-markdown-math
+```
+
+Install `material` theme with:
+
+```
+pip install mkdocs-material
+```
+
+From the top level of this directory (`..`), run:
+
+```
+mkdocs build
+```
+
+to compile HTML documentation, or
+
+```
+mkdocs serve
+```
+
+to run a local server (useful for development, as changes are updated
+automatically).
