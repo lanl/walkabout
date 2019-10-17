@@ -10,4 +10,9 @@ New particleDriver and workflow with Amanzi to Walkabout is under development.
 See test repo at https://github.com/amanzi/amanzi-walkabout
 
 
-Until it is updated, please download the V1 2011 [User Manual](walkabout_amanzi.docx)
+## Online Manual V1 from 2011 with updates. 
+
+[Manual Pages]( https://lanl.github.io/walkabout/index.html)
+
+
+Download the V1 2011 [User Manual](walkabout_amanzi.docx)
