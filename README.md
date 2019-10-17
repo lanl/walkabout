@@ -1,4 +1,9 @@
 # Walkabout Version 1 (LA-CC-11-033) (Open Source) 
+ 
+
+[Manual Pages]( https://lanl.github.io/walkabout/index.html)
+
+Download the V1 2011 [User Manual](walkabout_amanzi.docx)
 
 
 Performs random walk particle tracking simulations of solute transport based on groundwater flow solutions that use fully unstructured control volume grids. Walkabout 1.0 is designed to work within the FEHM (Zyvoloski, 2007) code system, and accepts groundwater flow solutions from FEHM and computational mesh descriptions from LaGrit (Los Alamos Grid Toolbox).
