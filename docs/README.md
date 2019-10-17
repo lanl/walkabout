@@ -1,14 +1,25 @@
-# Documentation - Walkabout (V1)
-### Approved for public release; LA-UR-11-01952
+# Walkabout (V1)
 
-Repository is ready for development. This version starts from a debugged version of Soumi’s code containing OpenMP parallelization (See changelog for further detail.) <br />
+Repository is ready for development. This version starts from a debugged version of Soumi’s code containing OpenMP parallelization (See changelog for further detail.)
 
-Begin date: 07/12/16 <br />
-End date: 
-Locations: https://github.com/lanl/walkabout.git; /scratch/ymp/smckinney/walkabout/walkabout/ <br />
+Begin date: 07/12/16
+
+Locations: https://github.com/lanl/walkabout.git; /scratch/ymp/smckinney/walkabout/walkabout/ 
+
+
+## Documentation - Walkabout (V1) LA-UR-11-01952
+
 
 __Update in Progress__
-[Scott Painter's User's Manual](./WalkaboutUM.pdf)
+[Walkabout Documentation](https://lanl.github.io/walkabout/index.html)
+
+
+__Download PDF__
+[Scott Painter's User's Manual (2011)](./WalkaboutUM.pdf)
+
+
+
+
 
 ### Developer's Guide to Compiling Documentation
 
