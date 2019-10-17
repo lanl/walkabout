@@ -15,7 +15,7 @@ __Update in Progress__
 
 
 __Download PDF__
-[Scott Painter's User's Manual (2011)](./WalkaboutUM.pdf)
+[Scott Painter's User's Manual (2011)](/WalkaboutUM.pdf)
 
 
 
