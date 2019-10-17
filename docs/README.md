@@ -14,8 +14,8 @@ __Update in Progress__
 [Walkabout Documentation](https://lanl.github.io/walkabout/index.html)
 
 
-__Download PDF__
-[Scott Painter's User's Manual (2011)](/WalkaboutUM.pdf)
+__2011 PDF__
+[Scott Painter's User's Manual(https://github.com/lanl/walkabout/blob/master/docs/walkaboutUM.pdf)
 
 
 
