@@ -1,0 +1,68 @@
+# Define input and output file names
+# Use tet5 mesh with plot cell center values
+#
+define / INPUT /  walkabout.h5_med_tet.inp 
+define / OUT_FEHM / walkabout.h5_med
+define / OUT_ADJ / walkabout.h5_med.graph
+#
+
+read avs INPUT motet
+cmo / setatt / motet / imt / 1 0 0 / 1
+cmo / setatt / motet / itetclr / 1 0 0 / 1
+resetpts/itp
+
+quality
+cmo printatt motet -all- minmax
+
+# Element adjacency information.
+dump / elem_adj_elem / OUT_ADJ / motet
+
+# Output FEHM files:
+# *.fehmn
+# *_material.zone
+# *_outside.zone (top, bottom, left, right, front, back)
+# *_outside_vor.area (you may not need this)
+# *.stor (area, volume coefficients move to zero for accuracy)
+dump / zone_imt / OUT_FEHM / motet
+dump / zone_outside / OUT_FEHM / motet
+dump / coord / OUT_FEHM / motet
+
+# use voronoi median to write stor file
+# dump / stor / OUT_FEHM / mozero
+
+# write .ama and .avs files
+cmo create mopts
+copypts mopts motet
+
+# remove all except walkabout attributes
+cmo/modatt/mopts/imt1/ioflag/l
+cmo/modatt/mopts/itp1/ioflag/l
+cmo/modatt/mopts/icr1/ioflag/l
+cmo/modatt/mopts/isn1/ioflag/l
+cmo/DELATT/ mopts/ id_node
+cmo/DELATT/ mopts/ id_diff
+cmo/DELATT/ mopts/ ikey
+cmo/DELATT/ mopts/ src_cell_id
+cmo/DELATT/ mopts/ id_cell
+cmo/DELATT/ mopts/ src_zmed
+cmo/DELATT/ mopts/ xcoord
+cmo/DELATT/ mopts/ ycoord
+cmo/DELATT/ mopts/ zcoord
+
+# write Vxyz
+cmo copy mopts2 mopts
+cmo/DELATT/ mopts2/ pres
+cmo/DELATT/ mopts2/ sat
+cmo/DELATT/ mopts2/ por
+dump avs tet_data_Vxyz.dat mopts2 0 0 1 0
+cmo delete mopts2
+
+# write pres
+cmo delete mopts2
+cmo copy mopts2 mopts
+cmo/DELATT/ mopts2/ porvx
+cmo/DELATT/ mopts2/ porvy
+cmo/DELATT/ mopts2/ porvz
+dump avs tet_data_props.dat mopts2 0 0 1 0
+
+finish

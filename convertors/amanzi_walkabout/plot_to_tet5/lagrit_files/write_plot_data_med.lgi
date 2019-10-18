@@ -1,0 +1,68 @@
+# write plot cell data as point data
+
+read avs hex_plot_data.inp moplot                                               
+cmo printatt moplot -all- minmax                                                
+cmo modatt moplot imt1 ioflag l                                                 
+cmo modatt moplot itp1 ioflag l                                                 
+cmo modatt moplot isn1 ioflag l                                                 
+cmo modatt moplot icr1 ioflag l                                                 
+createpts median                                                                
+cmo printatt moplot -all- minmax                                                
+
+# write all data in one file for searches
+dump/avs /plot_all_cells.dat moplot 0 0 0 1
+
+# write data in sets of 3 for readatt 
+
+# xyz med
+cmo create motmp
+cmo copy motmp moplot
+cmo select motmp
+cmo DELATT motmp vx
+cmo DELATT motmp vy
+cmo DELATT motmp vz
+cmo DELATT motmp pres
+cmo DELATT motmp sat
+cmo DELATT motmp por
+cmo DELATT motmp porvx
+cmo DELATT motmp porvy
+cmo DELATT motmp porvz
+dump/avs /plot_xyzmed_cells.dat motmp 0 0 0 1
+cmo delete motmp
+
+# properties 
+cmo create motmp
+cmo copy motmp moplot
+cmo select motmp
+cmo DELATT motmp vx
+cmo DELATT motmp vy
+cmo DELATT motmp vz
+cmo DELATT motmp porvx
+cmo DELATT motmp porvy
+cmo DELATT motmp porvz
+cmo DELATT motmp xmed
+cmo DELATT motmp ymed
+cmo DELATT motmp zmed
+dump/avs /plot_props_cells.dat motmp 0 0 0 1
+cmo delete motmp
+
+
+
+# por velocity 
+cmo create motmp
+cmo copy motmp moplot
+cmo select motmp
+cmo DELATT motmp vx
+cmo DELATT motmp vy
+cmo DELATT motmp vz
+cmo DELATT motmp pres
+cmo DELATT motmp sat
+cmo DELATT motmp por
+cmo DELATT motmp xmed
+cmo DELATT motmp ymed
+cmo DELATT motmp zmed
+dump/avs /plot_porVxyz_cells.dat motmp 0 0 0 1
+cmo delete motmp
+
+
+finish                                                                          

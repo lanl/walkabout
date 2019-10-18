@@ -1,0 +1,112 @@
+# read plot cell center data as points
+# interpolate values on to the median tet mesh
+
+# readatt fails with memory error reading 12 attributes
+# so read 3 at a time then combine into one mesh object
+
+# plot_xyzmed_cells.dat = xmed, ymed, zmed 
+cmo create moplot 
+cmo/readatt/moplot/imt1,xic,yic,zic/1,0,0/ plot_xyzmed_cells.dat
+cmo/printatt/moplot -xyz- minmax
+
+# plot_porVxyz_cells.dat = porvx,  porvy,  porvz 
+cmo create movel
+cmo/readatt/movel/imt1,xic,yic,zic/1,0,0/ plot_porVxyz_cells.dat
+cmo/printatt/movel -xyz- minmax
+
+# plot_props_cells.dat =  pres, sat, por 
+cmo create moprop
+cmo/readatt/moprop/imt1,xic,yic,zic/1,0,0/ plot_props_cells.dat
+cmo/printatt/moprop -xyz- minmax
+
+cmo/select/moplot
+cmo/setatt/moplot/ imt / 1
+cmo/set_id/moplot/ node/ id_cell
+cmo/addatt/moplot/pres/VDOUBLE/scalar/nnodes/linear/permanent/gxaf/0.0       
+cmo/addatt/moplot/sat/VDOUBLE/scalar/nnodes/linear/permanent/gxaf/0.0       
+cmo/addatt/moplot/por/VDOUBLE/scalar/nnodes/linear/permanent/gxaf/0.0       
+cmo/addatt/moplot/porvx/VDOUBLE/scalar/nnodes/linear/permanent/gxaf/0.0       
+cmo/addatt/moplot/porvy/VDOUBLE/scalar/nnodes/linear/permanent/gxaf/0.0       
+cmo/addatt/moplot/porvz/VDOUBLE/scalar/nnodes/linear/permanent/gxaf/0.0       
+cmo/copyatt/moplot moprop/ pres xic
+cmo/copyatt/moplot moprop/ sat yic
+cmo/copyatt/moplot moprop/ por zic
+cmo/copyatt/moplot movel/ porvx xic
+cmo/copyatt/moplot movel/ porvy yic
+cmo/copyatt/moplot movel/ porvz zic
+
+# check values
+cmo/printatt/moplot/ -all- minmax
+cmo/printatt/moprop/ xic minmax
+cmo/printatt/moprop/ yic minmax
+cmo/printatt/moprop/ zic minmax
+cmo/printatt/movel/ xic minmax
+cmo/printatt/movel/ yic minmax
+cmo/printatt/movel/ zic minmax
+
+cmo/delete/movel
+cmo/delete/moprop
+cmo/select/moplot
+
+dump avs plot_to_median_pts.inp moplot
+
+######### interpolate values to the tet mesh ###########
+
+# prepare the tet mesh and zero the old attributes
+read avs walkabout.h5_med_tet.inp motet
+cmo printatt motet -all- minmax
+cmo DELATT motet vx
+cmo DELATT motet vy
+cmo DELATT motet vz
+cmo DELATT motet id_diff
+cmo DELATT motet ikey
+cmo DELATT motet src_cell_id
+cmo DELATT motet id_node
+cmo DELATT motet id_cell
+cmo DELATT motet pres
+
+cmo setatt motet src_zmed 0.
+cmo/addatt/motet/id_cell/VINT/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/porvx/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/porvy/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/porvz/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/pres/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/sat/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/por/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo / setatt / motet / imt / 1 0 0 / 1
+cmo / setatt / motet / itetclr / 1 0 0 / 1
+resetpts/itp
+
+# interpolate nearest node 
+# the plot mesh z values are within .004 of tet mesh
+interpolate/voronoi/motet id_cell  /1,0,0/moplot id_cell/ keepatt
+interpolate/voronoi/motet porvx   /1,0,0/moplot porvx/ keepatt
+interpolate/voronoi/motet porvy   /1,0,0/moplot porvy/ keepatt
+interpolate/voronoi/motet porvz   /1,0,0/moplot porvz/ keepatt
+interpolate/voronoi/motet pres    /1,0,0/moplot pres/ keepatt
+interpolate/voronoi/motet sat     /1,0,0/moplot sat/ keepatt
+interpolate/voronoi/motet por     /1,0,0/moplot por/ keepatt 
+interpolate/voronoi/motet src_zmed /1,0,0/moplot zic/  
+
+cmo/printatt/motet/ -all- minmax
+cmo/printatt/moplot/ porvx minmax
+cmo/printatt/moplot/ porvy minmax
+cmo/printatt/moplot/ porvz minmax
+cmo/printatt/moplot/ pres minmax
+cmo/printatt/moplot/ sat minmax
+cmo/printatt/moplot/ por minmax
+
+dump/ avs / walkabout.h5_med_tet.inp / motet
+
+quality
+
+cmo/modatt/motet/imt1/ioflag/l
+cmo/modatt/motet/itp1/ioflag/l
+cmo/modatt/motet/icr1/ioflag/l
+cmo/modatt/motet/isn1/ioflag/l
+
+dump avs walkabout.h5_med_tet.dat motet 0 0 1 0
+
+
+finish
+

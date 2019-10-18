@@ -1,0 +1,134 @@
+# read plot mesh cell data 
+# map plot data on to the median tet5 nodes
+# tet median nodes are centers of the plot hex cells   
+
+define / INPUT_PLOT / plot_hex_mesh.inp 
+define / INPUT_TET /  tet5_median_clrs.inp 
+define / OUT_FEHM / walkabout.h5_med
+define / OUT_ADJ /  walkabout.h5_med.graph
+define / OUT_TET /  walkabout.h5_med_tet.inp
+define / OUT_DAT /  walkabout.h5_med_tet.dat
+define / AVS_DAT /  walkabout.h5_med.avs
+define / AMA_DAT /  walkabout.h5_med.ama
+
+# Amanzi plot mesh with data on cell centers
+read INPUT_PLOT mop
+cmo/seatatt/mop/itetclr/ 1
+cmo/seatatt/mop/imt/ 1
+resetpts/itp
+cmo/set_id/ mop/ element/ id_cell
+cmo/printatt/mop/ -all- minmax
+quality
+
+# read the hextotet5 median mesh 
+read INPUT_TET motet
+cmo printatt motet -all- minmax
+
+######### map values to the tet mesh ###########
+
+# clean the tet mesh values 
+cmo printatt motet -all- minmax
+cmo DELATT motet pres
+cmo DELATT motet sat
+cmo DELATT motet por
+cmo DELATT motet porvx
+cmo DELATT motet porvy
+cmo DELATT motet porvz
+cmo DELATT motet id_diff
+cmo DELATT motet ikey
+cmo DELATT motet src_cell_id
+cmo DELATT motet id_node
+cmo DELATT motet id_cell
+cmo/addatt/motet/id_plot/VINT/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/vx_darcy/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/vy_darcy/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/vz_darcy/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/porvx/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/porvy/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/porvz/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/Pressure/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/Saturation/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo/addatt/motet/Porosity/VDOUBLE/scalar/nnodes/linear/permanent/
+cmo / setatt / motet / itetclr / 1 0 0 / 1
+resetpts/itp
+
+# map plot cell data to tet5 nodes
+interpolate/map/motet id_plot /1,0,0/mop id_cell/keepatt
+interpolate/map/motet Pressure /1,0,0/mop Pressure/keepatt
+interpolate/map/motet Saturation/1,0,0/mop Saturation/keepatt
+interpolate/map/motet Porosity /1,0,0/mop Porosity/ keepatt 
+interpolate/map/motet vx_darcy /1,0,0/mop vx_darcy/ keepatt
+interpolate/map/motet vy_darcy /1,0,0/mop vy_darcy/ keepatt
+interpolate/map/motet vz_darcy /1,0,0/mop vz_darcy/ 
+
+# convert from darcy V to por V
+cmo /printatt/ motet/ Porosity/ minmax
+math/divide/motet porvx/1,0,0/motet vx_darcy/motet Porosity
+math/divide/motet porvy/1,0,0/motet vy_darcy/motet Porosity
+math/divide/motet porvz/1,0,0/motet vz_darcy/motet Porosity
+
+# write plot minmax values
+cmo/printatt/mop/ Pressure minmax
+cmo/printatt/mop/ Saturation minmax
+cmo/printatt/mop/ vx_darcy minmax
+cmo/printatt/mop/ vy_darcy minmax
+cmo/printatt/mop/ vz_darcy minmax
+cmo/printatt/mop/ Porosity minmax
+
+# write tet minmax values
+cmo/printatt/motet/ -all- minmax
+dump/ OUT_TET / motet
+quality
+
+cmo/modatt/motet/imt1/ioflag/l
+cmo/modatt/motet/itp1/ioflag/l
+cmo/modatt/motet/icr1/ioflag/l
+cmo/modatt/motet/isn1/ioflag/l
+dump avs OUT_DAT motet 0 0 1 0
+
+# Output FEHM files:
+dump / zone_imt / OUT_FEHM / motet
+dump / zone_outside / OUT_FEHM / motet
+dump / coord / OUT_FEHM / motet
+
+# write .ama and .avs files
+cmo create mopts
+copypts mopts motet
+cmo delete motet
+
+# remove all except walkabout attributes
+cmo/modatt/mopts/imt1/ioflag/l
+cmo/modatt/mopts/itp1/ioflag/l
+cmo/modatt/mopts/icr1/ioflag/l
+cmo/modatt/mopts/isn1/ioflag/l
+cmo/DELATT/ mopts/ id_node
+cmo/DELATT/ mopts/ id_diff
+cmo/DELATT/ mopts/ ikey
+cmo/DELATT/ mopts/ src_cell_id
+cmo/DELATT/ mopts/ id_plot
+cmo/DELATT/ mopts/ src_zmed
+cmo/DELATT/ mopts/ xcoord
+cmo/DELATT/ mopts/ ycoord
+cmo/DELATT/ mopts/ zcoord
+cmo/DELATT/ mopts/ vx_darcy
+cmo/DELATT/ mopts/ vy_darcy
+cmo/DELATT/ mopts/ vz_darcy
+
+# write .ama file for walkabout
+# edit to be number of nodes
+cmo copy motmp mopts
+cmo/DELATT/ motmp/ Pressure
+cmo/DELATT/ motmp/ Saturation
+cmo/DELATT/ motmp/ Porosity
+dump avs AMA_DAT motmp 0 0 1 0
+cmo delete motmp
+
+# write .avs file for walkabout
+cmo copy motmp mopts
+cmo/DELATT/ motmp/ porvx
+cmo/DELATT/ motmp/ porvy
+cmo/DELATT/ motmp/ porvz
+dump avs AVS_DAT motmp 0 0 1 0
+
+finish
+

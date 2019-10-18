@@ -1,0 +1,97 @@
+# read plot mesh and data (cell center data from Amanzi)
+# convert darcy velocities to por velocities
+#
+# we need to read the data into the mesh since the plot
+# data do not include x,y,z and are reordered different
+# from the input hex mesh
+
+read avs plot_hex.avs moplot                                                        
+cmo setatt moplot imt 1
+cmo setatt moplot itetclr 1
+resetpts itp
+quality
+
+################ READ UNSORTED DATA TO PLOT MESH ###############
+
+cmo/addatt/moplot/vx/VDOUBLE/scalar/nelements/linear/permanent/
+cmo/addatt/moplot/vy/VDOUBLE/scalar/nelements/linear/permanent/
+cmo/addatt/moplot/vz/VDOUBLE/scalar/nelements/linear/permanent/
+cmo/addatt/moplot/pres/VDOUBLE/scalar/nelements/linear/permanent/
+cmo/addatt/moplot/sat/VDOUBLE/scalar/nelements/linear/permanent/
+cmo/addatt/moplot/por/VDOUBLE/scalar/nelements/linear/permanent/
+cmo/addatt/moplot/porvx/VDOUBLE/scalar/nelements/linear/permanent/
+cmo/addatt/moplot/porvy/VDOUBLE/scalar/nelements/linear/permanent/
+cmo/addatt/moplot/porvz/VDOUBLE/scalar/nelements/linear/permanent/
+
+# create dummy mo for reading as node attributes
+# motmp will have nnodes equal to hex mesh number of cells
+cmo create motmp                                                               
+  cmo readatt motmp/xic/1,0,0/ vx_cells.dat                  
+  cmo printatt motmp xic minmax                                                  
+  cmo/copyatt/moplot motmp / vx xic   
+  cmo printatt moplot vx minmax
+
+  cmo readatt motmp/yic/1,0,0/ vy_cells.dat                  
+  cmo printatt motmp yic minmax                                                  
+  cmo/copyatt/moplot motmp / vy yic   
+  cmo printatt moplot vy minmax
+
+  cmo readatt motmp/zic/1,0,0/ vz_cells.dat                  
+  cmo printatt motmp zic minmax                                                  
+  cmo/copyatt/moplot motmp / vz zic   
+  cmo printatt moplot vz minmax
+
+  cmo readatt motmp/zic/1,0,0/ pres_cells.dat                  
+  cmo printatt motmp zic minmax                                                  
+  cmo/copyatt/moplot motmp / pres zic   
+  cmo printatt moplot pres minmax
+
+  cmo/setatt/moplot/ sat / 1.0
+  cmo/setatt/moplot/ por / .01 
+
+#  cmo readatt motmp/zic/1,0,0/ sat_cells.dat                  
+#  cmo printatt motmp zic minmax                                                  
+#  cmo/copyatt/moplot motmp / sat zic   
+#  cmo printatt moplot sat minmax
+#
+#  cmo readatt motmp/zic/1,0,0/ por_cells.dat                  
+#  cmo printatt motmp zic minmax                                                  
+#  cmo/copyatt/moplot motmp / por zic   
+#  cmo printatt moplot por minmax
+
+  cmo/delete/motmp
+# DONE reading data
+
+# convert from darcy V to por V
+math/divide/moplot porvx/1,0,0/ moplot vx /moplot por
+math/divide/moplot porvy/1,0,0/ moplot vy /moplot por
+math/divide/moplot porvz/1,0,0/ moplot vz /moplot por
+
+cmo printatt moplot vx 1,1,1
+cmo printatt moplot por 1,1,1
+cmo printatt moplot porvx 1,1,1
+
+cmo printatt moplot -all- minmax
+
+dump avs hex_plot_data.inp moplot 
+
+# write points to help with VIS and evals
+# remove all except walkabout attributes
+
+cmo create mopts
+copypts mopts moplot
+# cmo/modatt/mopts/imt1/ioflag/l
+cmo/modatt/mopts/itp1/ioflag/l
+cmo/modatt/mopts/icr1/ioflag/l
+cmo/modatt/mopts/isn1/ioflag/l
+cmo/DELATT/ mopts/ id_node
+cmo/DELATT/ mopts/ id_cell
+cmo/DELATT/ mopts/ id_diff
+cmo/DELATT/ mopts/ ikey
+cmo/DELATT/ mopts/ src_cell_id
+
+dump avs median_data_pts.inp mopts 1 3 1 1
+dump avs median_data_pts.dat mopts 0 0 0 1
+
+finish
+

@@ -1,0 +1,138 @@
+#!/bin/csh -f
+# create walkabout files from plot mesh data
+# See /project/meshing/NTS/pahute_mesa/meshA_100_100_25/Amanzi_fit_watertable/hex_to_median_script
+# USAGE: run_plot.scr 
+#
+#  Required INPUT definition
+
+set CTIME = "2" 
+set CTIME = "notset" 
+
+#  To see times for plot data names.
+#  ncdump -h plot_data.h5
+#
+# Required INPUT files:
+#   h5_plot_output.cpp (code to read plot data and write files)
+#   plot_mesh.h5 (current Amanzi run)
+#   plot_mesh.h5 (current Amanzi run)
+#   tet5_median_clrs.inp (hextotet5 median mesh for all runs)
+#
+# OUTPUT files:
+#    walkabout.h5_med.ama
+#    walkabout.h5_med.avs
+#    walkabout.h5_med.fehmn
+#    walkabout.h5_med_tet.dat
+#    walkabout.h5_med_tet.inp
+#    walkabout.h5_med_material.zone
+#    walkabout.h5_med_outside_vor.area
+#    walkabout.h5_med_outside.zone
+# 
+
+if !( -e plot_mesh.h5 ) then
+    echo "Error: plot_mesh.h5 is missing. Early exit."
+    exit
+endif
+if !( -e plot_data.h5 ) then
+    echo "Error: plot_data.h5 is missing. Early exit."
+    exit
+endif
+if !( -e tet5_median_clrs.inp ) then
+    echo "Error: tet5_median_clrs.inp is missing. Early exit."
+    exit
+endif
+
+# check for executable h5_plot
+if !( -e h5_plot ) then
+
+  if !( -e h5_plot_output.cpp ) then
+    echo "Error: h5_plot_output.cpp is missing. Can not build h5_plot."
+    exit
+  else
+
+#  compile c++ code -----------------------------
+    echo " "
+    echo $HDF5_HOME
+    echo " "
+    g++ -I $HDF5_HOME/include -c h5_plot_output.cpp
+    g++ -o h5_plot h5_plot_output.o -L $HDF5_HOME/lib -lstdc++ -lpthread -lhdf5_hl -lhdf5 -ldl -lz -lsz
+    echo "done h5_plot"
+    if !( -e h5_plot ) then
+      echo "Error: build failed for h5_plot."
+      exit
+    endif 
+  endif
+endif
+
+# use time stamp from plot data names as first argument
+if ($CTIME == "notset") then
+    echo "Error: CTIME is notset. Use ncdump -h plot_data.h5 to select time set."
+    exit
+
+else
+    echo "Using time set: " $CTIME
+    ./h5_plot $CTIME
+endif 
+
+# run lagrit -----------------------------
+if !( -e plot_to_median_walkabout.lgi) then
+    echo "Error: lagrit command file plot_to_median_walkabout.lgi is missing. exit."
+    exit
+else
+    lagrit < plot_to_median_walkabout.lgi
+    grep rror lagrit.out
+#   create a summary file
+    cp lagrit.out lagrit_run.out.txt
+    grep Run lagrit.out > lagrit_summary.txt
+    grep Program lagrit.out >> lagrit_summary.txt
+    grep volume  lagrit.out >> lagrit_summary.txt
+    grep Material lagrit.out >> lagrit_summary.txt
+endif
+
+# fix headers ------------------------------
+
+set nstring = "notset"
+@ nnodes = 0
+@ nlines = 0
+@ nheader = 0
+
+if !( -e walkabout.h5_med.ama) then
+    echo "Error: lagrit output file walkabout.h5_med.ama is missing."
+else
+
+set nstring = `tail -1 walkabout.h5_med.ama | awk '{print $1}'`
+    @ nnodes = $nstring
+    @ nlines = `wc walkabout.h5_med.ama | awk '{print $1}'`
+    @ nheader = $nlines - $nnodes
+    echo ".ama nnodes = " $nnodes " lines = " $nlines "header = " $nheader
+    if ($nheader != 5) then
+        echo "File walkabout.h5_med.ama has modified header already, no change made."
+    else
+        mv walkabout.h5_med.ama tmp.ama
+        echo $nstring > walkabout.h5_med.ama
+        awk '{if (NR>5) print $0 }' tmp.ama >> walkabout.h5_med.ama
+    endif
+endif
+
+if !( -e walkabout.h5_med.avs) then
+    echo "Error: lagrit output file walkabout.h5_med.ama is missing."
+else
+    @ nlines = `wc walkabout.h5_med.avs | awk '{print $1}'`
+    @ nheader = $nlines - $nnodes
+    echo ".ava nnodes = " $nnodes " lines = " $nlines "header = " $nheader
+    if ($nheader != 5) then
+        echo "File walkabout.h5_med.avs has modified header already, no change made."
+    else
+        mv walkabout.h5_med.avs tmp.avs
+        awk '{if (NR>1) print $0 }' tmp.avs >> walkabout.h5_med.avs
+    endif
+endif
+
+
+echo "DONE run_plot.scr"
+echo " "
+
+# voronoi stor ------------------------------
+# If stor file is needed: 
+# voronoi -avs walkabout.h5_med_tet.inp  -cv median -o tet5_median.stor -d
+
+exit

@@ -1,0 +1,120 @@
+# read sorted original hex mesh
+# create sorted median mesh
+# DO NOT sort as point distributions differ 
+# We assume source hex mesh is in ijk order same as median
+# copy z on to median mesh nodes
+
+#### Original Hex Mesh Point Distribution ####
+# zic modified is modified later to fit watertable
+
+define X0 535000. 
+define X1 555000. 
+define Y0 4100000. 
+define Y1 4135000. 
+define Z0 -1000.
+define Z1 2200.
+define / NX / 201 
+define / NY / 351 
+define / NZ / 129 
+
+define Z1 1475.
+define NZ 100
+
+define / MED_NX / 200 
+define / MED_NY / 350 
+define / MED_NZ / 99 
+
+
+# this is just to make sure the source hex mesh has ijk order we need 
+cmo / create / motmp / / / hex
+createpts / brick / xyz / NX NY NZ / X0 Y0 Z0 / X1 Y1 Z1 / 1 1 1
+cmo/ status/ motmp brief
+cmo/set_id/motmp /node/ id_node
+quality
+
+# read avs hex_flts_wtrfit_exo.inp mohex
+read avs hex0.inp mohex
+cmo/ status/ mohex brief
+cmo/set_id/mohex /node/ id_node
+cmo/set_id/mohex /element / id_cell
+quality
+
+###########################################################
+# check for sorted mesh with positive volumes
+
+define MOGOOD motmp
+define MOSORT mohex
+
+cmo/addatt/MOGOOD id_diff /VINT/scalar/nnodes/linear/permanent//0      
+cmo/addatt/MOSORT id_diff /VINT/scalar/nnodes/linear/permanent//0      
+math/sub/MOSORT id_diff/1,0,0/ MOSORT id_node /MOGOOD id_node
+
+### CHECK FOR id_diff EQUAL TO 0
+# IF not, then something will need to be done to sort both
+cmo printatt MOSORT id_diff minmax
+cmo/delete/motmp
+
+### Median Hex Mesh ###########################################
+# Create median mesh and copy zic from zmed cell center to zic nodes
+
+cmo/select/ mohex
+createpts / median
+
+# create the connectivity with 1 less for each axis
+cmo / create / momed / / / hex
+
+# vertices on cell centers 
+createpts/brick/xyz/MED_NX MED_NY MED_NZ/X0 Y0 Z0/X1 Y1 Z1/ 0 0 0
+cmo setatt momed imt 1
+cmo setatt momed itetclr 1
+cmo/set_id/momed /node/ id_node
+cmo/set_id/momed /element / id_cell
+quality
+
+define MOGOOD mohex
+define MOSORT momed
+
+cmo/addatt/MOSORT id_diff /VINT/scalar/nnodes/linear/permanent//0
+math/sub/MOSORT id_diff/1,0,0/ MOSORT id_node /MOGOOD id_cell
+
+cmo printatt mohex -all- minmax
+cmo printatt momed -all- minmax
+dump avs tmp_median.inp momed
+cmo copy motmp mohex
+cmo select motmp
+  cmo/DELATT/ motmp / id_node
+  cmo/DELATT/ motmp / id_diff
+  dump avs xyz_median.inp motmp 0 0 0 1
+  cmo/DELATT/ motmp / xmed
+  cmo/DELATT/ motmp / ymed
+  dump avs zic_median.inp motmp 0 0 0 1
+  cmo delete motmp
+  cmo select momed
+
+### CHECK FOR id_diff EQUAL TO 0
+# IF not, then something will need to be done to sort both
+cmo printatt MOSORT id_diff minmax
+
+cmo printatt mohex zmed 1,5,1
+cmo printatt mohex zmed 6929995,6930000,1
+cmo printatt momed zic 1,5,1
+cmo printatt momed zic 6929995,6930000,1
+
+# copy elevations from source median points
+cmo/copyatt/ momed mohex / zic zmed
+
+cmo printatt mohex zmed 1,5,1
+cmo printatt mohex zmed 6929995,6930000,1
+cmo printatt momed zic 1,5,1
+cmo printatt momed zic 6929995,6930000,1
+
+cmo select mohex
+quality
+cmo select momed
+quality
+dump avs hex_median.inp  momed
+
+
+finish
+
+

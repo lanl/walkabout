@@ -1,0 +1,15 @@
+# interpolate hex cell materials to median tet nodes
+
+read hex_flts_wtrfit_exo.inp mohex
+read tet5_median.inp momed
+
+cmo printatt mohex -all- minmax
+cmo printatt momed -all- minmax
+
+cmo printatt mohex itetclr minmax
+interpolate/map/momed imt/1,0,0/mohex itetclr
+cmo printatt momed imt minmax
+
+dump avs tet5_median_clrs.inp momed
+
+finish
