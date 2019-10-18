@@ -1,7 +1,16 @@
+METHOD 3 Workflow uses Amanzi hex plot and data files instead of HDF5 data.
 
-Use run_plot.scr
+This method uses the median points of the Amanzi hex mesh, connected by hex to tet5.
+We use the Amanzi h5 plot and data files written on hex cell centers, these same centers used in Amanzi runs.
+These are copied on to the tet5 median mesh, there is therefore no interpolation of values.
+Since this tet5 mesh has tet vertices formed from the Amanzi hex centers the hex boundary nodes are not included.
+Therefore the Walkabout mesh is smaller on all sides by half a cell width.
 
-or follow steps
+LaGriT lagrit.lanl.gov and https://github.com/lanl/LaGriT
+Voronoi https://lanl.github.io/voronoi/
+Walkabout https://github.com/lanl/walkabout
+
+Use run_plot.scr or follow steps:
 
 Write script for median mesh from Amanzi plot mesh cell center data.
 This assumes the hex and tet median mesh have been created.
@@ -45,8 +54,9 @@ STEP 3a
 
 
 STEP 3b (stor file)
-If this median mesh needs a stor file:
-   module load voronoi/beta
+If this median mesh needs a median stor file instead of voronoi stor file to avoid large number of neg coefficients
+that result from a non-delaunay connected mesh.
+
    voronoi -avs tet5_at_zero.inp  -cv median -o tet5_median.stor -d
 
 
@@ -55,17 +65,6 @@ NOTES:
 To create c++ text for writing the input .lgi file:
 awk -f myfile.awk input.lgi > input_lgi.txt
 
-This is based on particleDriver and particleDriver2 
-/n/swqa/WALKABOUT/clone/walkabout/convertors/amanzi_walkabout
-partcileDriver2 under development:
-https://github.com/amanzi/amanzi-walkabout/tree/master/bin/h5output.cpp
-
-particleDriver usaage:
-build.sh
-particleDriver walkabout00001.h5 pre runLagrit
-
-This work was done outside of scripts and can be used to check script work. 
-/project/meshing/NTS/pahute_mesa/meshA_100_100_25/Amanzi_fit_watertable/hex_to_median_uniform
 
 
 

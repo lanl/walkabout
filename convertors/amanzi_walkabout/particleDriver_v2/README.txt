@@ -1,5 +1,7 @@
-Write Amanzi hex mesh converted to with hextotet5 to avoid non-convex shape issues.
-This will create a connected mesh that is NOT Delaunay.
+METHOD 2 particleDriver V2 
+This is a modification of particleDriver V1 using Amanzi HDF5 data file.
+Amanzi mesh and walkabout mesh the hex cells converted into 5 tets using LaGriT.
+This is a work around to avoid for a non-convex mesh and Delaunay is not guaranteed.
 Use new July 2018 version Amanzi to write velocities to cell nodes instead of cell centers.
 
 Amanzi will write walkabout files that are processed by particleDriver
@@ -10,12 +12,7 @@ LaGriT lagrit.lanl.gov and https://github.com/lanl/LaGriT
 Voronoi https://lanl.github.io/voronoi/
 Walkabout https://github.com/lanl/walkabout
 
-
 METHOD -----------------------------------------------
-
-This directory has extra files created when I did FEHM files first. These
-were run again in correct order with dump/exo first then FEHM files so that
-the FEHM files have the same sorted order as the Exodus mesh.
 
 IMPORTANT: tet5.inp (required) must have same node order as sorted Exodus mesh.
 
