@@ -1,9 +1,9 @@
 # Amanzi - Walkabout
 
 
-The goal is to add capability to Amanzi software to write Walkabout compatible files for modeling particle tracking. The main issue is that Amanzi is computing on general polyhedral elements and boundary faces using cell centers. Walkabout uses a tetrahedral mesh with properties on the cell vertices. 
+The goal is to add capability to Amanzi software to write Walkabout compatible files for modeling particle tracking. The main issue is that Amanzi is computing on general polyhedral elements and boundary faces using cell centers. Walkabout uses a tetrahedral mesh with properties defined on the cell vertices. 
 
-LaGriT is used as part of this workflow to connect the Amanzi points into tetrahedral elements and from this write a stor file (sparse matrix of geometric coefficients), FEHM format mesh files, and an adjacency file as required by Walkabout.
+LaGriT is used as part of this workflow to connect the Amanzi center points into tetrahedral elements and from this write files required by Walkabout. These include the the sparse matrix of geometric coefficients (FEHM .stor file), an adjacency face file, and other files as described in the [Walkabout Manual](https://lanl.github.io/walkabout/index.html).
 
 
 ## METHOD 1 
