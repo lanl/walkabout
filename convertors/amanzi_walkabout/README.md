@@ -6,7 +6,8 @@ The goal is to add capability to Amanzi software to write Walkabout compatible f
 LaGriT is used as part of this workflow to connect the Amanzi points into tetrahedral elements and from this write a stor file (sparse matrix of geometric coefficients), FEHM format mesh files, and an adjacency file as required by Walkabout.
 
 
-## METHOD 1 particleDriver V1 works with Amanzi versions before September 2017 
+## METHOD 1 
+### particleDriver V1 works with Amanzi versions before September 2017 
 
 particleDriver is a C++ program for a particle advection system using Amanzi, LaGriT, and Walkabout. It automates the process of producing input and output files for LaGrit and Walkabout from an Amanzi checkpoint file and creates data for visualization that can be used in Paraview, PlumeCalc, and Meshlab. 
 
@@ -15,7 +16,8 @@ particleDriver is a C++ program for a particle advection system using Amanzi, La
 - Walkabout Particles stop or have undefined behavior at these locations.
 
 
-## METHOD 2 particleDriver V2 Amanzi(V.88+) for non-convex meshes
+## METHOD 2 
+### particleDriver V2 Amanzi(V.88+) for non-convex meshes
 
 This new version particleDriver2 reads the h5 output from Amanzi Version 0.88 or newer. The model velocity fields are calculated on the input mesh vertices. From Konstantin; Amanzi supports multiple conservative formulations (FV, monotone FV, mixed MFD). All of them provide normal component of the Darcy velocity on a mesh face.The nodal velocity is commuted using a constrained least square algorithm, where constraints are the Neumann boundary conditions.
 
@@ -28,7 +30,8 @@ velocities interpolated onto vertices that lie along an interface are ill-define
 - A mesh that is non-convex non-Delaunay will have many negative coefficients that can impact results. Use a median .stor coefficient file as a work around.  Median stor volumes and coefficients are always positive, but the geometry is not guaranteed to be orthogonal. For median version of .stor file, see [Voronoi](https://github.com/lanl/voronoi).
 
 
-## METHOD 3 plot_to_tet5 uses Amanzi hex mesh copied on to cell center median tet mesh 
+## METHOD 3 
+### plot_to_tet5 uses Amanzi hex mesh copied on to cell center median tet mesh 
 
 This method uses LaGriT to create a tet mesh from the hex plot mesh by connecting the plot mesh cell centers. The cell centers become the tet vertices. The original mesh boundary nodes are lost in this conversion. 
 
