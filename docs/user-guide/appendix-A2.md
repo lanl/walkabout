@@ -1,13 +1,21 @@
-# Appendix A.2 Input Geometry Files 
+# Appendix A.2 Geometry
 
 Three files describing geometry of the computational grid are required, and a fourth is optional. It is anticipated that these files will be produced by the meshing software [LaGriT](https://lagrit.lanl.gov), although any mesh generation software can be used provided the output is converted to the required format.
 
 
-## A.2.1  Mesh (.fehmn) 
+The following image shows the tetrahedral mesh element and node numbers for the examples below. 
+![](../images/figure_A1.png)
 
-The **fehmn** file provides geometry information (location of nodes and lists of nodes that compose each element). See the LaGriT and FEHM manuals for details. In Walkabout Version 1.0, the **.fehmn** file must be provided in ASCII format.
 
-This example shown in Figure A-3 is a mesh with 20 nodes and 24 tet (4 node) elements.
+*Figure A2-1. Example Mesh. Element edges and numbers are blue. Mesh node numbers are black (bottom) and red (top).*
+
+
+
+## A.2.1  Mesh **`fehmn`** 
+
+The **`fehmn`** file provides the tetrahedral information (location of nodes and lists of nodes that compose each element). See the LaGriT and FEHM manuals for details. In Walkabout Version 1.0, the **`fehmn`** file must be provided in ASCII format.
+
+This example shown in Figure A2-2 is a mesh with 20 nodes and 24 tet (4 node) elements.
 ```
 coor
       20
@@ -62,16 +70,16 @@ elem
 stop
 
 ```
-*Figure A-3. Example FEHM geometry file.*
+*Figure A2-2. Example **`fehmn`** mesh file.*
 
 
-## A.2.2  Geometric Coefficient Matrix (.stor) 
+## A.2.2  Geometric Coefficients **`stor`** 
 
 
-The **.stor** file represents a sparse coefficient matrix and is used for solving PDE on a triangular or tetrahedral Delaunay mesh. The stor format is written for FEHM input and includes information about nodal connectivity and interface areas. Walkabout requires the ratio of scalar area to distance for each node-to- node connection provided in this file. 
-In Walkabout Version 1.0, the **.stor** file must be provided in ASCII format.
+The **`stor`** file represents a sparse coefficient matrix and is used for solving PDE on a triangular or tetrahedral Delaunay mesh. The stor format is written for FEHM input and includes information about nodal connectivity and interface areas. Walkabout requires the ratio of scalar area to distance for each node-to- node connection provided in this file. 
+In Walkabout Version 1.0, the **`stor`** file must be provided in ASCII format.
 
-This example shows the **.stor** file written for the mesh in Figure A-3.
+This example shows the **`stor`** file written for the mesh in Figure A2-1.
 The first 2 lines are header lines with file and model information. The third line are the matrix parameters NCOEFS, NUM_NODES, NCOEF+NUM_NODES+1, NUM_AREA_COEF, and NCONNECT_MAX.
 This is followed by sections for the voronoi volumes (for each node), Row counts, Row entries, and indices into area coefficients. The last section is the list of area coefficients.  In general this is the area of each face of the Voronoi polygon associate with node i, face j. 
 See full description at [LaGriT STOR](https://lanl.github.io/LaGriT/pages/docs/STOR_Form.html). 
@@ -138,52 +146,71 @@ fehmstor ascir8i4 LaGriT Sparse Matrix Voronoi Coefficients
  -3.200000000000E+00 -2.500000000000E+00 -1.250000000000E+00  0.000000000000E+00
 
 ```
-*Figure A-4. Example .stor geometric coefficients file.*
+*Figure A2-3. Example **`stor`** geometric coefficients file.*
 
 
 
-## A.2.3   Element adjacency list (.ealist) 
+## A.2.3   Element adjacency list **`ealist`** 
 
-The **.ealist** file provides information about element adjacency, which should not be confused with nodal connectivity. Element adjacency is not needed by FEHM, but is required by Walkabout. See the LaGriT manual for details on how to produce the element adjacency lists.
+The **`ealist`** file provides information about element adjacency, which should not be confused with nodal connectivity. Element adjacency is not needed by FEHM, but is required by Walkabout. See the LaGriT manual for details on how to produce the element adjacency lists.
 
-This example shows the **.ealist** file written for the mesh in Figure A-3.
+This example shows the **`ealist`** file written for the mesh in Figure A2-1.
 Write adjacency information to an ascii file. Write list of all elements adjacent to each element.
 File format: elem_number ean_num e1 e2 ... en where -99 indicates an outside boundary.
 
 ```
-                    1                    4                    6                  -99                   24                   13
-                    2                    4                  -99                  -99                   17                  -99
-                    3                    4                   15                  -99                   12                    8
-                    4                    4                   17                  -99                    5                   19
-                    5                    4                  -99                  -99                   23                    4
-                    6                    4                   10                  -99                    7                    1
-                    7                    4                  -99                  -99                   21                    6
-                    8                    4                   23                    9                    3                  -99
-                    9                    4                   19                  -99                    8                  -99
-                   10                    4                  -99                   14                    6                   13
-                   11                    4                   17                  -99                   19                  -99
-                   12                    4                    3                  -99                   13                  -99
-                   13                    4                   10                   12                    1                  -99
-                   14                    4                  -99                  -99                   10                   15
-                   15                    4                   23                  -99                   14                    3
-                   16                    4                   20                  -99                  -99                  -99
-                   17                    4                    2                    4                  -99                   11
-                   18                    4                   21                   24                   20                  -99
-                   19                    4                   11                  -99                    4                    9
-                   20                    4                   22                  -99                   16                   18
-                   21                    4                  -99                    7                   22                   18
-                   22                    4                   21                  -99                  -99                   20
-                   23                    4                  -99                    5                   15                    8
-                   24                    4                    1                  -99                   18                  -99
+         1            4            6          -99           24           13
+         2            4          -99          -99           17          -99
+         3            4           15          -99           12            8
+         4            4           17          -99            5           19
+         5            4          -99          -99           23            4
+         6            4           10          -99            7            1
+         7            4          -99          -99           21            6
+         8            4           23            9            3          -99
+         9            4           19          -99            8          -99
+        10            4          -99           14            6           13
+        11            4           17          -99           19          -99
+        12            4            3          -99           13          -99
+        13            4           10           12            1          -99
+        14            4          -99          -99           10           15
+        15            4           23          -99           14            3
+        16            4           20          -99          -99          -99
+        17            4            2            4          -99           11
+        18            4           21           24           20          -99
+        19            4           11          -99            4            9
+        20            4           22          -99           16           18
+        21            4          -99            7           22           18
+        22            4           21          -99          -99           20
+        23            4          -99            5           15            8
+        24            4            1          -99           18          -99
 ```
-*Figure A-4. Example .ealist element adjacency file.*
+*Figure A2-4. Example **`ealist`** element adjacency file.*
 
-## A.2.4   The cbound file
 
-The **cbound** (closed boundary) file provides a list of nodes on boundaries that are closed to transport. It has the same format as the LaGriT outside zone file, but excludes outflow boundaries. A simple strategy for producing the **cbound** file is to use LaGriT to produce a list of all outside nodes, and then remove those nodes associated with outflow boundaries.
+## A.2.4  Boundary Nodes **`cbound`**
 
-In Version 1, external faces of cells on a boundary must aligned with the principal directions in the coordinate system. That is, boundary faces must be top, bottom, left, right, back or front. See the LaGriT manual. It is important to recognize, that this restriction only applies to cell faces on boundaries. Cell faces internal to the model have no such restrictions. A node/cell may have more than one no- transport boundary face associated with it, in which case it would appear more than once in the **cbound** file.
+The **`cbound`** (closed boundary) file provides a list of nodes on boundaries that are closed to transport. It has the same format as the LaGriT outside zone file, but excludes outflow boundaries. A simple strategy for producing the **`cbound`** file is to use LaGriT to produce a list of all outside nodes, and then remove those nodes associated with outflow boundaries.
+
+In Version 1, external faces of cells on a boundary must aligned with the principal directions in the coordinate system. That is, boundary faces must be top, bottom, left, right, back or front. See the LaGriT manual. It is important to recognize, that this restriction only applies to cell faces on boundaries. Cell faces internal to the model have no such restrictions. A node/cell may have more than one no- transport boundary face associated with it, in which case it would appear more than once in the **`cbound`** file.
 
 For nodes on a no-transport boundary, Walkabout first attempts to reconstruct the nodal velocity using the unconstrained algorithm, Eq. 5. If this procedure results in inflow into the domain at the boundary node, the reconstructed velocity is used as is. If the unconstrained procedure results in outflow on a no-transport boundary, then the velocity reconstruction is repeated using the constrained procedure Eq. 7 to enforce the no-flow condition on the cell’s boundary face.
 Particles are not allowed to disperse across boundaries that are closed to transport.
+
+In the walkabout.files, we have a line:
+```
+cbound:outside_top_noflow.zone
+```
+ 
+The file outside_top_noflow.zone  has a list of node numbers that are the top outside of the mesh as shown in Figure A2-1 (red nodes).
+There are 10 nodes in this region and there is only one zone defined. The last line must be blank or start with the word "stop".
+```
+zone
+00001  top
+nnum
+     10
+     11     12     13      14      15      16      17      18      19      20
+stop
+```
+
+*Figure A2-5. Example **`cbound`** noflow boundary zone.*
 
