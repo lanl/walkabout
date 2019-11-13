@@ -7,11 +7,15 @@ In addition, to the two files always produced, a trajectory file **`trajout`** m
 See [`Appendix A.1 Control`](appendix-A1.md).
 
 
-Walkabout and SPTR use different streamline tracing algorithms. The good agreement between the two thus helps build confidence in both codes.
-For example plots using both these files see [`Verification Test 3, section 4.3`](4-verification-tests.md)
+Walkabout and SPTR use different streamline tracing algorithms. The good agreement between the two thus helps build confidence in bothe codes.
+This is done in Verification Test 3 comparing **`sptr2`** to **`trajout`** results, see [`Verification Test 3, section 4.3`](4-verification-tests.md)
 
 
-## A.4.1 PLUMECALC **`sptr2`**
+## A.4.1 Plumecalc particle tracks **`sptr2`**
+
+This streamline particle tracking file is written in FEHM sptr2 ASCII format and can be read by PLUMECALC.
+The number of particles used in the simulation, followed by the particle number, time that the particle is leaving a cell (days), and the cell that the particle is leaving, for each travel segment of each particle. 
+The example in Figure A4-1 is walkabout.sptr2 written for Test 3 (file walkabout.sptr2.ans is a copy).
 
 ```
       walkabout 1.2        20191008170857.604 
@@ -35,9 +39,9 @@ For example plots using both these files see [`Verification Test 3, section 4.3`
        16    475.15073          10425
        16    487.42966          10426
 ```
-This example is the file walkabout.sptr2 written by walkabout for Test 3.
+*Figure A4-1. This example is the file walkabout.sptr2 written for Test 3.*
 
-## A.4.2 Particles **`trajout`**
+## A.4.2 Walkabout particle tracks **`trajout`**
 
 
 The walkabout particle file format is as follows.
@@ -52,8 +56,8 @@ nsteps          ! number of steps for this track
  : ! repeat each particle block for a total for npart particles
 ```
 
-This example is the file traj.out.ans written by walkabout for Test 3.
-The max time steps is 10. The files contains 16 particle tracks.
+The example in Figure A4-2 is traj.out written for Test 3 (file traj.out.ans is a copy).
+The max time steps is 10. The file contains 16 particle tracks.
 The first particle track has 1355 lines with time, x, y, z
 The  next particle track has 1284 lines with time, x, y, z
 This is repeated for each of the 16 particle tracks.
@@ -81,6 +85,7 @@ This is repeated for each of the 16 particle tracks.
 (...)
 
 ```
+*Figure A4-2. This example is the file traj.out written for Test 3.*
 
 
 

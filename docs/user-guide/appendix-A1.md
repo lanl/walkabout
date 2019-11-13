@@ -68,12 +68,11 @@ where *`parameter_name`* is one of the following
 
 
 
-## A.1.4   Example control file
-
-Examples of **`control`** files are shown in Figures A1-1 and A1-2.
+## A.1.4   Example **`control`** files
 
 
-In this example Figure A1-1, 10000 particles are released randomly in the region between (10,-50,-50) and (10,50,50). The region is indicated by 1 0 0 which is all grid nodes.  The dispersivity_values are 40. for longitudinal dispersivity and 0. for horizontal transverse dispersivity, vertical transverse dispersivity, and molecular diffusion coefficient. 
+
+In this example shown in Figure A1-1, 10000 particles are released randomly in the region between (10,-50,-50) and (10,50,50). The region is indicated by 1 0 0 which is all grid nodes.  The dispersivity_values are 40. for longitudinal dispersivity and 0. for horizontal transverse dispersivity, vertical transverse dispersivity, and molecular diffusion coefficient. 
 
 ```
 Title – the title goes here
@@ -99,9 +98,9 @@ END
 ```
 *Figure A1-1. Example **`control`** file.*
 
-This example **`control`** file shows how to apply different transport parameters to different regions of the grid using FEHM style zone files.
+In this example shown in Figure A1-2,  different transport parameters are applied to different regions of the grid using FEHM style zone files.
 In this example,  there are 5 node regions (zone numbers 4, 9, 11, 12, and 14) in the model domain and are defined in walk06337.h5_material.zone. 
-See zone files described in Appendix A.2 Mesh Geometry Files.
+The zone file format is described under **`cbound`** in [Appendix A.2 Geometry](appendix-A2.md). 
 
 ```
 dtmax 365.25
@@ -139,5 +138,5 @@ BF
 5.0  0.5  0.5  0.0
 END
 ```
-*Figure A1-2. Example **`control`** file.*
+*Figure A1-2. Example **`control`** file with multiple regions.*
 

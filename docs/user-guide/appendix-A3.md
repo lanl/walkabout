@@ -10,7 +10,7 @@ Note: The order of values in these files must be the same order as the node numb
 The **`fin`** flux file is an FEHM restart file in ASCII format. 
 The file includes the number of mass flux values followed by mass flux value (kg/s) for each connection of each node, starting with node 1.
 If the liquid fluxes are not found in the fin file, Walkabout will terminate.
-Figure A3-2 shows an example for 20 nodes.
+Figure A3-1 shows an example for 20 nodes.
 
 ```
 FEHM V3.4.0lbUbuntu16 19-10-30   11/05/2019    15:43:07
