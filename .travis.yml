@@ -1,0 +1,32 @@
+os: 
+  - linux
+
+compiler:
+  - gcc
+
+branches:
+  only:
+    - master
+
+before_install:
+  - sudo apt-key update
+  - sudo apt-get update
+  - sudo apt-get -y -f install gfortran libz-dev
+  - pip install --user mkdocs python-markdown-math mkdocs-material
+
+script:
+  #- cd src
+  #- make walkabout
+  #- cd ..
+  - mkdocs build
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  local_dir: html/
+  github_token: $GITHUB_TOKEN
+  target_branch: gh-pages
+  keep_history: false
+  verbose: true
+  on:
+    branch: master
