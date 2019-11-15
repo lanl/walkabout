@@ -26,11 +26,11 @@ nav:
     - Known Issues: user-guide/6-known-issues.md
     - Conclusions: user-guide/7-conclusions.md
     - References: user-guide/references.md
-    - Appendix A: user-guide/appendix-A.md
-    - Appendix A1: user-guide/appendix-A1.md
-    - Appendix A2: user-guide/appendix-A2.md
-    - Appendix A3: user-guide/appendix-A3.md
-    - Appendix A4: user-guide/appendix-A4.md
+    - Appendix A Files: user-guide/appendix-A.md
+    - Appendix A.1 Control: user-guide/appendix-A1.md
+    - Appendix A.2 Geometry: user-guide/appendix-A2.md
+    - Appendix A.3 Model: user-guide/appendix-A3.md
+    - Appendix A.4 Output: user-guide/appendix-A4.md
   - About:
     - Release Notes: about/release-notes.md
     - Acknowledgements: about/acknowledgements.md
