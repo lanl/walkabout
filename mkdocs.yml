@@ -27,10 +27,10 @@ nav:
     - Conclusions: user-guide/7-conclusions.md
     - References: user-guide/references.md
     - Appendix A Files: user-guide/appendix-A.md
-    - Appendix A.1 Control: user-guide/appendix-A1.md
-    - Appendix A.2 Geometry: user-guide/appendix-A2.md
-    - Appendix A.3 Model: user-guide/appendix-A3.md
-    - Appendix A.4 Output: user-guide/appendix-A4.md
+    - A.1 Control: user-guide/appendix-A1.md
+    - A.2 Geometry: user-guide/appendix-A2.md
+    - A.3 Model: user-guide/appendix-A3.md
+    - A.4 Output: user-guide/appendix-A4.md
   - About:
     - Release Notes: about/release-notes.md
     - Acknowledgements: about/acknowledgements.md
