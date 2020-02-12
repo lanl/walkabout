@@ -3,7 +3,7 @@
 <b>Input:</b><br>
 - h5_plot_output.cpp (code to read plot data and write files)
 - plot_mesh.h5 (hex mesh from current Amanzi run)
-- plot_mesh.h5 (hex mesh data from current Amanzi run)
+- plot_data.h5 (hex mesh data from current Amanzi run)
 - tet5_median_clrs.inp (hextotet5 median mesh for all runs)
 
 <b>Output:</b><br>
