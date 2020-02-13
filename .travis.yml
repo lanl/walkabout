@@ -12,7 +12,7 @@ before_install:
   - sudo apt-key update
   - sudo apt-get update
   - sudo apt-get -y -f install gfortran libz-dev
-  - pip install --user mkdocs python-markdown-math mkdocs-material
+  - pip3 install --user mkdocs python-markdown-math mkdocs-material
 
 script:
   #- cd src
