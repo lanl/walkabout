@@ -1,0 +1,813 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="User Manual for Walkabout 1.0">
+      
+      
+      
+        <meta name="author" content="Daniel Livingston (EES-16, LANL)">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
+    
+    
+      
+        <title>Technical Basis - Walkabout</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#2-technical-basis" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Walkabout" aria-label="Walkabout" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">directions_walk</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Walkabout
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Technical Basis
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/lanl/walkabout/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    lanl/walkabout
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Walkabout" class="md-nav__button md-logo">
+      
+        <i class="md-icon">directions_walk</i>
+      
+    </a>
+    Walkabout
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/lanl/walkabout/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    lanl/walkabout
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      User Guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        User Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="1-introduction.html" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Technical Basis
+      </label>
+    
+    <a href="2-technical-basis.html" title="Technical Basis" class="md-nav__link md-nav__link--active">
+      Technical Basis
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-random-walk-particle-tracking" class="md-nav__link">
+    2.1 Random Walk Particle Tracking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-reconstruction-and-interpolation-of-the-velocity-field" class="md-nav__link">
+    2.2  Reconstruction and Interpolation of the Velocity Field
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dispersive-and-advective-displacements" class="md-nav__link">
+    Dispersive and Advective Displacements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="3-overview-of-input.html" title="Overview of Input" class="md-nav__link">
+      Overview of Input
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="4-verification-tests.html" title="Verification Tests" class="md-nav__link">
+      Verification Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="5-acceptance-tests.html" title="Acceptance Tests" class="md-nav__link">
+      Acceptance Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="6-known-issues.html" title="Known Issues" class="md-nav__link">
+      Known Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="7-conclusions.html" title="Conclusions" class="md-nav__link">
+      Conclusions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="references.html" title="References" class="md-nav__link">
+      References
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A.html" title="Appendix A Files" class="md-nav__link">
+      Appendix A Files
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A1.html" title="A.1 Control" class="md-nav__link">
+      A.1 Control
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A2.html" title="A.2 Geometry" class="md-nav__link">
+      A.2 Geometry
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A3.html" title="A.3 Model" class="md-nav__link">
+      A.3 Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A4.html" title="A.4 Output" class="md-nav__link">
+      A.4 Output
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/release-notes.html" title="Release Notes" class="md-nav__link">
+      Release Notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/acknowledgements.html" title="Acknowledgements" class="md-nav__link">
+      Acknowledgements
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/license.html" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#21-random-walk-particle-tracking" class="md-nav__link">
+    2.1 Random Walk Particle Tracking
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#22-reconstruction-and-interpolation-of-the-velocity-field" class="md-nav__link">
+    2.2  Reconstruction and Interpolation of the Velocity Field
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dispersive-and-advective-displacements" class="md-nav__link">
+    Dispersive and Advective Displacements
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lanl/walkabout/edit/master/docs/user-guide/2-technical-basis.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="2-technical-basis">2.  Technical Basis</h1>
+<p>Particle tracking methods have significant computational advantages in many situations, especially in advection-dominated systems, but clearly require accurate methods for calculating groundwater velocity. The difficulty arises because numerical solution to the flow/pressure equation typically provides flow velocities at specific locations or in some other discretized form; flow velocity at any location within the computational domain of interest must then be reconstructed from the discretized solution. How this is accomplished is highly dependent on the choice of numerical method for the flow/pressure equation and on the type of grid.</p>
+<p>For structured grids and finite-volume methods, Pollock’s method (Pollock, 1988) is widely used to establish streamlines. In Pollock’s method, an approximate analytical solution is used to move a streamline trajectory from the entrance point on a computational cell to the exit point. This method works directly on fluxes computed in a finite volume approximation and avoids explicit reconstruction of the velocity field.</p>
+<p>Streamline tracing for unstructured grids is considerably more difficult, requiring in general flow velocity to be available everywhere in the spatial region of interest. Velocity fields must, as a consequence, be reconstructed from a discretized numerical solution. Painter et al. (2011) describe a method for reconstructing velocity fields from control-volume solutions to groundwater flow. Their method is the basis for Walkabout. In contrast to most previous work on streamline tracing on unstructured grids, the emphasis is on fully unstructured grids; i.e., no restrictions are placed on the number of faces on each control volume.</p>
+<h2 id="21-random-walk-particle-tracking">2.1 Random Walk Particle Tracking</h2>
+<p>The relations used to compute the random-walk particle trajectories that simulate the advection dispersion equation have been described in detail elsewhere (e.g. Tompson and Gelhar, 1990, Labolle et al., 1996, Lichtner et al., 2002). The well- known result for particle position at time <script type="math/tex">t + \Delta t</script> is</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{align}
+\label{eq:eq1}
+\boldsymbol{X_p}(t + \Delta t) =
+\boldsymbol{X_p}(t) + \boldsymbol{A}[\boldsymbol{X_p}(t)] \Delta t +
+\boldsymbol{B} [\boldsymbol{X_p}(t)] \cdot \boldsymbol{Z} \sqrt{\Delta t}
+\end{align}
+</script>
+</p>
+<p>where <script type="math/tex">\boldsymbol{X_p}</script> is the particle location, <script type="math/tex">\boldsymbol{Z}</script> is a vector of three independent random numbers (mean of 0, variance of 1), and <script type="math/tex">\boldsymbol{A}</script> and <script type="math/tex">\boldsymbol{B}</script> are related to the porosity <script type="math/tex">\theta</script>, velocity <script type="math/tex">v</script>, and dispersion tensor <script type="math/tex">\boldsymbol{D}</script> as</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{align}
+\label{eq:eq2}
+\boldsymbol{A} = \boldsymbol{v} + \nabla \cdot \boldsymbol{D} +
+\frac{1}{\theta} \boldsymbol{D} \cdot
+\nabla \theta
+\end{align}
+</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{align}
+\label{eq:eq3}
+\boldsymbol{B} \cdot \boldsymbol{B}^T = 2 \boldsymbol{D}
+\end{align}
+</script>
+</p>
+<h2 id="22-reconstruction-and-interpolation-of-the-velocity-field">2.2  Reconstruction and Interpolation of the Velocity Field</h2>
+<p>The velocity <script type="math/tex">\boldsymbol{v}</script> is clearly needed at all points in space to simulating the random walk particle trajectories. Similarly, the dispersion tensor D, which depends on velocity, is also needed at all points in the domain of interest. The velocity field must be reconstructed from the discretized flow solution.</p>
+<p>A subset of finite volume methods is considered, wherein the domain of interest has been partitioned into control volumes formed by perpendicular bisectors between adjacent nodes in an underlying triangulation of cell centers.
+Specifically, a nodal network triangulated into a triangular (2-D) or tetrahedral (3-D) element mesh is presumed to be available. A control volume <script type="math/tex">V_i</script> is constructed around each node <script type="math/tex">i</script> in the triangulation (Figure 1) such that <script type="math/tex">V_i</script> is bounded by the set of perpendicular bisectors between node <script type="math/tex">i</script> and each of its neighbors. If Delaunay triangulation is used to construction the original triangulation, then the control volumes form the Voronoi tessellation. This particular restriction on the control volume based on perpendicular bisectors is imposed explicitly in FEHM and is a subset of the integrated finite difference (Narasimhan and Witherspoon, 1987) discretizations allowed in TOUGH2. Even in the more general case of TOUGH2, external grid generation software that are usually used to construct input mesh, typically impose similar restrictions. Note that this approach makes no assumption about the shape of the finite volume cell.</p>
+<p><img alt="Example triangulation" src="../images/figure1.jpeg" /></p>
+<p><em>Figure 1. Example triangulation and associated control volumes for a 25-node mesh in 2D. The triangulation is shown with dashed lines. The control-volume elements are shown as solid blue lines. The control volume and element boundaries coincide on the domain boundary.</em></p>
+<p>We further consider that a control-volume method with 2-point flux approximation has been used to solve for groundwater head. Specifically, the conservation equation is written for a control volume <script type="math/tex">V_i</script> as</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{align}
+\label{eq:eq4}
+S_i \left| V_i \right| \frac{\partial h_i}{\partial t} =
+\sum_{j \in N(i)} Q_{ij}
+\end{align}
+</script>
+</p>
+<p>where <script type="math/tex">S_i</script>, <script type="math/tex">h_i</script> and <script type="math/tex">V</script> are the specific storage [<script type="math/tex">L^{-1}</script>], head [<script type="math/tex">L</script>] and volume [<script type="math/tex">L^3</script>] in cell <script type="math/tex">i</script>, respectively. Here <script type="math/tex">N(i)</script> is the list of neighbors adjacent to cell <script type="math/tex">i</script>,
+<script type="math/tex">Q_{ij} \equiv \int_{V_i \cap V_j} \boldsymbol{q} \cdot \boldsymbol{n_{ij}} ds</script> is volumetric flow rate [<script type="math/tex">L^3/T</script>] through the face connecting cells <script type="math/tex">i</script> and <script type="math/tex">j</script>, and <script type="math/tex">n_{ij}</script> is the unit normal on the same face.</p>
+<p>Our interest is in the velocity vector <script type="math/tex">\boldsymbol{v} = \boldsymbol{q} / \phi</script> in the entire domain. However, the flow solution only provides the <script type="math/tex">Q_{ij}</script>, the normal components of <script type="math/tex">\boldsymbol{q}</script> at each cell face. The approach proposed and tested here has two steps. In the first step, the <script type="math/tex">Q_{ij}</script> for each cell are used to construct an approximate representative value of <script type="math/tex">\boldsymbol{q}</script> for that cell (denoted <script type="math/tex">\boldsymbol{q_i}</script>, for cell <script type="math/tex">i</script>). Second, the <script type="math/tex">\boldsymbol{q_i}</script> are then associated with the nodes and the original triangulation (dashed lines in Figure 1) is then used to interpolate to any point in the computational domain.</p>
+<p>The first step is to reconstruct cell-centered velocities. To this end, we (temporarily) approximate <script type="math/tex">\boldsymbol{q}</script> as being constant in each cell. The volumetric flow rate across the face common to cells <script type="math/tex">i</script> and <script type="math/tex">j</script> then becomes <script type="math/tex">Q_{ij} = \boldsymbol{q_i} \cdot \boldsymbol{A_{ij}}</script> where <script type="math/tex">\boldsymbol{A_{ij}} \equiv A_{ij} \boldsymbol{n_{ij}}</script> is the vector area for the face. An analogous equation can be written for each face on the cell, thus producing the linear system for each cell <script type="math/tex">i</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{align}
+\label{eq:eq5}
+\boldsymbol{G_i} \boldsymbol{q_i} = \boldsymbol{\gamma_i}
+\end{align}
+</script>
+</p>
+<p>Here <script type="math/tex">\boldsymbol{G_i}</script> is a <script type="math/tex">n \times d</script> matrix, <script type="math/tex">\boldsymbol{q_i}</script> is <script type="math/tex">d \times 1</script>, and <script type="math/tex">\boldsymbol{\gamma_i}</script> is <script type="math/tex">n_i \times 1</script>, <script type="math/tex">n_i</script> is number of neighbors for cell <script type="math/tex">i</script>, and <script type="math/tex">d</script> is dimensionality of the space. Each row of the <script type="math/tex">\boldsymbol{G_i}</script> matrix is the vector area for one face. The columns vector <script type="math/tex">\boldsymbol{\gamma_i}</script> is the volumetric flow rate across the faces, as calculated by the control volume flow code. The column vector <script type="math/tex">\boldsymbol{q_i}</script>, the darcy flux for the cell, is the unknown.</p>
+<p>In two dimensions, a control volume has a minimum of 3 sides and in many applications involving an unstructured grid will have more. Similarly, a control volume in 3-D has 4 or more sides. Thus, equation <script type="math/tex">\eqref{eq:eq5}</script> is an <script type="math/tex">n_i \times d</script> system with <script type="math/tex">n_i > d</script>; i.e. it is an overdetermined system. Following standard techniques, a least- squares estimate <script type="math/tex">\hat{q_i}</script> can be constructed for the darcy velocity <script type="math/tex">\boldsymbol{q_i}</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{align}
+\label{eq:eq6}
+\boldsymbol{\hat{q_i}} = 
+\left( \boldsymbol{G}^T \boldsymbol{G} \right) ^ {-1}
+\boldsymbol{G}^T \boldsymbol{\gamma}
+\end{align}
+</script>
+</p>
+<p>where the subscript <script type="math/tex">i</script> on <script type="math/tex">\boldsymbol{G}</script> and <script type="math/tex">\gamma</script> has been suppressed for readability. An estimate of the velocity for the cell is then obtained as <script type="math/tex">\boldsymbol{\hat{v_i}} = \frac{\hat{q_i}}{\phi} </script> where <script type="math/tex">\phi</script> is porosity in the cell.</p>
+<p>For the types of grids considered here, nodes are specified on the domain boundaries (see Figure 1). For nodes on Dirichlet boundaries, Equation <script type="math/tex">\eqref{eq:eq6}</script> can be applied as for interior nodes. For nodes on Neumann type boundaries, the specified flux constraint must be included, which leads to a linearly constrained linear least squares problem for the boundary flux vector <script type="math/tex">\boldsymbol{\hat{q_i^b}}</script> in the <script type="math/tex">i</script>-th cell</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{align}
+\label{eq:eq7}
+\boldsymbol{\hat{q_i^b}} = \underset{q_i}{\mathrm{arg\,min}}
+\left| \left| \boldsymbol{G} \boldsymbol{q_i} - \gamma \right| \right|
+\mathrm{\:subject\:to\:} \boldsymbol{Bq_i} = 
+\boldsymbol{\beta}
+\end{align}
+</script>
+</p>
+<p>where <script type="math/tex">\boldsymbol{B}</script> is a <script type="math/tex">n_i^b \times d</script> matrix, and <script type="math/tex">\beta</script> is <script type="math/tex">n_i^b \times 1; n_i^b < d</script> is the number of boundary faces for the cell in question. The matrix <script type="math/tex">\boldsymbol{B}</script> and the column vector <script type="math/tex">\boldsymbol{\beta}</script> are analogous to <script type="math/tex">\boldsymbol{G}</script> and <script type="math/tex">\boldsymbol{g}</script> but are written for the subset of faces for the cell in question that lie on the boundary. Explicit solutions are available (e.g. Amemiya, 1985)</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{align}
+\label{eq:eq8}
+\boldsymbol{\hat{q_i^b}} = \boldsymbol{\hat{q_i}} -
+\left( \boldsymbol{G}^T \boldsymbol{G} \right) ^ {-1}
+\boldsymbol{B} \left( \boldsymbol{B}^T \left( \boldsymbol{G}^T \boldsymbol{G} \right) ^ {-1} \boldsymbol{B} \right) ^ {-1}
+\left( \boldsymbol{B\hat{q_i}} - \boldsymbol{\beta} \right)
+\end{align}
+</script>
+</p>
+<p>with Equation <script type="math/tex">\eqref{eq:eq6}</script> for <script type="math/tex">\boldsymbol{\hat{q_i}}</script>. In the event that <script type="math/tex">n_i^b = d</script> (i.e. for nodes at the corners of the domain) the boundary conditions alone determine the nodal velocities.</p>
+<p>As a simple example for which an intuitively reasonable result is apparent, consider a finite-volume cell on the left boundary of a 2-D rectangular domain with dimensions, intercell fluxes and boundary flux as shown in Figure 2. Unconstrained reconstruction from Equation <script type="math/tex">\eqref{eq:eq6}</script> gives <script type="math/tex">(-1/2, -3/2)</script> for the darcy flux, equivalent to simply averaging the intercell fluxes on the left and right side to get x-velocity and averaging the top and bottom fluxes to get y-velocity. Using the constrained reconstruction Equation <script type="math/tex">\eqref{eq:eq8}</script> gives <script type="math/tex">(0, -3/2)</script>. Thus, the normal component of the darcy flux at the boundary is forced to honor the imposed no- flow condition at the boundary. These results could be intuited for the simple geometry shown in Figure 2; the utility of Equations <script type="math/tex">\eqref{eq:eq6}</script> and <script type="math/tex">\eqref{eq:eq8}</script> lies in the fact that the procedure works for finite volume cells of any shape.</p>
+<p><img alt="" src="../images/figure2.png" /></p>
+<p><em>Figure 2. A control volume on the left boundary of a computational domain. Node location is shown as the black dot. The coordinates of the control volume vertices are shown in parenthesis. The volumetric fluxes Q [<script type="math/tex">L^3/T</script>] are shown for each face (positive values indicate flow into the cell). The unconstrained velocity reconstruction equation Equation 6 gives <script type="math/tex">(-1/2, -3/2)</script>. The boundary constrained version Equation 7 gives <script type="math/tex">(0,-3/2)</script>; i.e. it forces the no-flow condition on the left side to be honored.</em></p>
+<p>Equations 6 or 8 can be applied to each cell <script type="math/tex">i</script> to obtain a discrete representation of the velocity field. The assumption of constant velocity in each cell, which was used to develop Equations 6 and 8, results in discontinuous velocities at cell faces. Discontinuous velocities can lead to mass balance errors and are generally inadequate for pathline tracing. However, these discontinuities can be easily removed through a simple smoothing procedure. Specifically, we reinterpret each <script type="math/tex">\boldsymbol{v_i}</script> as being applicable at the nodal position in the original finite element mesh. Using standard barycentric coordinates, the velocities can then be interpolated without discontinuities to any position in the domain. Note also, that derivatives of the velocity, which are needed to properly calculate dispersion tensors in a random walk particle-tracking model, are readily available from the shape functions.</p>
+<h3 id="dispersive-and-advective-displacements">Dispersive and Advective Displacements</h3>
+<p>Given the ability to interpolate <script type="math/tex">\boldsymbol{v}</script> to any point in the domain, it is a simple matter to then solve for a particle’s position. A first-order predictor-corrector method weighted to the corrector is used in Walkabout for the advective displacement. The dispersive step is first-order Euler.</p>
+<p>The time step is adaptive based on the local value of the effective velocity (<script type="math/tex">\boldsymbol{A}</script> term in Eq. <script type="math/tex">\eqref{eq:eq2}</script>) and the dispersion tensor. The time step is taken to be the smaller of <script type="math/tex">t_1</script> and <script type="math/tex">t_2</script>, where</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{align}
+\label{eq:eq9}
+t_1 = f_c \frac{\overline{l}}{v}
+\end{align}
+</script>
+</p>
+<p>
+<script type="math/tex; mode=display">
+\begin{align}
+\label{eq:eq10}
+t_2 = f_d \frac{\overline{l^2}}{4(\alpha v + D_m)}
+\end{align}
+</script>
+</p>
+<p>where <script type="math/tex">v</script> is groundwater speed, <script type="math/tex">D_m</script> is molecular diffusion coefficient, <script type="math/tex">\overline{l}</script> is the characteristic linear dimension of the local finite volume cell (cube root of the cell volume), and <script type="math/tex">\alpha</script> is maximum of the longitudinal, transverse vertical, and transverse horizontal dispersivities. The parameters <script type="math/tex">f_c</script> and <script type="math/tex">f_d</script> are user-defined limits on the time step expressed as fractions of the characteristic times for advective and dispersive displacements, respectively.</p>
+<p>If an advective time step causes a particle to cross a no-flow boundary, the time step is recursively decreased until the step does not cause the particle to cross the boundary. Dispersive steps that cause a particle to cross a no-flow boundary are rejected.</p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="1-introduction.html" title="Introduction" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Introduction
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="3-overview-of-input.html" title="Overview of Input" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Overview of Input
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Triad National Security, LLC
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="../mathjax-config.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

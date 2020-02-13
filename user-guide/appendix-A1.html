@@ -1,0 +1,808 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="User Manual for Walkabout 1.0">
+      
+      
+      
+        <meta name="author" content="Daniel Livingston (EES-16, LANL)">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
+    
+    
+      
+        <title>A.1 Control - Walkabout</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#appendix-a1-control" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Walkabout" aria-label="Walkabout" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">directions_walk</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Walkabout
+            </span>
+            <span class="md-header-nav__topic">
+              
+                A.1 Control
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/lanl/walkabout/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    lanl/walkabout
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Walkabout" class="md-nav__button md-logo">
+      
+        <i class="md-icon">directions_walk</i>
+      
+    </a>
+    Walkabout
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/lanl/walkabout/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    lanl/walkabout
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      User Guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        User Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="1-introduction.html" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2-technical-basis.html" title="Technical Basis" class="md-nav__link">
+      Technical Basis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="3-overview-of-input.html" title="Overview of Input" class="md-nav__link">
+      Overview of Input
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="4-verification-tests.html" title="Verification Tests" class="md-nav__link">
+      Verification Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="5-acceptance-tests.html" title="Acceptance Tests" class="md-nav__link">
+      Acceptance Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="6-known-issues.html" title="Known Issues" class="md-nav__link">
+      Known Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="7-conclusions.html" title="Conclusions" class="md-nav__link">
+      Conclusions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="references.html" title="References" class="md-nav__link">
+      References
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A.html" title="Appendix A Files" class="md-nav__link">
+      Appendix A Files
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        A.1 Control
+      </label>
+    
+    <a href="appendix-A1.html" title="A.1 Control" class="md-nav__link md-nav__link--active">
+      A.1 Control
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a11-initial-keyword-block" class="md-nav__link">
+    A.1.1   INITIAL keyword block
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a12-dtensor-keyword-block" class="md-nav__link">
+    A.1.2   DTENSOR keyword block
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a13-numerical-control-parameters" class="md-nav__link">
+    A.1.3   Numerical control parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a14-example-control-files" class="md-nav__link">
+    A.1.4   Example control files
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A2.html" title="A.2 Geometry" class="md-nav__link">
+      A.2 Geometry
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A3.html" title="A.3 Model" class="md-nav__link">
+      A.3 Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A4.html" title="A.4 Output" class="md-nav__link">
+      A.4 Output
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/release-notes.html" title="Release Notes" class="md-nav__link">
+      Release Notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/acknowledgements.html" title="Acknowledgements" class="md-nav__link">
+      Acknowledgements
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/license.html" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a11-initial-keyword-block" class="md-nav__link">
+    A.1.1   INITIAL keyword block
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a12-dtensor-keyword-block" class="md-nav__link">
+    A.1.2   DTENSOR keyword block
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a13-numerical-control-parameters" class="md-nav__link">
+    A.1.3   Numerical control parameters
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a14-example-control-files" class="md-nav__link">
+    A.1.4   Example control files
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lanl/walkabout/edit/master/docs/user-guide/appendix-A1.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="appendix-a1-control">Appendix A.1  Control</h1>
+<p>The <strong><code>control</code></strong> file contains two keyword blocks that allow the user to specify dispersion tensors and particle start locations. In addition, it contains numerical parameters that control the functioning of the particle tracking simulation.</p>
+<h2 id="a11-initial-keyword-block">A.1.1   INITIAL keyword block</h2>
+<p>Particle starting positions are specified in the <strong>INITIAL</strong> keyword block. The keyword block may be placed anywhere in the <strong><code>control</code></strong> file. The form of the <strong>INITIAL</strong> keyword block is as follows</p>
+<pre><code>INITIAL ! case sensitive
+dist_type
+num_part ! conditional input depends on dist_type
+location_info ! conditional input depends on dist_type
+:   ! repeat as needed
+</code></pre>
+
+<p>The <em>dist_type</em> keyword specifies how particles are to be distributed. Allowed values are <strong>MANUAL</strong>, <strong>UNIFORM</strong>, and <strong>RANDOM</strong> (case sensitive).</p>
+<p>If <strong>MANUAL</strong> is specified then a particle location must be specified for each particle. In this case, the number of particles should be entered in the <strong>num_part</strong> field and start coordinates for each particle should be entered (<strong>location_info</strong> field, one x,y,z triplet on each line).</p>
+<p>If <strong>RANDOM</strong> is specified, the particles are to be distributed randomly in a user- specified rectangular box. In this case, the number of particles should be entered in the <em>num_part</em> field and the <em>location_info</em> has two lines representing locations of minimum (first line) and maximum (second line) coordinates of the bounding box for the start region.</p>
+<p>The <strong>UNIFORM</strong> keyword is similar to the <strong>RANDOM</strong> keyword except that particles will be distributed uniformly in the region of interest. In this case, three integers should be entered in the <em>num_part</em> representing spacing in the x, y, and z directions. The <em>location_info</em> lines are identical to the <strong>RANDOM</strong> case.</p>
+<h2 id="a12-dtensor-keyword-block">A.1.2   DTENSOR keyword block</h2>
+<p>Dispersion tensor information is given in the <strong>DTENSOR</strong> keyword block. The keyword block may be placed anywhere in the <strong><code>control</code></strong> file. The form of the <strong>INITIAL</strong> keyword block is as follows</p>
+<pre><code>DTENSOR
+region_specifier !
+type ! tensor type
+dispersivities ! conditional on type
+  : ! repeat above three lines as many times as needed
+END ! terminates the keyword block
+</code></pre>
+
+<p>The <em>region_specifier</em> comes in two forms. If three integers (<em>min max stride</em>) are given, then the region comprises the nodes between <em>min</em> and <em>max</em> (inclusive) with the specified stride. The value 0 for <em>max</em> is interpreted as the last node in the grid. This format is identical to FEHM’s format for specifying nodes in a region. If <em>region_specifier</em> starts with a nonnumeric character, then it is interpreted as a filename that contains zone information. In this case, the first field of the <em>region_specifier</em> is the filename and the second field of the <em>region_specifier</em> is the zone number in the specified zone file. The zone file should be in FEHM zone file format (See Appendix A.2 Mesh Geometry Files).</p>
+<p>The <em>type</em> holds a keyword that specifies the type of the dispersion tensor. In Version 1.0, the only allowed value is <strong>BF</strong> denoting the Burnett and Frind tensor. The dispersivity_values required for the Burnett and Frind tensor are (in order) longitudinal dispersivity, horizontal transverse dispersivity, vertical transverse dispersivity, and molecular diffusion coefficient. The dispersivities have units of
+m. The molecular diffusion coefficient has units of <script type="math/tex">m^2/\mathrm{day}</script>.</p>
+<h2 id="a13-numerical-control-parameters">A.1.3   Numerical control parameters</h2>
+<p>Several numerical control parameters may also be specified in the <strong><code>control</code></strong> file. If not defined in the <strong><code>control</code></strong> file, defaults will apply. 
+The parameters are scalar values and may be written in any order. The form is</p>
+<p><em><code>parameter_name parameter_value</code></em></p>
+<p>where <em><code>parameter_name</code></em> is one of the following</p>
+<ul>
+<li>
+<p><strong>dtmax</strong> – maximum allowed value of time step in days. Optional. Defaults to 1000</p>
+</li>
+<li>
+<p><strong>dt0</strong> – initial time step in days. Optional. Defaults to 0.01</p>
+</li>
+<li>
+<p><strong>maxstretch</strong> – maximum allowed time step relative to previous time step (dimensionless). Must be greater than 1. Optional. Defaults to 1.2</p>
+</li>
+<li>
+<p><strong>maxsteps</strong> – maximum number of time steps in the simulation. A particle is terminated if maxstep timesteps are taken. Optional defaults to 100000</p>
+</li>
+<li>
+<p><strong>dxtarget</strong> – Courant factor, maximum allowed time step relative to time required to advect across the cell. Optional. Defaults to 0.1</p>
+</li>
+<li>
+<p><strong>dttarget</strong> – maximum allowed time step as fraction of characteristic time to disperse across cell. Optional. Defaults to 0.1</p>
+</li>
+<li>
+<p><strong>toutfreq</strong> – number of time steps between output of trajectory data. If 0 is specified, no trajectory output is written. Optional. Defaults to 0</p>
+</li>
+</ul>
+<h2 id="a14-example-control-files">A.1.4   Example <strong><code>control</code></strong> files</h2>
+<p>In this example shown in Figure A1-1, 10000 particles are released randomly in the region between (10,-50,-50) and (10,50,50). The region is indicated by 1 0 0 which is all grid nodes.  The dispersivity_values are 40. for longitudinal dispersivity and 0. for horizontal transverse dispersivity, vertical transverse dispersivity, and molecular diffusion coefficient. </p>
+<pre><code>Title – the title goes here
+dtmax 100   !maximum step size days
+dxtarget 0.1    !relative to grid size
+dttarget 0.1    ! relative to characteristic dispersion time 
+maxstretch 1.3
+maxsteps 100000 ! maximum number of steps allowed
+dt0 0.1   ! initial step days
+toutfreq 0  !no trajectory output
+
+INITIAL
+ RANDOM
+ 10000
+ 10.0 -50.0 -50.0
+ 10.0    50.0    50.0
+
+DTENSOR
+1 0 0
+BF  !burnett and frind tensor
+ 40. 0.0 0.0 0.0 !dispersivity values
+END
+</code></pre>
+
+<p><em>Figure A1-1. Example </em><em><code>control</code></em><em> file.</em></p>
+<p>In this example shown in Figure A1-2,  different transport parameters are applied to different regions of the grid using FEHM style zone files.
+In this example,  there are 5 node regions (zone numbers 4, 9, 11, 12, and 14) in the model domain and are defined in walk06337.h5_material.zone. 
+The zone file format is described under <strong><code>cbound</code></strong> in <a href="appendix-A2.html">Appendix A.2 Geometry</a>. </p>
+<pre><code>dtmax 365.25
+dt0 0.10
+maxstretch 1.3
+maxsteps 100000
+dxtarget 0.1
+dttarget 0.1
+seed 7127
+toutfreq 0
+INITIAL
+MANUAL
+5
+   8200.2050        30.0000      1812.0000
+   8200.2050        30.0000      1826.0000
+   8200.6150        30.0000      1840.0000
+   8200.6150        30.0000      1854.0000
+   8200.6150        30.0000      1868.0000
+
+DTENSOR
+walk06337.h5_material.zone 4
+BF
+1.0  0.1  0.1  0.0
+walk06337.h5_material.zone 9
+BF
+3.0  0.3  0.1  0.0
+walk06337.h5_material.zone 11
+BF
+10.0  1.0  1.0  0.0
+walk06337.h5_material.zone 12
+BF
+2.0  0.1  0.1  0.0
+walk06337.h5_material.zone 14
+BF
+5.0  0.5  0.5  0.0
+END
+</code></pre>
+
+<p><em>Figure A1-2. Example </em><em><code>control</code></em><em> file with multiple regions.</em></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="appendix-A.html" title="Appendix A Files" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Appendix A Files
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="appendix-A2.html" title="A.2 Geometry" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                A.2 Geometry
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Triad National Security, LLC
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="../mathjax-config.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

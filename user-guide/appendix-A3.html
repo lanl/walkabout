@@ -1,0 +1,776 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="User Manual for Walkabout 1.0">
+      
+      
+      
+        <meta name="author" content="Daniel Livingston (EES-16, LANL)">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
+    
+    
+      
+        <title>A.3 Model - Walkabout</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#appendix-a3-model" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Walkabout" aria-label="Walkabout" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">directions_walk</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Walkabout
+            </span>
+            <span class="md-header-nav__topic">
+              
+                A.3 Model
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/lanl/walkabout/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    lanl/walkabout
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Walkabout" class="md-nav__button md-logo">
+      
+        <i class="md-icon">directions_walk</i>
+      
+    </a>
+    Walkabout
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/lanl/walkabout/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    lanl/walkabout
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      User Guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        User Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="1-introduction.html" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2-technical-basis.html" title="Technical Basis" class="md-nav__link">
+      Technical Basis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="3-overview-of-input.html" title="Overview of Input" class="md-nav__link">
+      Overview of Input
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="4-verification-tests.html" title="Verification Tests" class="md-nav__link">
+      Verification Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="5-acceptance-tests.html" title="Acceptance Tests" class="md-nav__link">
+      Acceptance Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="6-known-issues.html" title="Known Issues" class="md-nav__link">
+      Known Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="7-conclusions.html" title="Conclusions" class="md-nav__link">
+      Conclusions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="references.html" title="References" class="md-nav__link">
+      References
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A.html" title="Appendix A Files" class="md-nav__link">
+      Appendix A Files
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A1.html" title="A.1 Control" class="md-nav__link">
+      A.1 Control
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A2.html" title="A.2 Geometry" class="md-nav__link">
+      A.2 Geometry
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        A.3 Model
+      </label>
+    
+    <a href="appendix-A3.html" title="A.3 Model" class="md-nav__link md-nav__link--active">
+      A.3 Model
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a31-flux-fin-or-ama" class="md-nav__link">
+    A.3.1 Flux fin or ama
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a32-properties-avs" class="md-nav__link">
+    A.3.2 Properties  avs
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A4.html" title="A.4 Output" class="md-nav__link">
+      A.4 Output
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/release-notes.html" title="Release Notes" class="md-nav__link">
+      Release Notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/acknowledgements.html" title="Acknowledgements" class="md-nav__link">
+      Acknowledgements
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/license.html" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a31-flux-fin-or-ama" class="md-nav__link">
+    A.3.1 Flux fin or ama
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a32-properties-avs" class="md-nav__link">
+    A.3.2 Properties  avs
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lanl/walkabout/edit/master/docs/user-guide/appendix-A3.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="appendix-a3-model">Appendix A.3  Model</h1>
+<p>These file are written by the modeling application. The <strong><code>fin</code></strong> (FEHM) or <strong><code>ama</code></strong> (Amanzi) file provides the internodal liquid flux values. The <strong><code>avs</code></strong> file provides Porosity, liquid saturation and liquid density used by the model application. See FEHM or Amanzi documentation for more on these files. </p>
+<p>Note: The order of values in these files must be the same order as the node numbering in the Geometry files.</p>
+<h2 id="a31-flux-fin-or-ama">A.3.1 Flux <strong><code>fin</code></strong> or <strong><code>ama</code></strong></h2>
+<p>The <strong><code>fin</code></strong> flux file is an FEHM restart file in ASCII format. 
+The file includes the number of mass flux values followed by mass flux value (kg/s) for each connection of each node, starting with node 1.
+If the liquid fluxes are not found in the fin file, Walkabout will terminate.
+Figure A3-1 shows an example for 20 nodes.</p>
+<pre><code>FEHM V3.4.0lbUbuntu16 19-10-30   11/05/2019    15:43:07
+Head versus Pressure Test - Head formulation                                    
+   365.00000000000000     
+       20 nddp
+pressure   
+    1.467096705810299        1.467096705805431        1.467096705823175        1.467096705822709    
+    1.467096705836050        1.467096705801854        1.467096705814071        1.467096705814072    
+    1.467096705832279        1.467096705826289        1.388976889740393        1.388976889740393    
+    1.388976889740393        1.388976889740393        1.388976889740393        1.388976889740393    
+    1.388976889740393        1.388976889740393        1.388976889740393        1.388976889740393    
+liquid flux
+         142
+    0.000000000000000       0.1938474885591716E-11   0.1313687996742065E-11   0.1911693415726907E-10
+  -0.1938474885591716E-11    0.000000000000000      -0.7065622914649585E-11    0.000000000000000    
+  -0.2687820700701320E-11    0.000000000000000       0.3808242471967515E-10   0.7065622914649585E-11
+    0.000000000000000       0.1852440307127056E-12    0.000000000000000       0.2831989962372493E-11
+    0.000000000000000       0.3863442649912402E-10  -0.1852440307127056E-12    0.000000000000000    
+  -0.5312303637798873E-11    0.000000000000000      -0.2977264498689923E-11    0.000000000000000    
+   0.3861995462524857E-10   0.5312303637798873E-11    0.000000000000000        0.000000000000000    
+   0.1518301965630428E-11    0.000000000000000       0.1951748899641146E-10  -0.1313687996742065E-11
+   -0.000000000000000        0.000000000000000      -0.4864976882965662E-11    0.000000000000000    
+   0.1898556528211013E-10   0.2687820700701320E-11   -0.000000000000000       0.4864976882965662E-11
+    0.000000000000000      -0.2652659151017264E-15    0.000000000000000        0.000000000000000    
+    0.000000000000000       0.3835120691436295E-10  -0.2831989962372493E-11   -0.000000000000000    
+   0.2652659151017264E-15    0.000000000000000      -0.7250601679447189E-11    0.000000000000000    
+    0.000000000000000        0.000000000000000       0.3835122750170753E-10   0.2977264498689923E-11
+   -0.000000000000000       0.7250601679447189E-11    0.000000000000000       0.2385447952538125E-11
+    0.000000000000000        0.000000000000000        0.000000000000000       0.3891768108237089E-10
+  -0.1518301965630428E-11  -0.2385447952538125E-11    0.000000000000000        0.000000000000000    
+    0.000000000000000        0.000000000000000       0.1936565887415391E-10  -0.1911693415726907E-10
+   -0.000000000000000       -0.000000000000000       -0.000000000000000        0.000000000000000    
+   -0.000000000000000       -0.000000000000000      -0.3808242471967515E-10   -0.000000000000000    
+   -0.000000000000000       -0.000000000000000        0.000000000000000        0.000000000000000    
+   -0.000000000000000        0.000000000000000       -0.000000000000000      -0.3863442649912402E-10
+   -0.000000000000000       -0.000000000000000       -0.000000000000000        0.000000000000000    
+    0.000000000000000       -0.000000000000000        0.000000000000000       -0.000000000000000    
+  -0.3861995462524857E-10   -0.000000000000000       -0.000000000000000       -0.000000000000000    
+    0.000000000000000        0.000000000000000       -0.000000000000000        0.000000000000000    
+   -0.000000000000000      -0.1951748899641146E-10   -0.000000000000000        0.000000000000000    
+    0.000000000000000        0.000000000000000       -0.000000000000000      -0.1898556528211013E-10
+   -0.000000000000000        0.000000000000000       -0.000000000000000        0.000000000000000    
+   -0.000000000000000      -0.3835120691436295E-10   -0.000000000000000        0.000000000000000    
+   -0.000000000000000        0.000000000000000        0.000000000000000       -0.000000000000000    
+  -0.3835122750170753E-10   -0.000000000000000        0.000000000000000       -0.000000000000000    
+    0.000000000000000        0.000000000000000       -0.000000000000000      -0.3891768108237089E-10
+   -0.000000000000000        0.000000000000000       -0.000000000000000        0.000000000000000    
+    0.000000000000000       -0.000000000000000      -0.1936565887415391E-10    0.000000000000000   
+</code></pre>
+
+<p><em>Figure A3-1 </em><em><code>fin</code></em><em> file with flux values</em> </p>
+<p>The <strong><code>ama</code></strong> flux file is written by Amanzi. The model velocity fields are calculated from the cell centers to the vertices in node order Vx, Vy, Vz. 
+The first line of the file is the number of nodes.
+Figure A3-2 shows an example for 20 nodes.</p>
+<pre><code>20
+0   8.30044e-06 0           1.93481e-16
+1   8.29954e-06 6.26255e-10 4.79135e-11
+2   8.29736e-06 0           -1.41345e-17
+3   8.29247e-06 2.48663e-09 1.76177e-10
+4   8.2853e-06  4.4489e-17  -1.47602e-16
+5   8.27388e-06 5.36507e-09 3.57899e-10
+6   8.25954e-06 -4.4489e-17 1.04503e-16
+7   8.24095e-06 8.23985e-09 5.3618e-10
+8   8.22015e-06 -8.8978e-17 1.78651e-16
+9   8.19713e-06 9.74832e-09 6.33088e-10
+10  8.17356e-06 -8.8978e-17 2.52799e-16
+11  8.15041e-06 9.47623e-09 6.20643e-10
+12  8.12821e-06 -4.4489e-17 -5.86235e-17
+13  8.10821e-06 7.9846e-09  5.28764e-10
+14  8.08992e-06 4.4489e-17  6.00138e-17
+15  8.07444e-06 6.07319e-09 4.06191e-10
+16  8.06076e-06 4.4489e-17  6.00138e-17
+17  8.0497e-06  4.27967e-09 2.88404e-10
+18  8.04018e-06 -4.4489e-17 -1.77261e-16
+19  8.0328e-06  2.81351e-09 1.90585e-10
+</code></pre>
+
+<p><em>Figure A3-2 </em><em><code>ama</code></em><em> file with flux values</em> </p>
+<h2 id="a32-properties-avs">A.3.2 Properties  <strong><code>avs</code></strong></h2>
+<p>Porosity, liquid saturation and liquid density are read from an ASCII <strong>avs</strong> file produced by the model application (the contour macro in FEHM). 
+This uses an AVS file format for node attributes. The first line of the header indicates number of attributes followed by integer 1 indicating scalar value for each of the four attributes. The remainder of the header is a list of attribute names with optional dimension. The header is followed by columns of node number and values for the property data (attributes).
+Figure A3-3 shows an example for 20 nodes.</p>
+<pre><code>04  1   1   1   1 
+Liquid Pressure (MPa), (MPa)
+Saturation, (no dim)
+Porosity, (no dim)
+Liquid Density (kg/m**3), (kg/m**3)
+0001  1.46709671  1.00000000  140.000000  0.100000000
+0002  1.46709671  1.00000000  140.000000  0.100000000
+0003  1.46709671  1.00000000  140.000000  0.100000000
+0004  1.46709671  1.00000000  140.000000  0.100000000
+0005  1.46709671  1.00000000  140.000000  0.100000000
+0006  1.46709671  1.00000000  140.000000  0.100000000
+0007  1.46709671  1.00000000  140.000000  0.100000000
+0008  1.46709671  1.00000000  140.000000  0.100000000
+0009  1.46709671  1.00000000  140.000000  0.100000000
+0010  1.46709671  1.00000000  140.000000  0.100000000
+0011  1.38897689  1.00000000  140.000000  0.100000000
+0012  1.38897689  1.00000000  140.000000  0.100000000
+0013  1.38897689  1.00000000  140.000000  0.100000000
+0014  1.38897689  1.00000000  140.000000  0.100000000
+0015  1.38897689  1.00000000  140.000000  0.100000000
+0016  1.38897689  1.00000000  140.000000  0.100000000
+0017  1.38897689  1.00000000  140.000000  0.100000000
+0018  1.38897689  1.00000000  140.000000  0.100000000
+0019  1.38897689  1.00000000  140.000000  0.100000000
+0020  1.38897689  1.00000000  140.000000  0.100000000
+</code></pre>
+
+<p><em>Figure A3-3 </em><em><code>avs</code></em><em> file with property values</em> </p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="appendix-A2.html" title="A.2 Geometry" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                A.2 Geometry
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="appendix-A4.html" title="A.4 Output" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                A.4 Output
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Triad National Security, LLC
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="../mathjax-config.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

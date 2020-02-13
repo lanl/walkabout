@@ -1,0 +1,872 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="User Manual for Walkabout 1.0">
+      
+      
+      
+        <meta name="author" content="Daniel Livingston (EES-16, LANL)">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
+    
+    
+      
+        <title>A.2 Geometry - Walkabout</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#appendix-a2-geometry" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Walkabout" aria-label="Walkabout" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">directions_walk</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Walkabout
+            </span>
+            <span class="md-header-nav__topic">
+              
+                A.2 Geometry
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/lanl/walkabout/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    lanl/walkabout
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Walkabout" class="md-nav__button md-logo">
+      
+        <i class="md-icon">directions_walk</i>
+      
+    </a>
+    Walkabout
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/lanl/walkabout/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    lanl/walkabout
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      User Guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        User Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="1-introduction.html" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2-technical-basis.html" title="Technical Basis" class="md-nav__link">
+      Technical Basis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="3-overview-of-input.html" title="Overview of Input" class="md-nav__link">
+      Overview of Input
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="4-verification-tests.html" title="Verification Tests" class="md-nav__link">
+      Verification Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="5-acceptance-tests.html" title="Acceptance Tests" class="md-nav__link">
+      Acceptance Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="6-known-issues.html" title="Known Issues" class="md-nav__link">
+      Known Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="7-conclusions.html" title="Conclusions" class="md-nav__link">
+      Conclusions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="references.html" title="References" class="md-nav__link">
+      References
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A.html" title="Appendix A Files" class="md-nav__link">
+      Appendix A Files
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A1.html" title="A.1 Control" class="md-nav__link">
+      A.1 Control
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        A.2 Geometry
+      </label>
+    
+    <a href="appendix-A2.html" title="A.2 Geometry" class="md-nav__link md-nav__link--active">
+      A.2 Geometry
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a21-mesh-fehmn" class="md-nav__link">
+    A.2.1  Mesh fehmn
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a22-geometric-coefficients-stor" class="md-nav__link">
+    A.2.2  Geometric Coefficients stor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a23-element-adjacency-list-ealist" class="md-nav__link">
+    A.2.3   Element adjacency list ealist
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a24-boundary-nodes-cbound" class="md-nav__link">
+    A.2.4  Boundary Nodes cbound
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A3.html" title="A.3 Model" class="md-nav__link">
+      A.3 Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A4.html" title="A.4 Output" class="md-nav__link">
+      A.4 Output
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/release-notes.html" title="Release Notes" class="md-nav__link">
+      Release Notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/acknowledgements.html" title="Acknowledgements" class="md-nav__link">
+      Acknowledgements
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/license.html" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a21-mesh-fehmn" class="md-nav__link">
+    A.2.1  Mesh fehmn
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a22-geometric-coefficients-stor" class="md-nav__link">
+    A.2.2  Geometric Coefficients stor
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a23-element-adjacency-list-ealist" class="md-nav__link">
+    A.2.3   Element adjacency list ealist
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a24-boundary-nodes-cbound" class="md-nav__link">
+    A.2.4  Boundary Nodes cbound
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lanl/walkabout/edit/master/docs/user-guide/appendix-A2.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="appendix-a2-geometry">Appendix A.2 Geometry</h1>
+<p>Three files describing geometry of the computational grid are required, and a fourth is optional. It is anticipated that these files will be produced by the meshing software <a href="https://lagrit.lanl.gov">LaGriT</a>, although any mesh generation software can be used provided the output is converted to the required format.</p>
+<p>The following image shows the tetrahedral mesh element and node numbers for the examples below. 
+<img alt="" src="../images/figure_A1.png" /></p>
+<p><em>Figure A2-1. Example Mesh. Element edges and numbers are blue. Mesh node numbers are black (bottom) and red (top).</em></p>
+<h2 id="a21-mesh-fehmn">A.2.1  Mesh <strong><code>fehmn</code></strong></h2>
+<p>The <strong><code>fehmn</code></strong> file provides the tetrahedral information (location of nodes and lists of nodes that compose each element). See the LaGriT and FEHM manuals for details. In Walkabout Version 1.0, the <strong><code>fehmn</code></strong> file must be provided in ASCII format.</p>
+<p>This example shown in Figure A2-2 is a mesh with 20 nodes and 24 tet (4 node) elements.</p>
+<pre><code>coor
+      20
+         1  0.000000000000E+00  0.000000000000E+00  0.000000000000E+00
+         2  5.000000000000E+00  0.000000000000E+00  0.000000000000E+00
+         3  1.000000000000E+01  0.000000000000E+00  0.000000000000E+00
+         4  1.500000000000E+01  0.000000000000E+00  0.000000000000E+00
+         5  2.000000000000E+01  0.000000000000E+00  0.000000000000E+00
+         6  0.000000000000E+00  8.000000000000E+00  0.000000000000E+00
+         7  5.000000000000E+00  8.000000000000E+00  0.000000000000E+00
+         8  1.000000000000E+01  8.000000000000E+00  0.000000000000E+00
+         9  1.500000000000E+01  8.000000000000E+00  0.000000000000E+00
+        10  2.000000000000E+01  8.000000000000E+00  0.000000000000E+00
+        11  0.000000000000E+00  0.000000000000E+00  8.000000000000E+00
+        12  5.000000000000E+00  0.000000000000E+00  8.000000000000E+00
+        13  1.000000000000E+01  0.000000000000E+00  8.000000000000E+00
+        14  1.500000000000E+01  0.000000000000E+00  8.000000000000E+00
+        15  2.000000000000E+01  0.000000000000E+00  8.000000000000E+00
+        16  0.000000000000E+00  8.000000000000E+00  8.000000000000E+00
+        17  5.000000000000E+00  8.000000000000E+00  8.000000000000E+00
+        18  1.000000000000E+01  8.000000000000E+00  8.000000000000E+00
+        19  1.500000000000E+01  8.000000000000E+00  8.000000000000E+00
+        20  2.000000000000E+01  8.000000000000E+00  8.000000000000E+00
+         0
+elem
+       4           24
+       1       3      12       7       8
+       2      10      15      19      20
+       3       4      13       8       9
+       4       9      14      19      10
+       5       9      14      18      19
+       6       7      12      17       8
+       7       7      12      16      17
+       8       4      13       9      14
+       9       4      14       9       5
+      10       8      12      17      13
+      11       5      14      10      15
+      12       3      13       8       4
+      13       3      12       8      13
+      14       8      13      17      18
+      15       8      13      18       9
+      16       1      11       6       2
+      17      14      15      19      10
+      18       2      11       7      12
+      19       9      14      10       5
+      20       2      11       6       7
+      21       7      11      16      12
+      22       6      11      16       7
+      23       9      13      18      14
+      24       2      12       7       3
+
+stop
+
+</code></pre>
+
+<p><em>Figure A2-2. Example </em><em><code>fehmn</code></em><em> mesh file.</em></p>
+<h2 id="a22-geometric-coefficients-stor">A.2.2  Geometric Coefficients <strong><code>stor</code></strong></h2>
+<p>The <strong><code>stor</code></strong> file represents a sparse coefficient matrix and is used for solving PDE on a triangular or tetrahedral Delaunay mesh. The stor format is written for FEHM input and includes information about nodal connectivity and interface areas. Walkabout requires the ratio of scalar area to distance for each node-to- node connection provided in this file. 
+In Walkabout Version 1.0, the <strong><code>stor</code></strong> file must be provided in ASCII format.</p>
+<p>This example shows the <strong><code>stor</code></strong> file written for the mesh in Figure A2-1.
+The first 2 lines are header lines with file and model information. The third line are the matrix parameters NCOEFS, NUM_NODES, NCOEF+NUM_NODES+1, NUM_AREA_COEF, and NCONNECT_MAX.
+This is followed by sections for the voronoi volumes (for each node), Row counts, Row entries, and indices into area coefficients. The last section is the list of area coefficients.  In general this is the area of each face of the Voronoi polygon associate with node i, face j. 
+See full description at <a href="https://lanl.github.io/LaGriT/pages/docs/STOR_Form.html">LaGriT STOR</a>. </p>
+<pre><code>fehmstor ascir8i4 LaGriT Sparse Matrix Voronoi Coefficients
+ Thu Oct 17 13:41:37 20193-D Linear Diffusion Model (matbld3d_astor)
+         4        20       113         1         5
+  4.000000000000E+01  8.000000000000E+01  8.000000000000E+01  8.000000000000E+01  4.000000000000E+01
+  4.000000000000E+01  8.000000000000E+01  8.000000000000E+01  8.000000000000E+01  4.000000000000E+01
+  4.000000000000E+01  8.000000000000E+01  8.000000000000E+01  8.000000000000E+01  4.000000000000E+01
+  4.000000000000E+01  8.000000000000E+01  8.000000000000E+01  8.000000000000E+01  4.000000000000E+01
+        21        25        30        35        40
+        44        48        53        58        63
+        67        71        76        81        86
+        90        94        99       104       109
+       113
+         1         2         6        11         1
+         2         3         7        12         2
+         3         4         8        13         3
+         4         5         9        14         4
+         5        10        15         1         6
+         7        16         2         6         7
+         8        17         3         7         8
+         9        18         4         8         9
+        10        19         5         9        10
+        20         1        11        12        16
+         2        11        12        13        17
+         3        12        13        14        18
+         4        13        14        15        19
+         5        14        15        20         6
+        11        16        17         7        12
+        16        17        18         8        13
+        17        18        19         9        14
+        18        19        20        10        15
+        19        20
+         4         1         3         3         1
+         4         1         2         2         1
+         4         1         2         2         1
+         4         1         2         2         1
+         4         3         3         3         4
+         1         3         2         1         4
+         1         2         2         1         4
+         1         2         2         1         4
+         1         2         3         1         4
+         3         3         4         1         3
+         2         1         4         1         2
+         2         1         4         1         2
+         2         1         4         1         2
+         3         1         4         3         3
+         3         4         1         2         2
+         1         4         1         2         2
+         1         4         1         2         2
+         1         4         1         3         3
+         1         4         0         0         0
+         0         0         0         0         0
+         0         0         0         0         0
+         0         0         0         0         0
+         0         0         0
+        22        27        32        37        42
+        46        51        56        61        66
+        69        74        79        84        89
+        93        98       103       108       113
+ -3.200000000000E+00 -2.500000000000E+00 -1.250000000000E+00  0.000000000000E+00
+
+</code></pre>
+
+<p><em>Figure A2-3. Example </em><em><code>stor</code></em><em> geometric coefficients file.</em></p>
+<h2 id="a23-element-adjacency-list-ealist">A.2.3   Element adjacency list <strong><code>ealist</code></strong></h2>
+<p>The <strong><code>ealist</code></strong> file provides information about element adjacency, which should not be confused with nodal connectivity. Element adjacency is not needed by FEHM, but is required by Walkabout. See the LaGriT manual for details on how to produce the element adjacency lists.</p>
+<p>This example shows the <strong><code>ealist</code></strong> file written for the mesh in Figure A2-1.
+Write adjacency information to an ascii file. Write list of all elements adjacent to each element.
+File format: elem_number ean_num e1 e2 ... en where -99 indicates an outside boundary.</p>
+<pre><code>         1            4            6          -99           24           13
+         2            4          -99          -99           17          -99
+         3            4           15          -99           12            8
+         4            4           17          -99            5           19
+         5            4          -99          -99           23            4
+         6            4           10          -99            7            1
+         7            4          -99          -99           21            6
+         8            4           23            9            3          -99
+         9            4           19          -99            8          -99
+        10            4          -99           14            6           13
+        11            4           17          -99           19          -99
+        12            4            3          -99           13          -99
+        13            4           10           12            1          -99
+        14            4          -99          -99           10           15
+        15            4           23          -99           14            3
+        16            4           20          -99          -99          -99
+        17            4            2            4          -99           11
+        18            4           21           24           20          -99
+        19            4           11          -99            4            9
+        20            4           22          -99           16           18
+        21            4          -99            7           22           18
+        22            4           21          -99          -99           20
+        23            4          -99            5           15            8
+        24            4            1          -99           18          -99
+</code></pre>
+
+<p><em>Figure A2-4. Example </em><em><code>ealist</code></em><em> element adjacency file.</em></p>
+<h2 id="a24-boundary-nodes-cbound">A.2.4  Boundary Nodes <strong><code>cbound</code></strong></h2>
+<p>The <strong><code>cbound</code></strong> (closed boundary) file provides a list of nodes on boundaries that are closed to transport. It has the same format as the LaGriT outside zone file, but excludes outflow boundaries. A simple strategy for producing the <strong><code>cbound</code></strong> file is to use LaGriT to produce a list of all outside nodes, and then remove those nodes associated with outflow boundaries.</p>
+<p>In Version 1, external faces of cells on a boundary must aligned with the principal directions in the coordinate system. That is, boundary faces must be top, bottom, left, right, back or front. See the LaGriT manual. It is important to recognize, that this restriction only applies to cell faces on boundaries. Cell faces internal to the model have no such restrictions. A node/cell may have more than one no- transport boundary face associated with it, in which case it would appear more than once in the <strong><code>cbound</code></strong> file.</p>
+<p>For nodes on a no-transport boundary, Walkabout first attempts to reconstruct the nodal velocity using the unconstrained algorithm, Eq. 5. If this procedure results in inflow into the domain at the boundary node, the reconstructed velocity is used as is. If the unconstrained procedure results in outflow on a no-transport boundary, then the velocity reconstruction is repeated using the constrained procedure Eq. 7 to enforce the no-flow condition on the cell’s boundary face.
+Particles are not allowed to disperse across boundaries that are closed to transport.</p>
+<p>In the walkabout.files, we have a line:</p>
+<pre><code>cbound:outside_top_noflow.zone
+</code></pre>
+
+<p>The file outside_top_noflow.zone  has a list of node numbers that are the top outside of the mesh as shown in Figure A2-1 (red nodes).
+There are 10 nodes in this region and there is only one zone defined. The last line must be blank or start with the word "stop".</p>
+<pre><code>zone
+00001  top
+nnum
+     10
+     11     12     13      14      15      16      17      18      19      20
+stop
+</code></pre>
+
+<p><em>Figure A2-5. Example </em><em><code>cbound</code></em><em> noflow boundary zone.</em></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="appendix-A1.html" title="A.1 Control" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                A.1 Control
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="appendix-A3.html" title="A.3 Model" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                A.3 Model
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Triad National Security, LLC
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="../mathjax-config.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

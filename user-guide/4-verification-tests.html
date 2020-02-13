@@ -1,0 +1,774 @@
+
+
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+        <meta name="description" content="User Manual for Walkabout 1.0">
+      
+      
+      
+        <meta name="author" content="Daniel Livingston (EES-16, LANL)">
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-4.6.2">
+    
+    
+      
+        <title>Verification Tests - Walkabout</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.adb8469c.css">
+      
+        <link rel="stylesheet" href="../assets/stylesheets/application-palette.a8b3c06d.css">
+      
+      
+        
+        
+        <meta name="theme-color" content="#2196f3">
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.86422ebf.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+    
+      
+    
+    
+  </head>
+  
+    
+    
+    <body dir="ltr" data-md-color-primary="blue" data-md-color-accent="deep-orange">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+          <svg xmlns="http://www.w3.org/2000/svg" width="416" height="448" viewBox="0 0 416 448" id="__github"><path fill="currentColor" d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z"/></svg>
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="#4-verification-tests" tabindex="0" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href="../index.html" title="Walkabout" aria-label="Walkabout" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon">directions_walk</i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            <span class="md-header-nav__topic">
+              Walkabout
+            </span>
+            <span class="md-header-nav__topic">
+              
+                Verification Tests
+              
+            </span>
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+          
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" aria-label="search" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+        
+      </div>
+      
+        <div class="md-flex__cell md-flex__cell--shrink">
+          <div class="md-header-nav__source">
+            
+
+
+  
+
+<a href="https://github.com/lanl/walkabout/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    lanl/walkabout
+  </div>
+</a>
+          </div>
+        </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main" role="main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href="../index.html" title="Walkabout" class="md-nav__button md-logo">
+      
+        <i class="md-icon">directions_walk</i>
+      
+    </a>
+    Walkabout
+  </label>
+  
+    <div class="md-nav__source">
+      
+
+
+  
+
+<a href="https://github.com/lanl/walkabout/" title="Go to repository" class="md-source" data-md-source="github">
+  
+    <div class="md-source__icon">
+      <svg viewBox="0 0 24 24" width="24" height="24">
+        <use xlink:href="#__github" width="24" height="24"></use>
+      </svg>
+    </div>
+  
+  <div class="md-source__repository">
+    lanl/walkabout
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../index.html" title="Home" class="md-nav__link">
+      Home
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-2" type="checkbox" id="nav-2" checked>
+    
+    <label class="md-nav__link" for="nav-2">
+      User Guide
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-2">
+        User Guide
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="1-introduction.html" title="Introduction" class="md-nav__link">
+      Introduction
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="2-technical-basis.html" title="Technical Basis" class="md-nav__link">
+      Technical Basis
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="3-overview-of-input.html" title="Overview of Input" class="md-nav__link">
+      Overview of Input
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Verification Tests
+      </label>
+    
+    <a href="4-verification-tests.html" title="Verification Tests" class="md-nav__link md-nav__link--active">
+      Verification Tests
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-verification-test-1" class="md-nav__link">
+    4.1 Verification Test 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-verification-test-2" class="md-nav__link">
+    4.2 Verification Test 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-verification-test-3" class="md-nav__link">
+    4.3 Verification Test 3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-verification-test-4" class="md-nav__link">
+    4.4 Verification Test 4
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="5-acceptance-tests.html" title="Acceptance Tests" class="md-nav__link">
+      Acceptance Tests
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="6-known-issues.html" title="Known Issues" class="md-nav__link">
+      Known Issues
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="7-conclusions.html" title="Conclusions" class="md-nav__link">
+      Conclusions
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="references.html" title="References" class="md-nav__link">
+      References
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A.html" title="Appendix A Files" class="md-nav__link">
+      Appendix A Files
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A1.html" title="A.1 Control" class="md-nav__link">
+      A.1 Control
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A2.html" title="A.2 Geometry" class="md-nav__link">
+      A.2 Geometry
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A3.html" title="A.3 Model" class="md-nav__link">
+      A.3 Model
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="appendix-A4.html" title="A.4 Output" class="md-nav__link">
+      A.4 Output
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item md-nav__item--nested">
+    
+      <input class="md-toggle md-nav__toggle" data-md-toggle="nav-3" type="checkbox" id="nav-3">
+    
+    <label class="md-nav__link" for="nav-3">
+      About
+    </label>
+    <nav class="md-nav" data-md-component="collapsible" data-md-level="1">
+      <label class="md-nav__title" for="nav-3">
+        About
+      </label>
+      <ul class="md-nav__list" data-md-scrollfix>
+        
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/release-notes.html" title="Release Notes" class="md-nav__link">
+      Release Notes
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/acknowledgements.html" title="Acknowledgements" class="md-nav__link">
+      Acknowledgements
+    </a>
+  </li>
+
+        
+          
+          
+          
+
+
+  <li class="md-nav__item">
+    <a href="../about/license.html" title="License" class="md-nav__link">
+      License
+    </a>
+  </li>
+
+        
+      </ul>
+    </nav>
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#41-verification-test-1" class="md-nav__link">
+    4.1 Verification Test 1
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#42-verification-test-2" class="md-nav__link">
+    4.2 Verification Test 2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#43-verification-test-3" class="md-nav__link">
+    4.3 Verification Test 3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#44-verification-test-4" class="md-nav__link">
+    4.4 Verification Test 4
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                  <a href="https://github.com/lanl/walkabout/edit/master/docs/user-guide/4-verification-tests.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
+                
+                
+                <h1 id="4-verification-tests">4. Verification Tests</h1>
+<p>Four verification tests are included with the Walkabout distribution.</p>
+<h2 id="41-verification-test-1">4.1 Verification Test 1</h2>
+<p>In the first verification test, particles are released form a point source into a uniform flow aligned with the x-axis. The 1st and 2nd moments of the particle positions at time t have analytical solutions for this configuration. The 1st moment of the particle position is <script type="math/tex">(vt,0,0)</script>, where <script type="math/tex">v</script> is flow speed. The 2nd moment is <script type="math/tex">(2\alpha_L vt, 2 \alpha_T^H vt, 2 \alpha_T^V vt)</script> where <script type="math/tex">\alpha_L</script> is longitudinal dispersivity, <script type="math/tex">\alpha_T^H</script> is horizontal transverse dispersivity, and <script type="math/tex">\alpha_T^V</script> is vertical transverse dispersivity.</p>
+<p>The flow speed in Test 1 is 0.839 m/day. The computational domain is 100 m x 100 m x 100 m. There are four variants of Test 1, with different dispersivity values (Table 1). Tests 1a – 1c use a regular grid with 26 nodes in each direction. Test 1d uses an unstructured grid with uniform properties (Figure 3). Note that the computational cell size is 4 m in each direction in Tests 1a – 1c. For Test1d, the smallest grid size is 1 m in the direction of flow. The grid Peclet numbers range from 1.33 to infinity for these tests.</p>
+<p>Results from Verification Tests 1a – 1c are shown in Figures 4 – 7. In each figure, the individual points are from Walkabout and the lines are the theoretical results.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Grid</th>
+<th>
+<script type="math/tex">\alpha_L (m)</script>
+</th>
+<th>
+<script type="math/tex">\alpha_T^H (m)</script>
+</th>
+<th>
+<script type="math/tex">\alpha_T^V (m)</script>
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Test 1a</td>
+<td>Regular, 26x26x26</td>
+<td>1</td>
+<td>0.1</td>
+<td>0.01</td>
+</tr>
+<tr>
+<td>Test 1b</td>
+<td>Regular, 26x26x26</td>
+<td>3</td>
+<td>0.1</td>
+<td>0.3</td>
+</tr>
+<tr>
+<td>Test 1c</td>
+<td>Regular, 26x26x26</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>Test 1d</td>
+<td>Unstructured, 179925 cells</td>
+<td>1</td>
+<td>0.2</td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
+<p><em>Table 1. Grid type and dispersivity values for Verification Test 1.</em></p>
+<p><img alt="" src="../images/figure3.png" /></p>
+<p><em>Figure 3. Horizontal slice from unstructured grid used in Test 1d. The grid is uniform in the vertical direction (not shown). Flow properties are uniform in this test. Flow is from left to right (uniform flow).</em></p>
+<p><img alt="" src="../images/figure4.png" /></p>
+<p><em>Figure 4. Result from Verification Test 1a. Shown on left are 1st (red dots) and 2nd (black dots) moments in x-position from Walkabout along with theoretical results (lines). Shown on right are 2nd moments in y-position (red dots) and z-position (black dots) along with theoretical results (lines).</em></p>
+<p><img alt="" src="../images/figure5.png" /></p>
+<p><em>Figure 5. Result from Verification Test 1b. Shown on left are 1st (red dots) and 2nd (black dots) moments in x-position from Walkabout along with theoretical results (lines). Shown on right are 2nd moments in y-position (red dots) and z-position (black dots) along with theoretical results (lines).</em></p>
+<p><img alt="" src="../images/figure6.png" /></p>
+<p><em>Figure 6. Result from Verification Test 1c. Shown on left are 1st (red dots) and 2nd (black dots) moments in x-position from Walkabout along with theoretical results (lines). Shown on right are 2nd moments in y-position (red dots) and z-position (black dots) along with theoretical results (lines).</em></p>
+<p><img alt="" src="../images/figure7.png" /></p>
+<p><em>Figure 7. Result from Verification Test 1d. Shown on left are 1st (red dots) and 2nd (black dots) moments in x-position from Walkabout along with theoretical results (lines). Shown on right are 2nd moments in y-position (red dots) and z-position (black dots) along with theoretical results (lines).</em></p>
+<h2 id="42-verification-test-2">4.2 Verification Test 2</h2>
+<p>Verification Test 2 is designed to test Walkabout in a nonuniform flow field. The grid is the same as Test 1d. Lower permeability is assigned to two regions, creating two non-overlapping barriers (Figure 8). A flow streamline around the two barriers is also shown in Figure 8. The travel distance along the streamline is
+115.6 m. The travel time for flow tracer is 230.5 days.</p>
+<p>In Test2, particles are released at the point (10,50,50) and tracked through the system without transverse dispersion. Two variants are considered with longitudinal dispersivity of 1 and 10 m.</p>
+<p>Without transverse dispersion, particles should travel along the streamline upon which they are launched. Given the total travel distance and the total travel time along the streamline and adopting a Lagrangian transport perspective, the cumulative distribution of arrival times for particles at the outflow is given by Equation A-2 of Painter et al. (2008) irrespective of the streamline meander or velocity variability along the streamline. A comparison of the Walkabout results and Equation A-2 of Painter et al. (2008) is shown in Figure 9.</p>
+<p><img alt="" src="../images/figure8.png" /></p>
+<p><em>Figure 8. Horizontal projection of flow streamline for Verification Test 2. Particles are released on this streamline and tracked without transverse dispersion.</em></p>
+<p><img alt="" src="../images/figure9.png" /></p>
+<p><em>Figure 9. Results from Verification Test 2. Shown are cumulative distributions of particle arrival time from Walkabout (red dots) compared with theoretical results (blue curves) for dispersivity of 1 m and 10 m. Note the arrival time is shown normalized by the non-dispersive travel time (230.5 days).</em></p>
+<h2 id="43-verification-test-3">4.3 Verification Test 3</h2>
+<p>Verification Test 3 compares Walkabout streamline tracing to the SPTR module of FEHM without dispersion. The flow configuration is the baffled flow configuration as in Verification Test 2. In this test, 8 streamlines are traced through the system with SPTR and Walkabout. Both trajectories and arrival times are compared.</p>
+<p>Trajectories are shown in Figure 10. The trajectories overplot each other and only small differences are discernable. Note that Walkabout and SPTR use different streamline tracing algorithms. The good agreement between the two thus helps build confidence in both codes.</p>
+<p>A cross-plot of SPTR and Walkabout arrival times is shown in Figure 11. The blue line is the line of perfect agreement. Again there is an excellent agreement between the two codes over the entire range tested.</p>
+<p><img alt="" src="../images/figure10.png" /></p>
+<p><em>Figure 10. Results of Verification Test 3. Shown are horizontal projections of streamlines calculated by SPTR (solid blue) and Walkabout (red dashed).</em></p>
+<p><img alt="" src="../images/figure11.png" /></p>
+<p><em>Figure 11. Result of Verification Test 3. Shown is a crossplot (red dots) of Walkabout arrival times versus SPTR times. The solid blue line has slope 1 (line of perfect agreement).</em></p>
+<h2 id="44-verification-test-4">4.4 Verification Test 4</h2>
+<p>Verification Test 4 is a simple flow-through configuration with cross-section of 100 m • 100 m and length 20,000 m. The groundwater velocity is 1.96 ft/day. There are 106, 4 and 4 nodes in the x-, y-, and z- directions, respectively. The grid is uniform with 200 m spacing in the x direction except for the region from 10000 m to 11000 m where it is refined to 100 m.</p>
+<p>For this test, Walkabout particle tracks are post-processed to create concentration versus distance at a single time, using the procedure of Robinson et al. (2010). A helper program PCLITE is included with the Walkabout distribution to postprocess the Walkabout results.</p>
+<p>Concentration versus position at 5500 days is shown in Figure 12. The solid curve is the analytical solution from Kreft and Zuber (1978). The dots are the result of the Walkabout. The agreement is good over the entire domain. The slightly smaller concentration in the first cell is a dilution effect caused by the fact that the particles are released at x=10 m and not on the inlet boundary. Note that there are no artifacts in the refined grid region from 10,000 m to 11,000 m.</p>
+<p><img alt="" src="../images/figure12.png" /></p>
+<p><em>Figure 12. Result of Verification Test 4. Shown is concentration versus distance at 5500 days. Black dots are the result of Walkabout after post-processing using the procedure of Robinson et al. (2010). The blue curve is the analytical solution from Kreft and Zuber (1978).</em></p>
+                
+                  
+                
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href="3-overview-of-input.html" title="Overview of Input" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                Overview of Input
+              </span>
+            </div>
+          </a>
+        
+        
+          <a href="5-acceptance-tests.html" title="Acceptance Tests" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Acceptance Tests
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2019 Triad National Security, LLC
+          </div>
+        
+        powered by
+        <a href="https://www.mkdocs.org" target="_blank" rel="noopener">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs</a>
+      </div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.c33a9706.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+        <script src="../mathjax-config.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>

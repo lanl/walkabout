@@ -1,0 +1,49 @@
+*   commit e8234f740488861d1afa1cee5d7edf5e4657cf77
+|\  Merge: 7b370b0 c429a72
+| | Author: shane-mckinney <smckinney@lanl.gov>
+| | Date:   Tue May 31 10:26:55 2016 -0600
+| | 
+| |     Merged tracktools manually
+| |     
+| *   commit c429a7229639e05ec3deb49fdd801e1aaa589d7b
+| |\  Merge: 6d787ef 251c146
+| | | Author: zhiming <zhiming@lanl.gov>
+| | | Date:   Fri May 27 16:16:57 2016 -0600
+| | | 
+| | |     Merge branch 'master' of https://github.com/dharp/walkabout
+| | |    
+| | * commit 251c146196d2781a570edef2f306f3cf8c09e47c
+| | | Author: Ethan Coon <ecoon@lanl.gov>
+| | | Date:   Thu Feb 25 16:18:29 2016 -0700
+| | | 
+| | |     removes some debugging cruft, adds debug flags to Makefile
+| | |    
+| * | commit 6d787efd1dafbcb768c898c0e1a1c16dc82fafbe
+| |/  Author: zhiming <zhiming@lanl.gov>
+| |   Date:   Thu May 26 15:32:53 2016 -0600
+| |   
+| |       uncommented vreconbound and reconstruct_vel
+| |   
+* | commit 7b370b0cf892b43154d6287f424021ec4ef611bc
+|/  Author: Shane Wesley Mckinney <smckinney@susfty-illposed.lanl.gov>
+|   Date:   Tue May 31 09:59:49 2016 -0600
+|   
+|       Muted debugging output
+|  
+* commit 5706a2db42b802f19ba30f835a518dd38e41ab7d
+| Author: Ethan Coon <ecoon@lanl.gov>
+| Date:   Wed Feb 24 22:50:52 2016 -0700
+| 
+|     char length
+|  
+* commit 1bf414191fec789d7495a8bd8d4cbce752fd6774
+| Author: Ethan Coon <ecoon@lanl.gov>
+| Date:   Wed Feb 24 22:35:33 2016 -0700
+| 
+|     initial commit of partially cleaned walkabout code
+|  
+* commit a31cede793f860b52580e2d0145bdad89acda968
+  Author: Ethan Coon <ecoon@lanl.gov>
+  Date:   Wed Feb 24 22:29:17 2016 -0700
+  
+      initial commit with gitignore

@@ -1,0 +1,192 @@
+@  changeset:   22:78c04b261ce7
+|  tag:         tip
+|  user:        spainter@lanl.gov
+|  date:        Wed Nov 09 11:18:22 2011 -0700
+|  files:       SRC/walkabout.f90
+|  description:
+|  refined time step algorithm
+|
+|
+o  changeset:   21:7d25d9a393dc
+|  user:        spainter@lanl.gov
+|  date:        Wed Nov 09 09:33:35 2011 -0700
+|  files:       SRC/bftensor.f90 SRC/io.f90 SRC/tracktools.f90 SRC/walkabout.f90
+|  description:
+|  fixed problem with code hanging in intersectface
+|
+|
+o  changeset:   20:c3ed1c8bf6be
+|  user:        spainter@lanl.gov
+|  date:        Tue Nov 08 16:58:40 2011 -0700
+|  files:       SRC/tracktools.f90 SRC/walkabout.f90
+|  description:
+|  changed warning to something less cryptic
+|
+|
+o  changeset:   19:c80a2103f366
+|  user:        spainter@lanl.gov
+|  date:        Thu Oct 13 16:41:57 2011 -0600
+|  files:       SRC/cell_class.f90 SRC/flowfield_class.f90 SRC/io.f90 SRC/mesh_class.f90
+|  description:
+|  Version 1.1
+|
+|
+o  changeset:   18:9c8e0572b5ce
+|  user:        spainter@lanl.gov
+|  date:        Tue Oct 04 17:28:00 2011 -0600
+|  files:       SRC/bftensor.f90
+|  description:
+|  eliminated dispersion calculation for case with zero dispersivity
+|
+|
+o  changeset:   17:a7fea8388b39
+|  user:        spainter@lanl.gov
+|  date:        Tue Oct 04 17:17:57 2011 -0600
+|  files:       SRC/walkabout.f90
+|  description:
+|  updated seed initialization from system clock
+|
+|
+o  changeset:   16:b27086b989bd
+|  user:        spainter@lanl.gov
+|  date:        Mon May 09 16:18:19 2011 -0600
+|  files:       SRC/bftensor.f90 SRC/flowfield_class.f90 SRC/makefile SRC/mesh_class.f90
+|  description:
+|  minor updates to avoid divide by zero
+|   with small velocity
+|
+|
+o  changeset:   15:b6812ccf5220
+|  user:        spainter@lanl.gov
+|  date:        Fri Apr 08 11:46:12 2011 -0600
+|  files:       SRC/pclite
+|  description:
+|  removed extraneous files
+|
+|
+o    changeset:   14:f7809a5da5a6
+|\   parent:      12:a7bf9f7cf36d
+| |  parent:      13:7435b14bdbb0
+| |  user:        spainter@lanl.gov
+| |  date:        Fri Apr 08 11:35:42 2011 -0600
+| |  files:       VerificationTests/Test1c/tmpfile VerificationTests/Test1d/tmpfile
+| |  description:
+| |  merge
+| |
+| |
+| o  changeset:   13:7435b14bdbb0
+| |  parent:      9:a6c446ea392f
+| |  user:        spainter@brine.lanl.gov
+| |  date:        Fri Apr 08 11:34:03 2011 -0600
+| |  files:       VerificationTests/Test1c/tmpfile VerificationTests/Test1d/tmpfile
+| |  description:
+| |  removed extraneous files
+| |
+| |
+o |  changeset:   12:a7bf9f7cf36d
+|\|  parent:      11:aec7e96e6331
+| |  parent:      9:a6c446ea392f
+| |  user:        spainter@lanl.gov
+| |  date:        Fri Apr 08 11:26:47 2011 -0600
+| |  files:       VerificationTests/Test1c/tmpfile VerificationTests/Test1d/tmpfile
+| |  description:
+| |  merged
+| |
+| |
+o |  changeset:   11:aec7e96e6331
+| |  user:        spainter@lanl.gov
+| |  date:        Fri Apr 08 11:26:05 2011 -0600
+| |  files:       SRC/walkabout.f90 VerificationTests/Test1c/tmpfile VerificationTests/Test1d/tmpfile VerificationTests/runit.s
+| |  description:
+| |  added copyright disclaimer
+| |
+| |
+o |  changeset:   10:7d714ee7911f
+| |  parent:      7:e8a6dfe2d3f9
+| |  user:        spainter@lanl.gov
+| |  date:        Tue Mar 29 17:12:57 2011 -0600
+| |  files:       VerificationTests/Test4/sptr2
+| |  description:
+| |  update test4
+| |
+| |
+| o  changeset:   9:a6c446ea392f
+| |  user:        spainter@brine.lanl.gov
+| |  date:        Fri Apr 08 11:24:40 2011 -0600
+| |  files:       VerificationTests/Test1c/tmpfile VerificationTests/Test1d/tmpfile VerificationTests/Test4/sptr2
+| |  description:
+| |  updated Verification Test4
+| |
+| |
+| o  changeset:   8:7e6b8fe37d58
+|/   user:        spainter@brine.lanl.gov
+|    date:        Fri Apr 08 11:12:53 2011 -0600
+|    files:       SRC/cell_class.f90 SRC/flowfield_class.f90 SRC/mesh_class.f90 SRC/pclite SRC/pclite.f90 VerificationTests/Test1c/tmpfile VerificationTests/Test1d/tmpfile
+|    description:
+|    changed allocate statements in derived types to pointers
+|
+|
+o  changeset:   7:e8a6dfe2d3f9
+|  user:        spainter@lanl.gov
+|  date:        Tue Mar 29 17:09:47 2011 -0600
+|  files:       AcceptanceTests/Test1/control.dat.0 AcceptanceTests/Test1/control.dat.1m AcceptanceTests/Test1/control.dat.5m AcceptanceTests/Test1/walkabout.files.0 AcceptanceTests/Test1/walkabout.files.1m AcceptanceTests/Test1/walkabout.files.5m AcceptanceTests/Test2/control.dat AcceptanceTests/Test2/walkabout.files AcceptanceTests/runit.s SRC/io.f90 SRC/mesh_class.f90 SRC/pclite SRC/pclite.f90 SRC/tracktools.f90 SRC/walkabout.f90 VerificationTests/Test1c/tmpfile VerificationTests/Test1d/tmpfile VerificationTests/Test1d/walkabout.files VerificationTests/Test2/walkabout.files.0 VerificationTests/Test2/walkabout.files.10m VerificationTests/Test2/walkabout.files.1m VerificationTests/Test3/walkabout.files VerificationTests/Test4/control.dat VerificationTests/Test4/fehmn VerificationTests/Test4/stor VerificationTests/Test4/walkabout.files
+|  description:
+|  Final Cleanup Version 1
+|
+|
+o  changeset:   6:f2e74657b2a6
+|  user:        spainter@lanl.gov
+|  date:        Mon Mar 28 10:18:11 2011 -0600
+|  files:       SRC/tracktools.f90 VerificationTests/Test1c/tmpfile VerificationTests/Test1d/tmpfile VerificationTests/Test4/control.dat
+|  description:
+|  fixed issue with detecting cell exit.
+|
+|
+o  changeset:   5:668d9213fade
+|  user:        spainter@lanl.gov
+|  date:        Mon Mar 21 08:37:30 2011 -0600
+|  files:       SRC/flowfield_class.f90 SRC/tracktools.f90 SRC/walkabout.f90 VerificationTests/Test1c/tmpfile VerificationTests/Test1d/tmpfile VerificationTests/runit.s
+|  description:
+|  added grad porosity term
+|
+|
+o  changeset:   4:6a5d2c53938c
+|  user:        spainter@lanl.gov
+|  date:        Fri Mar 11 16:12:09 2011 -0700
+|  files:       VerificationTests/Test1a/control.dat VerificationTests/Test1b/control.dat VerificationTests/Test1c/control.dat VerificationTests/Test1d/control.dat VerificationTests/Test2/control.dat.0 VerificationTests/Test2/control.dat.10m VerificationTests/Test2/control.dat.1m VerificationTests/Test3/control.dat VerificationTests/Test4/1-D_grid1_perm.dat VerificationTests/Test4/control.dat VerificationTests/Test4/fehmn VerificationTests/Test4/mkgrid.lgi VerificationTests/Test4/stor VerificationTests/Test4/walkabout.files
+|  description:
+|  Added test case.
+|
+|
+o  changeset:   3:5c3c19db12ce
+|  user:        spainter@lanl.gov
+|  date:        Fri Mar 11 13:31:21 2011 -0700
+|  files:       AcceptanceTests/Test2/runit.s AcceptanceTests/Test2/walkabout.files SRC/flowfield_class.f90 SRC/tracktools.f90
+|  description:
+|  Supports spatial variability in dispersion tensor.
+|
+|
+o  changeset:   2:a60a600e5d4e
+|  user:        spainter@lanl.gov
+|  date:        Thu Mar 10 10:01:35 2011 -0700
+|  files:       AcceptanceTests/Test1/control.dat.0 AcceptanceTests/Test1/control.dat.1m AcceptanceTests/Test1/control.dat.5m AcceptanceTests/Test1/runit.s
+|  description:
+|  update of test1
+|
+|
+o  changeset:   1:48dcda1d833c
+|  user:        spainter@lanl.gov
+|  date:        Thu Mar 10 09:49:20 2011 -0700
+|  files:       SRC/disptensor.f90 SRC/flowfield_class.f90 SRC/io.f90 SRC/makefile SRC/mesh_class.f90 SRC/pclite SRC/pclite.f90 SRC/tracktools.f90 SRC/walkabout.f90
+|  description:
+|  various updates
+|
+|
+o  changeset:   0:5786cc7cae9e
+   user:        moulton@lanl.gov
+   date:        Wed Mar 02 07:08:03 2011 -0700
+   files:       AcceptanceTests/Test1/control.dat.0 AcceptanceTests/Test1/control.dat.1m AcceptanceTests/Test1/control.dat.5m AcceptanceTests/Test1/fehmn AcceptanceTests/Test1/runit.s AcceptanceTests/Test1/sptr2 AcceptanceTests/Test1/stor AcceptanceTests/Test1/walkabout.files.0 AcceptanceTests/Test1/walkabout.files.1m AcceptanceTests/Test1/walkabout.files.5m AcceptanceTests/Test2/._walkabout.files AcceptanceTests/Test2/control.dat AcceptanceTests/Test2/fehmn AcceptanceTests/Test2/runit.s AcceptanceTests/Test2/sptr2 AcceptanceTests/Test2/stor AcceptanceTests/Test2/walkabout.files AcceptanceTests/runit.s SRC/.DS_Store SRC/._.DS_Store SRC/._bftensor.f90 SRC/._cell_class.f90 SRC/._disptensor.f90 SRC/._dtensor.dat SRC/._flowfield_class.f90 SRC/._io.f90 SRC/._isotropictensor.f90 SRC/._lichtnertensor.f90 SRC/._ll.f90 SRC/._makefile SRC/._mesh_class.f90 SRC/._pclite.f90 SRC/._precision.f90 SRC/._tracktools.f90 SRC/._walkabout.f90 SRC/bftensor.f90 SRC/cell_class.f90 SRC/disptensor.f90 SRC/dtensor.dat SRC/flowfield_class.f90 SRC/io.f90 SRC/isotropictensor.f90 SRC/lichtnertensor.f90 SRC/ll.f90 SRC/makefile SRC/mesh_class.f90 SRC/pclite SRC/pclite.f90 SRC/precision.f90 SRC/testrandom.f90 SRC/tracktools.f90 SRC/walkabout.f90 VerificationTests/.DS_Store VerificationTests/._.DS_Store VerificationTests/Test1a/control.dat VerificationTests/Test1a/walkabout.files VerificationTests/Test1b/control.dat VerificationTests/Test1b/walkabout.files VerificationTests/Test1c/control.dat VerificationTests/Test1c/tmpfile VerificationTests/Test1c/walkabout.files VerificationTests/Test1d/control.dat VerificationTests/Test1d/tmpfile VerificationTests/Test1d/walkabout.files VerificationTests/Test2/control.dat.0 VerificationTests/Test2/control.dat.10m VerificationTests/Test2/control.dat.1m VerificationTests/Test2/walkabout.files.0 VerificationTests/Test2/walkabout.files.10m VerificationTests/Test2/walkabout.files.1m VerificationTests/Test3/control.dat VerificationTests/Test3/walkabout.files VerificationTests/runit.s
+   description:
+   Initial version of WalkAbout, the particle tracking code by Scott Painter.
+
+
