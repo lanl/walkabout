@@ -98,11 +98,11 @@ Figure A3-2 shows an example for 20 nodes.
 ## A.3.2 Properties  **`avs`** 
 
 Porosity, liquid saturation and liquid density are read from an ASCII **avs** file produced by the model application (the contour macro in FEHM). 
-This uses an AVS format for node attributes. The header includes number of nodes and attribute names followed by the property data.
+This uses an AVS file format for node attributes. The first line of the header indicates number of attributes followed by integer 1 indicating scalar value for each of the four attributes. The remainder of the header is a list of attribute names with optional dimension. The header is followed by columns of node number and values for the property data (attributes).
 Figure A3-3 shows an example for 20 nodes.
 
 ```
-04  1   1   1   1   1
+04  1   1   1   1 
 Liquid Pressure (MPa), (MPa)
 Saturation, (no dim)
 Porosity, (no dim)
