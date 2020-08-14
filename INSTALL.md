@@ -1,5 +1,7 @@
 To build Walkabout:
+
 cd src
+
 make
 
 The walkabout executable is created with *.o, *.mod, *.walkabout files.
